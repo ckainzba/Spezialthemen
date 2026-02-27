@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betriebliche Altersvorsorge (bAV)</title>
+    <meta name="description"
+        content="Alles über betriebliche Altersvorsorge durch Direktversicherung: Wie Entgeltumwandlung funktioniert, Steuervorteile und der gesetzliche Arbeitgeberzuschuss.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <!-- Icon for Arbeitgeberförderung -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow"
+                            style="width: 1rem; height: 1rem; cursor: pointer; transform: rotate(180deg);"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link active">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Altersvorsorge</span>
+                        <h1>Betriebliche Altersvorsorge (bAV)</h1>
+                        <p class="hero-subtitle">
+                            Sorgen Sie heute schon für morgen vor. Mit der bAV nutzen Sie
+                            Steuervorteile und Arbeitgeberzuschüsse für eine sichere Rente.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/bav_header_new.png" alt="Betriebliche Altersvorsorge Visualisierung">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist bAV? -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Was ist die betriebliche Altersvorsorge?</h2>
+                        <p>Staatlich gefördertes Sparen für den Ruhestand über den Arbeitgeber</p>
+                    </div>
+
+                    <p>
+                        Die <strong>betriebliche Altersvorsorge (bAV)</strong> ist eine vom Arbeitgeber
+                        unterstützte Form der Altersvorsorge. Dabei wandeln Sie einen Teil Ihres
+                        Bruttogehalts in Beiträge für Ihre spätere Rente um – mit erheblichen
+                        Steuer- und Sozialabgabenvorteilen. Seit 2019 bzw. 2022 ist der Arbeitgeber
+                        verpflichtet, die bAV mit mindestens 15% zu bezuschussen.
+                    </p>
+                    <p>
+                        Die gängigste Form der bAV ist die <strong>Direktversicherung</strong>.
+                        Hierbei schließt Ihr Arbeitgeber für Sie eine Rentenversicherung ab, in die
+                        monatlich eingezahlt wird. Diese Form bietet maximale Flexibilität,
+                        volle gesetzliche Förderung und ist bei einem Jobwechsel einfach übertragbar.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Das Prinzip der Entgeltumwandlung</h3>
+                        <p>
+                            Bei der bAV verzichten Sie auf einen Teil Ihres Bruttogehalts, der direkt in
+                            die Altersvorsorge fließt. Da dieser Betrag <strong>vor Steuer und Sozialabgaben</strong>
+                            abgezogen wird, ist der Nettoaufwand für Sie deutlich geringer als der Sparbetrag.
+                        </p>
+                        <ul class="feature-list" style="margin-top: var(--spacing-md); box-shadow: none; padding: 0;">
+                            <li class="feature-item" style="box-shadow: none; padding: 0;">
+                                <div class="feature-icon"
+                                    style="background: none; color: var(--primary); width: auto; height: auto;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="M12 16v-4" />
+                                        <path d="M12 8h.01" />
+                                    </svg>
+                                </div>
+                                <div class="feature-content">
+                                    <p><strong>Beispiel:</strong> Sie sparen 100 €, aber es fehlen Ihnen netto nur ca.
+                                        50 € auf dem Konto.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-grid mt-lg">
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="8" cy="8" r="6" />
+                                    <path d="M18.09 10.37A6 6 0 1 1 10.34 18" />
+                                    <path d="M7 6h1v4" />
+                                    <path d="M17.12 10.22a3 3 0 0 0-2.12-2.12" />
+                                </svg>
+                            </div>
+                            <h3>Steuerfreiheit in der Ansparphase</h3>
+                            <p>
+                                Beiträge bis zu <strong>8% der Beitragsbemessungsgrenze</strong>
+                                (ca. 7.000 €/Jahr) sind steuerfrei.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3>Sozialabgabenfreiheit</h3>
+                            <p>
+                                Bis zu <strong>4% der Beitragsbemessungsgrenze</strong>
+                                (ca. 3.500 €/Jahr) sind sozialabgabenfrei.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="20" x2="12" y2="10" />
+                                    <line x1="18" y1="20" x2="18" y2="4" />
+                                    <line x1="6" y1="20" x2="6" y2="16" />
+                                </svg>
+                            </div>
+                            <h3>Nachgelagerte Besteuerung</h3>
+                            <p>
+                                Die Betriebsrente wird erst im Alter besteuert – meist zu einem
+                                deutlich niedrigeren Steuersatz als im Erwerbsleben.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Arbeitgeberzuschuss -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Der Arbeitgeberzuschuss</h2>
+
+                    <p>
+                        Spart der Arbeitgeber durch Ihre Entgeltumwandlung Sozialabgaben, muss er diesen Vorteil
+                        an Sie weitergeben. Das Gesetz schreibt einen Zuschuss von <strong>mindestens 15%</strong>
+                        Ihres Sparbeitrags vor.
+                    </p>
+                    <p>
+                        <em>Viele Arbeitgeber zahlen freiwillig sogar mehr – oft 20% oder 30%. Fragen Sie nach!</em>
+                    </p>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" /><text x="50%" y="54%" dominant-baseline="middle"
+                                        text-anchor="middle" font-size="8" font-weight="bold" fill="currentColor"
+                                        stroke="none">15%</text>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Mindestens 15% Zuschuss</h4>
+                                <p>
+                                    Gesetzlich garantiert bei Entgeltumwandlung (Direktversicherung, Pensionskasse,
+                                    Pensionsfonds).
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Seit wann gilt die Pflicht?</h4>
+                                <p>
+                                    Seit 2019 für Neuverträge, seit 2022 auch für alle Bestandsverträge.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M9 18h6" />
+                                    <path d="M10 22h4" />
+                                    <path
+                                        d="M15.09 14c.18-.7.18-1.48 0-2.2-.4-1.63-1.6-2.96-3.15-3.56a4.8 4.8 0 0 0-4.88.54C5.7 9.88 5.76 11.2 6.55 12.52 7.2 13.6 7.6 15 8 16.5c.32 1.25.5 2.5 1 2.5h6c.5 0 .68-1.25 1-2.5.4-1.5.8-2.9 1.45-3.98M12 2v2" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Beispielrechnung</h4>
+                                <p>
+                                    Sie zahlen 100 €, der Arbeitgeber legt 15 € drauf. Gesamtinvestition: 115 €.
+                                    Ihr Nettoaufwand: ca. 50 €. Sofortiger Gewinn: <strong>+130%</strong>.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Ihr Recht einfordern</h4>
+                                <p>
+                                    Der Zuschuss ist keine freiwillige Leistung, sondern Ihr gutes Recht.
+                                    Prüfen Sie Ihre Abrechnung!
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Vorteile bAV (Slider) -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Warum sich bAV lohnt</h2>
+
+                    <div class="slider-container">
+                        <button class="slider-btn slider-btn-prev" id="sliderPrevBtn" aria-label="Vorheriger Vorteil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="slider-wrapper">
+                            <div class="slider-track" id="sliderTrack">
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 12 20 22 4 22 4 12" />
+                                                <rect x="2" y="7" width="20" height="5" />
+                                                <line x1="12" y1="22" x2="12" y2="7" />
+                                                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                                                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Geschenktes Geld vom Arbeitgeber</h4>
+                                            <p>
+                                                Durch den Pflichtzuschuss von 15% (oder mehr) erhalten Sie jeden Monat
+                                                bares Geld geschenkt, das direkt für Ihre Rente arbeitet.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                                                <line x1="2" y1="10" x2="22" y2="10" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Steuer- und Sozialabgabenersparnis</h4>
+                                            <p>
+                                                Ihre Beiträge werden direkt vom Bruttogehalt abgezogen – Sie sparen
+                                                sofort Steuern und Sozialabgaben. Ihr Nettoaufwand ist oft nur halb so
+                                                hoch!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Lebenslange Rente garantiert</h4>
+                                            <p>
+                                                Die bAV bietet meist eine lebenslange monatliche Rentenzahlung,
+                                                die Ihnen Planungssicherheit im Alter gibt.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <circle cx="12" cy="12" r="6" />
+                                                <circle cx="12" cy="12" r="2" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Flexibilität bei Jobwechsel</h4>
+                                            <p>
+                                                Sie können Ihre bAV zum neuen Arbeitgeber mitnehmen oder
+                                                privat fortführen. Die Ansprüche bleiben erhalten.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="3" y1="22" x2="21" y2="22" />
+                                                <line x1="6" y1="18" x2="6" y2="11" />
+                                                <line x1="10" y1="18" x2="10" y2="11" />
+                                                <line x1="14" y1="18" x2="14" y2="11" />
+                                                <line x1="18" y1="18" x2="18" y2="11" />
+                                                <polygon points="12 2 20 7 4 7" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Gesetzlicher Anspruch</h4>
+                                            <p>
+                                                Jeder Arbeitnehmer hat einen gesetzlichen Anspruch auf
+                                                Entgeltumwandlung.
+                                                Der Arbeitgeber muss eine Möglichkeit anbieten.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Schutz bei Insolvenz</h4>
+                                            <p>
+                                                Betriebsrenten sind über den Pensions-Sicherungs-Verein (PSV)
+                                                geschützt und sicher vor einer Insolvenz des Arbeitgebers.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="slider-btn slider-btn-next" id="sliderNextBtn" aria-label="Nächster Vorteil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="slider-dots" id="sliderDots">
+                            <button class="slider-dot active" data-index="0" aria-label="Vorteil 1"></button>
+                            <button class="slider-dot" data-index="1" aria-label="Vorteil 2"></button>
+                            <button class="slider-dot" data-index="2" aria-label="Vorteil 3"></button>
+                            <button class="slider-dot" data-index="3" aria-label="Vorteil 4"></button>
+                            <button class="slider-dot" data-index="4" aria-label="Vorteil 5"></button>
+                            <button class="slider-dot" data-index="5" aria-label="Vorteil 6"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Accordion -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen zur bAV</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie viel Geld sollte ich einzahlen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Das hängt von Ihrem persönlichen Bedarf und Ihren finanziellen Möglichkeiten ab.
+                                        Empfehlenswert sind oft Beträge bis zur <strong>Sozialabgabenfreiheit</strong>
+                                        (ca. 300 €/Monat bzw. 3.624 € jährlich).
+                                    </p>
+                                    <p>
+                                        Bei diesem Betrag sparen Sie nicht nur Steuern, sondern auch Sozialabgaben.
+                                        Beachten Sie jedoch Mindestbeträge, die Ihr Arbeitgeber-Vertrag vorschreibt.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Muss ich die Rente später versteuern?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Ja, die Auszahlungen aus der Betriebsrente sind <strong>voll
+                                            steuerpflichtig</strong>.
+                                        Das nennt man "nachgelagerte Besteuerung".
+                                    </p>
+                                    <p>
+                                        Da der Steuersatz im Alter jedoch meist <strong>deutlich niedriger</strong> ist
+                                        als während des Berufslebens, lohnt sich das Modell trotzdem. Sie sparen heute
+                                        bei
+                                        hohem Steuersatz und zahlen später bei niedrigem Steuersatz.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was ist mit der Krankenversicherung?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Gesetzlich Krankenversicherte</strong> müssen auf die Betriebsrente
+                                        Beiträge zur Kranken- und Pflegeversicherung zahlen. Es gibt jedoch einen
+                                        Freibetrag (ca. 169 € monatlich in 2024), bis zu dem keine Beiträge anfallen.
+                                    </p>
+                                    <p>
+                                        <strong>Privat Versicherte</strong> zahlen keine zusätzlichen KV-Beiträge auf
+                                        die Betriebsrente.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert bei Jobwechsel?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Ihre Ansprüche aus der bAV bleiben <strong>voll erhalten</strong>, auch wenn
+                                        Sie den Arbeitgeber wechseln. Sie haben mehrere Optionen:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Mitnehmen:</strong> Übertragen Sie den Vertrag zum neuen Arbeitgeber
+                                        </li>
+                                        <li><strong>Privat weiterführen:</strong> Zahlen Sie selbst weiter ein</li>
+                                        <li><strong>Beitragsfrei stellen:</strong> Der Vertrag bleibt bestehen,
+                                            Sie zahlen aber nichts mehr ein</li>
+                                    </ul>
+                                    <p>
+                                        Ihr neuer Arbeitgeber muss Ihre bestehende bAV akzeptieren, wenn Sie
+                                        Entgeltumwandlung betreiben möchten.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich vorzeitig an mein Geld?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Eine vorzeitige Auszahlung ist <strong>nur in Ausnahmefällen möglich</strong>,
+                                        z.B. bei Insolvenz oder wenn Ihre Ansprüche sehr gering sind (unter ca. 33
+                                        €/Monat).
+                                    </p>
+                                    <p>
+                                        Die bAV ist speziell für die <strong>Altersvorsorge</strong> gedacht und deshalb
+                                        langfristig gebunden. Das schützt Sie davor, das Geld vorher auszugeben, und
+                                        sichert Ihre Rente im Alter.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Lohnt sich bAV auch ohne Arbeitgeberzuschuss?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Seit 2019 bzw. 2022 ist der <strong>15% Arbeitgeberzuschuss
+                                            verpflichtend</strong>
+                                        bei Entgeltumwandlung. Sie sollten also immer einen Zuschuss erhalten.
+                                    </p>
+                                    <p>
+                                        Auch ohne Zuschuss kann sich bAV durch die <strong>Steuer- und
+                                            Sozialabgabenersparnis</strong>
+                                        lohnen. Ihr Nettoaufwand ist deutlich geringer als der eingezahlte Betrag.
+                                        Allerdings sollten Sie die nachgelagerte Besteuerung und KV-Beiträge im Alter
+                                        in Ihre Überlegungen einbeziehen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>
+                Diese Seite bietet allgemeine Informationen über betriebliche Altersvorsorge.
+                Für individuelle Beratung wenden Sie sich bitte an einen Finanzberater.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });
+        }
+
+        // Sidebar Collapse Logic - only toggle on arrow click
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+
+        arrow.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent navigation when clicking arrow
+            e.stopPropagation(); // Stop event from bubbling to parent link
+            subMenu.classList.toggle('open');
+            arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+
+
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const isActive = accordionItem.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Slider functionality
+        let currentSlide = 0;
+        const sliderTrack = document.getElementById('sliderTrack');
+        const totalSlides = document.querySelectorAll('.slider-item').length;
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.getElementById('sliderPrevBtn');
+        const nextBtn = document.getElementById('sliderNextBtn');
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+
+            // Loop around
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            if (sliderTrack) {
+                sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            updateDots();
+        }
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Add event listeners to navigation buttons
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => moveSlide(-1));
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => moveSlide(1));
+        }
+
+        // Add event listeners to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto-advance slider every 5 seconds (optional)
+        // setInterval(() => {
+        //     moveSlide(1);
+        // }, 5000);
+    </script>
+</body>
+
+</html>

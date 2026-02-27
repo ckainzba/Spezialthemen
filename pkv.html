@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Krankenversicherung (PKV)</title>
+    <meta name="description"
+        content="Alle Informationen zum Wechsel in die private Krankenversicherung: Voraussetzungen, Vorteile im Vergleich zur GKV und warum sich der Wechsel lohnen kann.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                        Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Krankenversicherung</span>
+                        <h1>Private Krankenversicherung (PKV)</h1>
+                        <p class="hero-subtitle">
+                            Profitieren Sie von erstklassiger medizinischer Versorgung und individuellen
+                            Leistungen. Die PKV bietet Ihnen als Angestellter mit höherem Einkommen
+                            exzellente Behandlungsmöglichkeiten und flexible Tarifgestaltung.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/pkv_header_new.png" alt="Private Krankenversicherung Illustration">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist PKV? -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Was ist die private Krankenversicherung?</h2>
+                        <p>Erstklassige medizinische Versorgung und individuelle Absicherung</p>
+                    </div>
+
+                    <p>
+                        Die <strong>private Krankenversicherung (PKV)</strong> ist eine Alternative zur
+                        gesetzlichen Krankenversicherung (GKV). Sie bietet in der Regel umfangreichere
+                        Leistungen, kürzere Wartezeiten und eine individuellere Betreuung.
+                    </p>
+                    <p>
+                        Anders als in der GKV zahlen Sie in der PKV einen <strong>risikobasierten Beitrag</strong>,
+                        der sich nach Ihrem Alter, Gesundheitszustand und gewünschten Leistungen richtet –
+                        nicht nach Ihrem Einkommen.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Der Unterschied zur gesetzlichen Krankenversicherung</h3>
+                        <p>
+                            Während die GKV nach dem <strong>Solidaritätsprinzip</strong> funktioniert
+                            (Beiträge richten sich nach dem Einkommen), basiert die PKV auf dem
+                            <strong>Äquivalenzprinzip</strong> (Beiträge richten sich nach dem individuellen
+                            Risiko und den gewählten Leistungen).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PKV vs GKV Vergleich -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">PKV vs. GKV: Attraktivität im Vergleich</h2>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                </svg>
+                            </div>
+                            <h3>Bessere medizinische Versorgung</h3>
+                            <p>
+                                Als Privatpatient erhalten Sie oft <strong>bevorzugte Termine</strong>,
+                                Chefarztbehandlung im Krankenhaus und Zugang zu modernsten Behandlungsmethoden.
+                                Die Wartezeiten sind deutlich kürzer.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="8.5" cy="7" r="4" />
+                                    <polyline points="17 11 19 13 23 9" />
+                                </svg>
+                            </div>
+                            <h3>Freie Arztwahl</h3>
+                            <p>
+                                Sie können <strong>jeden Arzt und jede Klinik</strong> frei wählen, unabhängig
+                                davon, ob dieser Kassenarzt ist oder nicht. Auch Spezialisten und Universitätskliniken
+                                stehen Ihnen offen.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3>Individueller Versicherungsschutz</h3>
+                            <p>
+                                Sie stellen sich Ihren Tarif <strong>individuell</strong> zusammen und wählen
+                                genau die Leistungen, die Sie benötigen – von Zahnersatz über Sehhilfen bis
+                                zu Einzelzimmer im Krankenhaus.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23" />
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg>
+                            </div>
+                            <h3>Beitragsrückerstattung</h3>
+                            <p>
+                                Wenn Sie keine Leistungen in Anspruch nehmen, erhalten Sie in vielen Tarifen
+                                <strong>Beitragsrückerstattungen</strong> von bis zu mehreren Monatsbeiträgen
+                                pro Jahr.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <h3>Garantierte Leistungen</h3>
+                            <p>
+                                Ihre vertraglich vereinbarten Leistungen sind <strong>garantiert</strong>
+                                und können nicht einseitig gekürzt werden – im Gegensatz zur GKV, wo
+                                Leistungen politisch angepasst werden können.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                                </svg>
+                            </div>
+                            <h3>Altersrückstellungen</h3>
+                            <p>
+                                Ein Teil Ihrer Beiträge fließt in <strong>Altersrückstellungen</strong>,
+                                die Beitragssteigerungen im Alter dämpfen. Diese gehören Ihnen und sind
+                                geschützt.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Voraussetzungen für den Wechsel -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Voraussetzungen für den Wechsel als Angestellter</h2>
+                    <p class="text-center mb-xl">
+                        Als Angestellter können Sie nicht einfach so in die PKV wechseln.
+                        Sie müssen bestimmte Voraussetzungen erfüllen.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h3>📊 Die Jahresarbeitsentgeltgrenze (JAEG)</h3>
+                        <p>
+                            Die wichtigste Voraussetzung ist das Überschreiten der
+                            <strong>Jahresarbeitsentgeltgrenze</strong> (auch Versicherungspflichtgrenze genannt).
+                        </p>
+                        <ul style="margin-top: 1rem;">
+                            <li style="margin-bottom: 0.5rem;">
+                                <strong>2025:</strong> Die JAEG liegt bei 73.800 € brutto pro Jahr
+                                (6.150 € pro Monat)
+                            </li>
+                            <li style="margin-bottom: 0.5rem;">
+                                <strong>2026:</strong> Die JAEG liegt bei 77.400 € brutto pro Jahr
+                                (6.450 € pro Monat)
+                            </li>
+                            <li>
+                                Diese Grenze wird jährlich angepasst
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="feature-list mt-lg">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Einkommen über der JAEG</h4>
+                                <p>
+                                    Ihr <strong>regelmäßiges Jahreseinkommen</strong> (Bruttolohn inkl. regelmäßiger
+                                    Zulagen, aber ohne Sonderzahlungen wie Weihnachtsgeld) muss die JAEG
+                                    überschreiten. Einmalzahlungen zählen nicht zur Berechnung.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Mindestdauer über der Grenze</h4>
+                                <p>
+                                    Sie müssen <strong>ein komplettes Kalenderjahr</strong> (12 aufeinanderfolgende
+                                    Monate) über der JAEG verdienen. Erst dann endet Ihre Versicherungspflicht
+                                    in der GKV und Sie können zur PKV wechseln.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 16v-4" />
+                                    <path d="M12 8h.01" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Gesundheitsprüfung bestehen</h4>
+                                <p>
+                                    Die PKV führt vor Vertragsabschluss eine <strong>Gesundheitsprüfung</strong>
+                                    durch. Je nach Vorerkrankungen können Zuschläge erhoben, Leistungen
+                                    ausgeschlossen oder der Antrag sogar abgelehnt werden.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Weitere Berechtigungsgruppen</h4>
+                                <p>
+                                    <strong>Beamte, Selbstständige und Freiberufler</strong> können unabhängig
+                                    vom Einkommen in die PKV wechseln. Für sie gelten keine
+                                    Einkommensgrenzen.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="info-box mt-xl">
+                        <h3>⚠️ Wichtig zu beachten</h3>
+                        <p>
+                            Der Wechsel in die PKV sollte gut überlegt sein. Eine Rückkehr in die GKV ist
+                            als Angestellter ab 55 Jahren praktisch <strong>nicht mehr möglich</strong>.
+                            Auch bei sinkendem Einkommen unter die JAEG bleibt man in der PKV.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Entwicklung des Höchstbeitrags -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Entwicklung des Höchstbeitrags in der GKV</h2>
+
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <!-- Chart Image -->
+                        <img src="images/gkv_hoechstbeitrag_entwicklung.png" id="gkvChartImage"
+                            alt="Entwicklung des Höchstbeitrags in der GKV 1995-2026"
+                            style="width: 100%; height: auto; border-radius: 0.5rem; cursor: zoom-in;">
+
+                        <!-- Info box -->
+                        <div class="info-box" style="margin-top: 2rem;">
+                            <h3>📈 Kontinuierlicher Beitragsanstieg seit 1995</h3>
+                            <p>
+                                Die Grafik zeigt deutlich: Die Höchstbeiträge zur gesetzlichen Kranken- und
+                                Pflegeversicherung sind in den letzten drei Jahrzehnten <strong>kontinuierlich
+                                    gestiegen</strong>.
+                                Während der Gesamtbeitrag 1995 noch bei 420,71 € lag, erreicht er 2026 bereits
+                                <strong>1.261,31 €</strong> – eine Steigerung um über 200%.
+                            </p>
+                            <p>
+                                Die PKV bietet Ihnen <strong>stabile, individuell kalkulierte Beiträge</strong>, die
+                                nicht von der Beitragsbemessungsgrenze abhängen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Rechenbeispiel -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">So sparen Sie mit der PKV</h2>
+
+                    <p>
+                        Sehen Sie selbst, wie attraktiv ein Wechsel zur privaten Krankenversicherung für Sie sein kann:
+                    </p>
+
+                    <div class="card-grid mt-lg"
+                        style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <!-- AOK Niedersachsen -->
+                        <div class="card">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: #dc3545;" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem;">AOK Niedersachsen</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.6; color: #333;">
+                                <p style="margin: 0.25rem 0;">Ihre derzeitige GKV</p>
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: #666;">Jahresbeitrag
+                                    (Arbeitnehmeranteil*)</h4>
+                                <p style="margin: 0; font-size: 1.75rem; font-weight: 700; color: #023e84;">6.131 €</p>
+                                <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem; color: #666;">17,58 % Beitragssatz
+                                </p>
+                            </div>
+                            <div
+                                style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.875rem; color: #666;">Monatlich</span>
+                                <span style="font-size: 1rem; font-weight: 600;">510,92 €</span>
+                            </div>
+                        </div>
+
+                        <!-- Mögliche Alternative -->
+                        <div class="card">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: #0066cc;" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem;">Mögliche Alternative</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.6; color: #0066cc;">
+                                <p style="margin: 0.25rem 0;">Durchschnittlicher PKV-Tarif</p>
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: #666;">Jahresbeitrag
+                                    (Arbeitnehmeranteil*)</h4>
+                                <p style="margin: 0; font-size: 1.75rem; font-weight: 700; color: #0066cc;">2.929 €</p>
+                            </div>
+                            <div
+                                style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.875rem; color: #666;">Monatlich</span>
+                                <span style="font-size: 1rem; font-weight: 600; color: #0066cc;">244,08 €</span>
+                            </div>
+                        </div>
+
+                        <!-- Mögliche Ersparnis -->
+                        <div class="card"
+                            style="background: linear-gradient(135deg, #0066cc 0%, #004c99 100%); color: white; border: none;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: white;" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z" />
+                                    <path d="M2 9v1c0 1.1.9 2 2 2h1" />
+                                    <circle cx="16" cy="11" r="1" fill="currentColor" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem; color: white;">Mögliche Ersparnis</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.6; color: white; min-height: 1.6rem;">
+                                <p style="margin: 0.25rem 0; color: white;">Bei Wechsel in die PKV</p>
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; opacity: 0.9; color: white;">
+                                    Jahresersparnis</h4>
+                                <p style="margin: 0; font-size: 1.75rem; font-weight: 700; color: white;">3.202 €</p>
+                            </div>
+                            <div
+                                style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.875rem; opacity: 0.9; color: white;">Monatlich</span>
+                                <span style="font-size: 1rem; font-weight: 600; color: white;">266,83 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: #666;">*Der Arbeitgeber beteiligt sich
+                        sowohl bei der gesetzlichen als auch bei der privaten Krankenversicherung zu 50 % an den Kosten
+                        seiner Angestellten. Der steuerfreie Zuschuss für die private Krankenversicherung ist allerdings
+                        begrenzt auf den Höchstbeitrag, den der Arbeitgeber auch zur gesetzlichen Krankenversicherung
+                        seiner
+                        Mitarbeiter beisteuern würde.</p>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen zur privaten Krankenversicherung</h2>
+
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wann kann ich als Angestellter in die PKV wechseln?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Als Angestellter können Sie in die PKV wechseln, wenn Ihr regelmäßiges
+                                        <strong>Jahreseinkommen die Jahresarbeitsentgeltgrenze (JAEG)</strong>
+                                        überschreitet. Für 2026 liegt diese bei 77.400 € brutto jährlich
+                                        (6.450 € monatlich).
+                                    </p>
+                                    <p>
+                                        Sie müssen mindestens <strong>ein komplettes Kalenderjahr</strong> über
+                                        dieser Grenze verdienen, bevor Sie wechseln können. Der Wechsel ist dann
+                                        zum Jahresende mit einer Kündigungsfrist von 2 Monaten zur GKV möglich.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert, wenn mein Einkommen wieder unter die JAEG sinkt?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Wenn Ihr Einkommen als Angestellter wieder unter die JAEG sinkt,
+                                        <strong>bleiben Sie in der PKV</strong>. Eine automatische Rückkehr
+                                        in die GKV gibt es nicht.
+                                    </p>
+                                    <p>
+                                        Sie können nur unter bestimmten Voraussetzungen zurück:
+                                    </p>
+                                    <ul>
+                                        <li>Wenn Sie unter 55 Jahre alt sind und wieder versicherungspflichtig
+                                            werden (z.B. durch ein Einkommen unter der JAEG)</li>
+                                        <li>Wenn Sie arbeitslos werden und Arbeitslosengeld I beziehen</li>
+                                        <li>Wenn Sie eine geringfügige Beschäftigung (Minijob) aufnehmen</li>
+                                    </ul>
+                                    <p>
+                                        Ab 55 Jahren ist die Rückkehr in die GKV praktisch
+                                        <strong>nicht mehr möglich</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich von der PKV zurück in die GKV wechseln?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Eine Rückkehr ist grundsätzlich schwierig und an strenge Bedingungen geknüpft:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Als Angestellter unter 55 Jahren:</strong> Möglich, wenn Sie
+                                            wieder versicherungspflichtig werden (Einkommen unter JAEG,
+                                            Arbeitslosigkeit)</li>
+                                        <li><strong>Ab 55 Jahren:</strong> Praktisch unmöglich, außer Sie werden
+                                            familienversichert (sehr selten)</li>
+                                        <li><strong>Als Selbstständiger:</strong> Nur durch Aufnahme einer
+                                            versicherungspflichtigen Angestelltentätigkeit unter der JAEG</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Wichtig:</strong> Die Entscheidung für die PKV sollte daher
+                                        wohlüberlegt und langfristig geplant sein!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was kostet die private Krankenversicherung?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Die Beiträge in der PKV sind <strong>individuell</strong> und hängen ab von:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Eintrittsalter:</strong> Je jünger Sie eintreten, desto günstiger
+                                        </li>
+                                        <li><strong>Gesundheitszustand:</strong> Vorerkrankungen können zu Zuschlägen
+                                            führen</li>
+                                        <li><strong>Gewählte Leistungen:</strong> Umfangreichere Tarife kosten mehr</li>
+                                        <li><strong>Selbstbeteiligung:</strong> Höhere Selbstbeteiligung senkt den
+                                            Beitrag</li>
+                                    </ul>
+                                    <p>
+                                        Als junger, gesunder Angestellter zahlen Sie oft <strong>weniger als in der
+                                            GKV</strong>. Mit zunehmendem Alter steigen die Beiträge jedoch stärker als
+                                        in der GKV. Ein Vergleich lohnt sich!
+                                    </p>
+                                    <p>
+                                        <strong>Beispiel:</strong> Ein 30-jähriger Angestellter zahlt ca. 400-600 €
+                                        monatlich für einen umfassenden Tarif. In der GKV würde er bei 73.800 €
+                                        Einkommen ca. 700-800 € zahlen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie sind Familienmitglieder in der PKV versichert?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Anders als in der GKV gibt es in der PKV <strong>keine kostenlose
+                                            Familienversicherung</strong>. Jedes Familienmitglied benötigt einen
+                                        eigenen Versicherungsvertrag.
+                                    </p>
+                                    <p>
+                                        <strong>Ehepartner:</strong> Muss sich selbst versichern (PKV oder GKV,
+                                        falls Anspruch besteht)
+                                    </p>
+                                    <p>
+                                        <strong>Kinder:</strong> Müssen ebenfalls einzeln versichert werden.
+                                        Die Beiträge für Kinder sind jedoch meist deutlich günstiger (ca. 100-200 €
+                                        pro Kind). Kinder können in der GKV familienversichert werden, wenn der
+                                        andere Elternteil gesetzlich versichert ist und mehr verdient.
+                                    </p>
+                                    <p>
+                                        <strong>Wichtig:</strong> Planen Sie die Familienkosten ein! Bei mehreren
+                                        Kindern kann die PKV teurer werden als die GKV.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was sind Altersrückstellungen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Altersrückstellungen</strong> sind ein wichtiger Bestandteil der
+                                        PKV-Beiträge. Ein Teil Ihres monatlichen Beitrags wird zurückgelegt, um
+                                        steigende Gesundheitskosten im Alter zu dämpfen.
+                                    </p>
+                                    <p>
+                                        <strong>So funktioniert es:</strong>
+                                    </p>
+                                    <ul>
+                                        <li>In jungen Jahren zahlen Sie mehr, als Sie statistisch an Leistungen
+                                            in Anspruch nehmen</li>
+                                        <li>Diese "Überzahlung" wird verzinslich angelegt</li>
+                                        <li>Im Alter werden diese Rückstellungen genutzt, um Beitragssteigerungen
+                                            abzufedern</li>
+                                        <li>Die Rückstellungen gehören Ihnen und sind gesetzlich geschützt</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Wichtig bei Tarifwechsel:</strong> Innerhalb der gleichen
+                                        Versicherung bleiben Altersrückstellungen vollständig erhalten. Beim
+                                        Wechsel zu einer anderen PKV gehen sie teilweise verloren (seit 2009
+                                        wird ein Sockelbetrag übertragen).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>
+                Diese Seite bietet allgemeine Informationen über private Krankenversicherung.
+                Für individuelle Beratung wenden Sie sich bitte an einen Versicherungsmakler.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+        <div id="lightboxCaption"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });
+        }
+
+        // Sidebar Collapse Logic - Arbeitgeberförderung
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+        if (arrow && subMenu) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Sidebar Collapse Logic - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const isActive = accordionItem.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // PKV Slider functionality
+        let pkvCurrentSlide = 0;
+        const pkvSliderTrack = document.getElementById('pkvSliderTrack');
+        const pkvTotalSlides = pkvSliderTrack ? pkvSliderTrack.querySelectorAll('.slider-item').length : 0;
+        const pkvDots = document.querySelectorAll('#pkvSliderContainer .slider-dot');
+        const pkvPrevBtn = document.getElementById('pkvSliderPrevBtn');
+        const pkvNextBtn = document.getElementById('pkvSliderNextBtn');
+
+        function pkvMoveSlide(direction) {
+            pkvCurrentSlide += direction;
+            if (pkvCurrentSlide < 0) pkvCurrentSlide = pkvTotalSlides - 1;
+            if (pkvCurrentSlide >= pkvTotalSlides) pkvCurrentSlide = 0;
+            pkvUpdateSlider();
+        }
+
+        function pkvGoToSlide(index) {
+            pkvCurrentSlide = index;
+            pkvUpdateSlider();
+        }
+
+        function pkvUpdateSlider() {
+            if (pkvSliderTrack) {
+                pkvSliderTrack.style.transform = `translateX(-${pkvCurrentSlide * 100}%)`;
+            }
+            pkvUpdateDots();
+        }
+
+        function pkvUpdateDots() {
+            pkvDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === pkvCurrentSlide);
+            });
+        }
+
+        if (pkvPrevBtn) {
+            pkvPrevBtn.addEventListener('click', () => pkvMoveSlide(-1));
+        }
+
+        if (pkvNextBtn) {
+            pkvNextBtn.addEventListener('click', () => pkvMoveSlide(1));
+        }
+
+        pkvDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => pkvGoToSlide(index));
+        });
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImage');
+        const captionText = document.getElementById('lightboxCaption');
+        const gkvChartImage = document.getElementById('gkvChartImage');
+        const span = document.querySelector(".lightbox-close");
+
+        if (gkvChartImage && lightbox && lightboxImg) {
+            gkvChartImage.onclick = function () {
+                lightbox.style.display = "block";
+                lightboxImg.src = this.src;
+                captionText.innerHTML = this.alt;
+                document.body.style.overflow = "hidden"; // Prevent scrolling
+            }
+
+            function closeLightbox() {
+                lightbox.style.display = "none";
+                document.body.style.overflow = "auto"; // Restore scrolling
+            }
+
+            if (span) {
+                span.addEventListener('click', closeLightbox);
+            }
+
+            lightbox.addEventListener('click', function (e) {
+                if (e.target !== lightboxImg) {
+                    closeLightbox();
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', function (event) {
+                if (event.key === "Escape" && lightbox.style.display === "block") {
+                    closeLightbox();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

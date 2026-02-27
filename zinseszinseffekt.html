@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zinseszinseffekt – Das achte Weltwunder der Finanzen</title>
+    <meta name="description"
+        content="Der Zinseszinseffekt: Wie Zinsen auf Zinsen exponentielles Vermögenswachstum erzeugen und warum frühes Starten entscheidend ist.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Wachstums-Infografik ── */
+        .zse-infographic {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem 1rem;
+            margin: 2rem auto;
+            overflow-x: auto;
+            max-width: fit-content;
+        }
+
+        .zse-table {
+            border-collapse: collapse;
+            min-width: 480px;
+        }
+
+        .zse-table th {
+            padding: 0.6rem 1.1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+            color: #fff;
+            background: #023e84;
+        }
+
+        .zse-table th:first-child {
+            text-align: left;
+            border-radius: 0.4rem 0 0 0;
+        }
+
+        .zse-table th:last-child {
+            border-radius: 0 0.4rem 0 0;
+        }
+
+        .zse-table td {
+            padding: 0.55rem 1.1rem;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .zse-table tr:nth-child(even) td {
+            background: #f9fafb;
+        }
+
+        .zse-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .zse-table td.highlight-green {
+            color: #27ae60;
+            font-weight: 700;
+        }
+
+        .zse-table td.highlight-red {
+            color: #c0392b;
+            font-weight: 700;
+        }
+
+        .zse-table tr.total-row td {
+            background: #e8f0fe;
+            font-weight: 700;
+            border-bottom: none;
+        }
+
+        .zse-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .zse-bar {
+            height: 14px;
+            border-radius: 4px;
+            background: #023e84;
+            min-width: 4px;
+            transition: width 0.3s;
+        }
+
+        /* ── Highlight box ── */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0fe, #dce8fd);
+            border-left: 4px solid #023e84;
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 0.5rem;
+            color: #023e84;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2"
+                            style="width: 1rem; height: 1rem; cursor: pointer; transform: rotate(180deg);"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link active">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Vermögensanlage</span>
+                        <h1>Zinseszinseffekt</h1>
+                        <p class="hero-subtitle">
+                            Erträge, die selbst wieder Erträge erwirtschaften – so wächst Ihr Vermögen
+                            <strong>exponentiell</strong> statt linear. Albert Einstein soll ihn das
+                            „achte Weltwunder" genannt haben.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/zinseszins_hero.png" alt="Zinseszinseffekt Illustration"
+                            style="width:100%; max-width:340px; object-fit:contain;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist der Zinseszinseffekt? -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Was ist der Zinseszinseffekt?</h2>
+                        <p>Das Prinzip, das kleines Geld zu großem Vermögen macht</p>
+                    </div>
+                    <p>
+                        Der <strong>Zinseszinseffekt</strong> (englisch: <em>compound interest</em>) beschreibt das
+                        Phänomen, dass erzielte Erträge – also Zinsen, Dividenden oder Kursgewinne – nicht entnommen
+                        werden, sondern im Portfolio verbleiben und selbst wieder Erträge erwirtschaften.
+                    </p>
+                    <p>
+                        Im Gegensatz zu <strong>einfachen Zinsen</strong>, bei denen nur das ursprünglich eingezahlte
+                        Kapital verzinst wird, wächst beim Zinseszins die Basis Jahr für Jahr. Das Ergebnis ist kein
+                        lineares, sondern ein <strong>exponentielles Wachstum</strong> – und genau das macht den
+                        entscheidenden Unterschied über lange Zeiträume.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Die Formel in einem Satz</h3>
+                        <p>
+                            Legen Sie <strong>10.000 €</strong> mit <strong>7 % p.a.</strong> an und entnehmen
+                            Sie nichts, wächst Ihr Kapital in 30 Jahren auf über <strong>76.000 €</strong> –
+                            obwohl Sie nur einmalig investiert haben. Der Schlüssel: die Erträge bleiben investiert.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rechenbeispiel -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center">Das Rechenbeispiel: Einfache vs. Zinseszinsen</h2>
+                    <p class="text-center mb-xl">
+                        Wie groß der Unterschied wirklich ist – Schritt für Schritt
+                    </p>
+
+                    <p>
+                        Stellen Sie sich zwei Anleger vor, die beide <strong>10.000 €</strong> zu
+                        <strong>7 % pro Jahr</strong> anlegen. <strong>Anna</strong> lässt sich jedes Jahr
+                        die Zinsen auszahlen (einfache Verzinsung). <strong>Ben</strong> lässt alles stehen –
+                        Zinsen werden reinvestiert (Zinseszins). Nach 30 Jahren ist der Unterschied enorm:
+                    </p>
+
+                    <!-- Infografik -->
+                    <div class="zse-infographic">
+                        <table class="zse-table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:left;">Jahr</th>
+                                    <th>Anna – Einfache Zinsen</th>
+                                    <th>Ben – Zinseszins</th>
+                                    <th>Bens Vorteil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Start</td>
+                                    <td>10.000 €</td>
+                                    <td>10.000 €</td>
+                                    <td>–</td>
+                                </tr>
+                                <tr>
+                                    <td>Jahr 5</td>
+                                    <td>13.500 €</td>
+                                    <td>14.026 €</td>
+                                    <td class="highlight-green">+526 €</td>
+                                </tr>
+                                <tr>
+                                    <td>Jahr 10</td>
+                                    <td>17.000 €</td>
+                                    <td>19.672 €</td>
+                                    <td class="highlight-green">+2.672 €</td>
+                                </tr>
+                                <tr>
+                                    <td>Jahr 20</td>
+                                    <td>24.000 €</td>
+                                    <td>38.697 €</td>
+                                    <td class="highlight-green">+14.697 €</td>
+                                </tr>
+                                <tr>
+                                    <td>Jahr 30</td>
+                                    <td>31.000 €</td>
+                                    <td>76.123 €</td>
+                                    <td class="highlight-green">+45.123 €</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td>Ertrag gesamt</td>
+                                    <td class="highlight-red">21.000 € Zinsen</td>
+                                    <td class="highlight-green">66.123 € Zuwachs</td>
+                                    <td class="highlight-green">3,15× mehr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🏆 Das Ergebnis</h3>
+                        <p>
+                            Beide haben dasselbe Startkapital von <strong>10.000 €</strong> zum gleichen Zinssatz
+                            angelegt. Anna hat nach 30 Jahren <strong>31.000 €</strong>, Ben hingegen
+                            <strong>76.123 €</strong> – das ist <strong>mehr als das Doppelte</strong>.
+                            Den Unterschied macht allein das Reinvestieren der Erträge.
+                        </p>
+                        <p style="margin-top:0.5rem;">
+                            Die gute Nachricht: Thesaurierende ETFs machen genau das automatisch. Sie müssen
+                            sich um nichts kümmern – der Zinseszins arbeitet still im Hintergrund.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vorteile -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Warum der Zinseszins so mächtig ist</h2>
+                    <div class="slider-container" id="zseSliderContainer">
+                        <button class="slider-btn slider-btn-prev" id="zsePrevBtn" aria-label="Zurück">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-wrapper">
+                            <div class="slider-track" id="zseSliderTrack">
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                                <polyline points="17 6 23 6 23 12" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Exponentielles Wachstum</h4>
+                                            <p>Während einfache Zinsen eine gerade Linie erzeugen, bildet der
+                                                Zinseszins eine Kurve – je länger der Zeitraum, desto steiler wird
+                                                sie. Das Wachstum beschleunigt sich mit jedem Jahr.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <polyline points="12 6 12 12 16 14" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Zeit ist die wichtigste Variable</h4>
+                                            <p>Wer mit 25 Jahren beginnt, hat nach 40 Jahren deutlich mehr als jemand,
+                                                der mit 35 beginnt und 10 Jahre länger spart. Jedes früh angelegte Jahr
+                                                wirkt wie ein Hebel.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Passiv und automatisch</h4>
+                                            <p>Thesaurierende ETFs reinvestieren Dividenden und Erträge automatisch.
+                                                Sie müssen nichts tun – der Zinseszins arbeitet rund um die Uhr,
+                                                auch wenn Sie schlafen.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="12" y1="20" x2="12" y2="10" />
+                                                <line x1="18" y1="20" x2="18" y2="4" />
+                                                <line x1="6" y1="20" x2="6" y2="16" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Kombination mit dem Sparplan</h4>
+                                            <p>Wer monatlich spart und gleichzeitig den Zinseszins wirken lässt,
+                                                profitiert doppelt: Der Cost-Average-Effekt sorgt für günstige
+                                                Einstiegskurse, der Zinseszins für exponentielles Wachstum.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                                                <line x1="2" y1="10" x2="22" y2="10" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Kosten minimieren zahlt sich doppelt aus</h4>
+                                            <p>Jeder Prozentpunkt, den Sie durch niedrige ETF-Kosten (TER) sparen,
+                                                steht selbst wieder für den Zinseszins zur Verfügung. Bei 30 Jahren
+                                                macht 0,5 % Unterschied Tausende von Euro aus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                                <polyline points="22 4 12 14.01 9 11.01" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Die 72er-Regel</h4>
+                                            <p>Eine einfache Faustregel: Teilen Sie 72 durch Ihren Zinssatz – das
+                                                ergibt die Jahre, in denen sich Ihr Geld verdoppelt. Bei 7 % p.a.
+                                                also circa alle <strong>10 Jahre</strong>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="slider-btn slider-btn-next" id="zseNextBtn" aria-label="Weiter">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-dots" id="zseDots">
+                            <button class="slider-dot active" data-index="0" aria-label="1"></button>
+                            <button class="slider-dot" data-index="1" aria-label="2"></button>
+                            <button class="slider-dot" data-index="2" aria-label="3"></button>
+                            <button class="slider-dot" data-index="3" aria-label="4"></button>
+                            <button class="slider-dot" data-index="4" aria-label="5"></button>
+                            <button class="slider-dot" data-index="5" aria-label="6"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen zum Zinseszinseffekt</h2>
+                    <div class="accordion">
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Gilt der Zinseszinseffekt auch bei ETFs und Fonds?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Ja – bei <strong>thesaurierenden ETFs</strong> (auch „accumulating" genannt)
+                                        werden Dividenden und Erträge automatisch reinvestiert, anstatt ausgezahlt zu
+                                        werden. Das Fondsvermögen wächst dadurch direkt, ohne dass Sie aktiv werden
+                                        müssen.</p>
+                                    <p>Bei <strong>ausschüttenden ETFs</strong> erhalten Sie die Erträge ausgezahlt
+                                        und müssen diese selbst wieder anlegen, um den vollen Zinseszinseffekt zu
+                                        erzielen. Für den maximalen Zinseszins sind thesaurierende ETFs die
+                                        bequemere Wahl.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Ab welchem Alter ist es noch sinnvoll zu starten?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Grundsätzlich gilt: <strong>Jeder Zeitpunkt ist besser als kein Start</strong>.
+                                        Auch wer mit 45 oder 50 Jahren beginnt, kann in 15–20 Jahren erhebliches
+                                        Vermögen aufbauen – der Zinseszins braucht nur Zeit, um zu wirken.</p>
+                                    <p>Je früher der Start, desto dramatischer der Effekt. Ein 25-Jähriger, der
+                                        200 € monatlich bei 7 % anlegt, hat mit 65 über <strong>525.000 €</strong>.
+                                        Wer erst mit 35 beginnt, kommt auf rund <strong>243.000 €</strong> – weniger
+                                        als die Hälfte, obwohl er nur 10 Jahre später startet.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Welche Rendite kann ich realistisch erwarten?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Der MSCI World hat historisch eine durchschnittliche jährliche Rendite von
+                                        <strong>ca. 7–8 % p.a.</strong> (nach Inflation ca. 5 %) erzielt.
+                                        Das ist kein garantierter Wert, sondern ein langjähriger Durchschnitt
+                                        über viele Jahrzehnte inklusive aller Crashs und Krisen.
+                                    </p>
+                                    <p>Für konservative Planungen empfehlen viele Experten, mit <strong>5–6 %
+                                            p.a.</strong> zu rechnen, um einen Puffer einzubauen. Wichtig: Je
+                                        länger der Anlagehorizont, desto verlässlicher wird der historische
+                                        Durchschnitt als Planungsgrundlage.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Muss ich Steuern auf Zinseszinserträge zahlen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>In Deutschland fallen auf Kapitalerträge grundsätzlich <strong>25 %
+                                            Abgeltungssteuer</strong> (plus Solidaritätszuschlag und ggf.
+                                        Kirchensteuer) an. Pro Person gilt ein <strong>Freistellungsauftrag
+                                            von 1.000 €</strong> jährlich (Stand 2024).
+                                    </p>
+                                    <p>Bei thesaurierenden ETFs fällt eine Steuer auf die sog.
+                                        <strong>Vorabpauschale</strong> an – diese ist aber meist gering und
+                                        kann durch den Freistellungsauftrag abgedeckt werden. Der volle
+                                        Zinseszinseffekt bleibt damit weitgehend erhalten. Beim Verkauf
+                                        wird die Steuer auf die Gesamterträge fällig.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie wirkt sich Inflation auf den Zinseszinseffekt aus?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Inflation reduziert die Kaufkraft des nominalen Wachstums. Bei einer
+                                        <strong>Rendite von 7 % und 2 % Inflation</strong> beträgt die
+                                        „reale Rendite" etwa <strong>5 % p.a.</strong> – der Zinseszinseffekt
+                                        wirkt also auf den realen Wert des Vermögens mit 5 %, nicht 7 %.
+                                    </p>
+                                    <p>Das ist dennoch deutlich besser als Tagesgeld oder Sparbuch, die
+                                        historisch oft unter der Inflationsrate lagen. Aktien-ETFs haben
+                                        langfristig die Inflation deutlich übertroffen und das reale Vermögen
+                                        erheblich gesteigert.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was ist die 72er-Regel und wie hilft sie mir?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Die <strong>72er-Regel</strong> ist eine einfache Faustregel zum schnellen
+                                        Kopfrechnen: Teilen Sie 72 durch Ihren jährlichen Zinssatz – das ergibt
+                                        näherungsweise die Anzahl der Jahre, in denen sich Ihre Anlage verdoppelt.
+                                    </p>
+                                    <p>Beispiele: Bei <strong>4 % p.a.</strong> → 72 ÷ 4 = <strong>18 Jahre</strong>.
+                                        Bei <strong>6 % p.a.</strong> → 72 ÷ 6 = <strong>12 Jahre</strong>.
+                                        Bei <strong>9 % p.a.</strong> → 72 ÷ 9 = <strong>8 Jahre</strong>.
+                                        Die Regel zeigt anschaulich, wie stark der Zinssatz die Verdoppelungszeit
+                                        beeinflusst.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        /* Sidebar toggles */
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+        if (arrow && subMenu) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        /* Slider */
+        let zseSlide = 0;
+        const zseTrack = document.getElementById('zseSliderTrack');
+        const zseDots = document.querySelectorAll('#zseDots .slider-dot');
+        const zseTotal = zseDots.length;
+
+        function zseGoTo(n) {
+            zseSlide = (n + zseTotal) % zseTotal;
+            zseTrack.style.transform = `translateX(-${zseSlide * 100}%)`;
+            zseDots.forEach((d, i) => d.classList.toggle('active', i === zseSlide));
+        }
+        document.getElementById('zsePrevBtn').addEventListener('click', () => zseGoTo(zseSlide - 1));
+        document.getElementById('zseNextBtn').addEventListener('click', () => zseGoTo(zseSlide + 1));
+        zseDots.forEach((d, i) => d.addEventListener('click', () => zseGoTo(i)));
+
+        /* Accordion */
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

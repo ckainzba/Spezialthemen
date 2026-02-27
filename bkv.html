@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betriebliche Krankenversicherung (bKV)</title>
+    <meta name="description"
+        content="Alles über betriebliche Krankenversicherung mit Budgettarifen: Flexibles Gesundheitsbudget, steuerfreie Vorteile und erweiterte Gesundheitsleistungen für Arbeitnehmer.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <!-- Icon for Arbeitgeberförderung -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link active">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1>Betriebliche Krankenversicherung</h1>
+                        <p class="hero-subtitle">
+                            Profitieren Sie von erweiterten Gesundheitsleistungen durch Budgettarife.
+                            Ihr Arbeitgeber stellt Ihnen ein flexibles Gesundheitsbudget zur Verfügung –
+                            steuer- und sozialabgabenfrei für bessere Gesundheitsversorgung.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/bkv_header_new.png" alt="Betriebliche Krankenversicherung Illustration">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist bKV Section -->
+            <section class="section">
+                <div class="container">
+                    <h2>Was ist betriebliche Krankenversicherung (bKV)?</h2>
+                    <p>
+                        Die <strong>betriebliche Krankenversicherung</strong> ist eine vom Arbeitgeber
+                        finanzierte Zusatzversicherung, die Ihnen Zugang zu erweiterten Gesundheits-
+                        leistungen ermöglicht. Diese gehen über den Standard der gesetzlichen
+                        Krankenversicherung (GKV) hinaus und schließen Versorgungslücken.
+                    </p>
+                    <p>
+                        Bei <strong>Budgettarifen</strong> stellt Ihnen Ihr Arbeitgeber ein festes
+                        jährliches <strong>Gesundheitsbudget</strong> zur Verfügung, das Sie flexibel
+                        für verschiedene Gesundheitsleistungen Ihrer Wahl nutzen können – ganz nach
+                        Ihrem individuellen Bedarf!
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Das Besondere an Budgettarifen</h3>
+                        <p>
+                            Im Gegensatz zu klassischen Zusatzversicherungen gibt es meist <strong>keine
+                                Gesundheitsprüfung, keine Wartezeiten</strong> und <strong>keinen Ausschluss
+                                bei Vorerkrankungen</strong>. Der Versicherungsschutz gilt ab dem ersten Tag!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wie funktioniert der Budgettarif -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center">Wie funktioniert ein Budgettarif?</h2>
+                    <p class="text-center mb-xl">
+                        Einfach, flexibel und individuell – so nutzen Sie Ihr Gesundheitsbudget
+                    </p>
+
+                    <div class="steps-grid">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Arbeitgeber legt Budget fest</h4>
+                            <p>
+                                Ihr Arbeitgeber wählt ein jährliches Gesundheitsbudget für Sie aus,
+                                typischerweise zwischen <strong>300 € und 1.500 €</strong> pro Jahr.
+                                Die Beiträge übernimmt der Arbeitgeber zu 100%.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Sofortiger Versicherungsschutz</h4>
+                            <p>
+                                Sie erhalten <strong>ohne Gesundheitsprüfung</strong> und ohne Wartezeiten
+                                sofort Zugang zu Ihrem Budget. Auch bei Vorerkrankungen gibt es in der
+                                Regel keine Einschränkungen.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Flexible Budgetnutzung</h4>
+                            <p>
+                                Sie entscheiden selbst, wofür Sie Ihr Budget einsetzen: Brille, Zahnreinigung,
+                                Osteopathie, Vorsorge – <strong>ganz nach Ihrem individuellen Bedarf</strong>.
+                                Die Erstattung erfolgt meist digital per App.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>Steuer- und abgabenfrei</h4>
+                            <p>
+                                Beiträge bis <strong>50 € monatlich</strong> (600 € jährlich) sind für Sie
+                                als Sachbezug <strong>steuer- und sozialabgabenfrei</strong>. Sie erhalten
+                                die Leistung ohne eigene Kosten!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box mt-xl">
+                        <h3>Beispiel: So nutzen Sie Ihr Gesundheitsbudget</h3>
+                        <p>
+                            Ihr Arbeitgeber stellt Ihnen 900 € jährlich zur Verfügung. Sie nutzen
+                            300 € für eine neue Brille, 150 € für professionelle Zahnreinigung,
+                            200 € für Osteopathie-Behandlungen und 250 € für Vorsorge-Untersuchungen.
+                            <strong>Alles für Sie kostenfrei!</strong>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Welche Leistungen sind abgedeckt -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Welche Leistungen können Sie mit Ihrem Budget nutzen?</h2>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="6" cy="15" r="4" />
+                                    <circle cx="18" cy="15" r="4" />
+                                    <path d="M14 15a2 2 0 0 0-2-2 2 2 0 0 0-2 2" />
+                                    <path d="M2.5 13L5 7c.7-1.3 1.4-2 3-2" />
+                                    <path d="M21.5 13L19 7c-.7-1.3-1.4-2-3-2" />
+                                </svg>
+                            </div>
+                            <h3>Sehhilfen</h3>
+                            <ul>
+                                <li>Brillen und Kontaktlinsen</li>
+                                <li>Augen-Laser-Behandlungen</li>
+                                <li>Glaukom-Vorsorge</li>
+                                <li>Sehstärkenbestimmung</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M7 20h10" />
+                                    <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+                                    <path d="M9.5 20c5.5-2.5.8-6.4 3-10" transform="matrix(-1 0 0 1 24 0)" />
+                                    <path d="M12 14v4" />
+                                </svg>
+                            </div>
+                            <h3>Zahnleistungen</h3>
+                            <ul>
+                                <li>Professionelle Zahnreinigung</li>
+                                <li>Hochwertiger Zahnersatz</li>
+                                <li>Zahnbehandlungen</li>
+                                <li>Kieferorthopädie</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                </svg>
+                            </div>
+                            <h3>Alternative Heilmethoden</h3>
+                            <ul>
+                                <li>Osteopathie</li>
+                                <li>Heilpraktiker-Behandlungen</li>
+                                <li>Chiropraktik</li>
+                                <li>Akupunktur</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" />
+                                    <path d="m8.5 8.5 7 7" />
+                                </svg>
+                            </div>
+                            <h3>Vorsorge & Prävention</h3>
+                            <ul>
+                                <li>Zusätzliche Vorsorgeuntersuchungen</li>
+                                <li>Krebsfrüherkennung</li>
+                                <li>Impfungen (z.B. Reiseimpfungen)</li>
+                                <li>Gesundheitschecks</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0" />
+                                    <path d="M15 13a2.5 2.5 0 1 0-5 0" />
+                                </svg>
+                            </div>
+                            <h3>Hörhilfen</h3>
+                            <ul>
+                                <li>Hörgeräte</li>
+                                <li>Hörtests</li>
+                                <li>Hörgeräte-Zubehör</li>
+                                <li>Anpassungen</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                            </div>
+                            <h3>Gesundheit & Wellness</h3>
+                            <ul>
+                                <li>Physiotherapie</li>
+                                <li>Massagen</li>
+                                <li>Gesundheitskurse</li>
+                                <li>Mentale Gesundheit (Psychotherapie)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-box mt-xl">
+                        <h3>📋 Individuelle Leistungskataloge</h3>
+                        <p>
+                            Die genauen Leistungen hängen vom gewählten Tarif Ihres Arbeitgebers ab.
+                            Fragen Sie in Ihrer Personalabteilung nach dem konkreten Leistungskatalog
+                            und den Erstattungsbedingungen.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vorteile für Arbeitnehmer -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Die wichtigsten Vorteile für Arbeitnehmer</h2>
+
+                    <div class="slider-container" id="bkvSliderContainer"><button class="slider-btn slider-btn-prev"
+                            id="bkvSliderPrevBtn" aria-label="Vorheriger Vorteil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="slider-wrapper">
+                            <div class="slider-track" id="bkvSliderTrack">
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                                                <line x1="2" y1="10" x2="22" y2="10" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Keine Kosten für Sie</h4>
+                                            <p>Der Arbeitgeber übernimmt in der Regel 100% der Beiträge. Sie erhalten
+                                                erweiterte
+                                                Gesundheitsleistungen völlig <strong>kostenfrei</strong>!</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <circle cx="12" cy="12" r="6" />
+                                                <circle cx="12" cy="12" r="2" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Steuer- und Sozialabgabenfrei</h4>
+                                            <p>Beiträge bis zu <strong>50 € monatlich (600 € jährlich)</strong> können
+                                                als Sachbezug steuer- und
+                                                sozialabgabenfrei verbucht werden. Kein Abzug vom Nettolohn!</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Sofortiger Schutz ohne Hürden</h4>
+                                            <p><strong>Keine Gesundheitsprüfung, keine Wartezeiten, kein Ausschluss bei
+                                                    Vorerkrankungen</strong>
+                                                – Ihr Versicherungsschutz gilt ab Tag 1. Dies ist ein enormer Vorteil!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="13.5" cy="6.5" r=".5" />
+                                                <circle cx="17.5" cy="10.5" r=".5" />
+                                                <circle cx="8.5" cy="7.5" r=".5" />
+                                                <circle cx="6.5" cy="12.5" r=".5" />
+                                                <path
+                                                    d="M12 2A10 10 0 1 0 22 12c0-1.3-.8-2.5-2-2.5-1.1 0-2 .8-2 2 0 1.7-1.3 3-3 3-1.7 0-3-1.3-3-3 0-2.8 2.2-5 5-5z" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Maximale Flexibilität</h4>
+                                            <p>Sie entscheiden selbst, wofür Sie Ihr Budget einsetzen. Je nach
+                                                Lebenssituation können Sie die
+                                                Leistungen wählen, die Sie gerade benötigen – ob Brille, Zahnreinigung
+                                                oder Physiotherapie.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                                <circle cx="9" cy="7" r="4" />
+                                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Familienabsicherung möglich</h4>
+                                            <p>Viele Tarife ermöglichen die Mitversicherung von Partner und Kindern, was
+                                                einen zusätzlichen
+                                                Familienbonus darstellt und den Mehrwert der bKV deutlich erhöht.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="8" cy="8" r="6" />
+                                                <path d="M18.09 10.37A6 6 0 1 1 10.34 18" />
+                                                <path d="M7 6h1v4" />
+                                                <path d="M17.12 10.22a3 3 0 0 0-2.12-2.12" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Kostenersparnis</h4>
+                                            <p>Viele Gesundheitsleistungen wie Brillen, Zahnreinigung oder
+                                                Physiotherapie würden Sie sonst aus
+                                                eigener Tasche zahlen. Mit der bKV sparen Sie jährlich mehrere hundert
+                                                Euro!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="slider-btn slider-btn-next" id="bkvSliderNextBtn" aria-label="Nächster Vorteil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="slider-dots">
+                            <button class="slider-dot active" data-index="0" aria-label="Vorteil 1"></button>
+                            <button class="slider-dot" data-index="1" aria-label="Vorteil 2"></button>
+                            <button class="slider-dot" data-index="2" aria-label="Vorteil 3"></button>
+                            <button class="slider-dot" data-index="3" aria-label="Vorteil 4"></button>
+                            <button class="slider-dot" data-index="4" aria-label="Vorteil 5"></button>
+                            <button class="slider-dot" data-index="5" aria-label="Vorteil 6"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufig gestellte Fragen zur bKV mit Budgettarifen</h2>
+
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert mit nicht genutztem Budget?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Dies hängt vom konkreten Tarif ab:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Budget verfällt am Jahresende:</strong> Bei vielen Tarifen
+                                            muss das Budget innerhalb des Kalenderjahres genutzt werden. Nicht
+                                            genutzte Beträge verfallen.</li>
+                                        <li><strong>Budget-Verdopplung:</strong> Einige Tarife bieten die
+                                            Möglichkeit, dass sich nicht genutztes Budget im Folgejahr verdoppelt
+                                            oder teilweise übertragen wird.</li>
+                                        <li><strong>Budgetübertragung:</strong> Manche Anbieter erlauben
+                                            eine Übertragung des Restbudgets ins Folgejahr.</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Tipp:</strong> Informieren Sie sich bei Ihrer Personalabteilung
+                                        über die genauen Konditionen Ihres Tarifs!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich die bKV auch für meine Familie nutzen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Ja, bei vielen Tarifen ist eine Familienabsicherung möglich!</strong>
+                                    </p>
+                                    <p>
+                                        Je nach Tarif können Sie:
+                                    </p>
+                                    <ul>
+                                        <li>Ihren Ehe- oder Lebenspartner mit einschließen</li>
+                                        <li>Ihre Kinder mitversichern</li>
+                                        <li>Das Budget für die gesamte Familie nutzen</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Wichtig:</strong> Die Mitversicherung von Familienangehörigen
+                                        bedeutet meist, dass das Budget auf alle versicherten Personen aufgeteilt
+                                        wird. Fragen Sie bei Ihrem Arbeitgeber nach, ob und zu welchen Konditionen
+                                        eine Familienversicherung möglich ist.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert bei einem Jobwechsel?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Die betriebliche Krankenversicherung ist an Ihren Arbeitgeber gebunden.
+                                        Bei einem Jobwechsel haben Sie folgende Optionen:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Neuer Arbeitgeber bietet bKV an:</strong> Sie können in
+                                            die bKV des neuen Arbeitgebers wechseln (meist ohne Gesundheitsprüfung).
+                                        </li>
+                                        <li><strong>Privat weiterführen:</strong> Bei einigen Versicherern können
+                                            Sie den Vertrag privat weiterführen, müssen dann aber selbst die Beiträge
+                                            zahlen (und verlieren die Steuervorteile).</li>
+                                        <li><strong>Versicherung endet:</strong> Wenn Sie den Vertrag nicht privat
+                                            weiterführen, endet die Versicherung mit dem Arbeitsverhältnis. Bereits
+                                            laufende Behandlungen sollten Sie noch innerhalb des Budgets abrechnen.</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Tipp:</strong> Prüfen Sie bei neuen Arbeitgebern, ob eine bKV
+                                        angeboten wird – es ist ein wertvoller Benefit!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Muss ich Vorerkrankungen angeben?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Nein!</strong> Das ist einer der größten Vorteile der bKV mit
+                                        Budgettarifen:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Keine Gesundheitsprüfung:</strong> Sie müssen in der Regel
+                                            keine Gesundheitsfragen beantworten</li>
+                                        <li><strong>Kein Ausschluss bei Vorerkrankungen:</strong> Auch bestehende
+                                            Erkrankungen sind versichert</li>
+                                        <li><strong>Sofortiger Schutz:</strong> Alle Leistungen stehen Ihnen ab
+                                            dem ersten Tag zur Verfügung</li>
+                                        <li><strong>Keine Wartezeiten:</strong> Sie können das Budget sofort nutzen</li>
+                                    </ul>
+                                    <p>
+                                        Dies macht die bKV besonders wertvoll im Vergleich zu privaten
+                                        Zusatzversicherungen, bei denen Vorerkrankungen oft zu Ausschlüssen
+                                        oder Risikozuschlägen führen!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie hoch ist das typische Gesundheitsbudget?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Die Höhe des Gesundheitsbudgets variiert je nach Tarif und Arbeitgeber:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Einstiegstarife:</strong> 300 bis 600 € pro Jahr</li>
+                                        <li><strong>Standardtarife:</strong> 600 bis 900 € pro Jahr</li>
+                                        <li><strong>Premiumtarife:</strong> 900 bis 1.500 € pro Jahr</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Steuerfreie Grenze beachten:</strong> Arbeitgeber bleiben häufig
+                                        bei einem Budget von maximal 600 € jährlich (50 € monatlich), da dieser
+                                        Betrag als Sachbezug steuer- und sozialabgabenfrei ist.
+                                    </p>
+                                    <p>
+                                        Höhere Budgets sind möglich, können aber zur Pauschalversteuerung oder
+                                        zu steuerpflichtigen Leistungen führen. Fragen Sie bei Ihrer
+                                        Personalabteilung nach der Höhe Ihres individuellen Budgets.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich zusätzlich eine private Zusatzversicherung haben?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Ja, das ist grundsätzlich möglich!</strong> Die bKV und private
+                                        Zusatzversicherungen können sich sogar gut ergänzen:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Kein Ausschluss:</strong> Sie können zusätzlich zur bKV eine
+                                            private Zusatzversicherung (z.B. für Zahnersatz oder Krankenhaus)
+                                            abschließen</li>
+                                        <li><strong>Doppelte Erstattung?</strong> In der Regel ist eine
+                                            Doppelerstattung nicht möglich. Sie können aber die Rechnung zuerst bei
+                                            einer Versicherung einreichen und den Restbetrag bei der anderen</li>
+                                        <li><strong>Ergänzung sinnvoll:</strong> Die bKV mit Budgettarifen deckt
+                                            viele Bereiche ab. Eine private Zusatzversicherung kann für spezielle
+                                            Bereiche (z.B. hochwertiger Zahnersatz, Krankenhaus) sinnvoll sein</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Tipp:</strong> Prüfen Sie erst, welche Leistungen die bKV abdeckt,
+                                        bevor Sie zusätzliche private Versicherungen abschließen. Oft reicht die
+                                        bKV völlig aus!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Footer -->
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>
+                Diese Seite bietet allgemeine Informationen über betriebliche Krankenversicherung.
+                Für individuelle Details wenden Sie sich bitte an Ihre Personalabteilung oder einen
+                Versicherungsberater.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });
+        }
+
+        // Sidebar Collapse Logic - only toggle on arrow click
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+
+        arrow.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent navigation when clicking arrow
+            e.stopPropagation(); // Stop event from bubbling to parent link
+            subMenu.classList.toggle('open');
+            arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+
+        // Sidebar Collapse Logic - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const isActive = accordionItem.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // bKV Slider functionality
+        let bkvCurrentSlide = 0;
+        const bkvSliderTrack = document.getElementById('bkvSliderTrack');
+        const bkvTotalSlides = bkvSliderTrack ? bkvSliderTrack.querySelectorAll('.slider-item').length : 0;
+        const bkvDots = document.querySelectorAll('#bkvSliderContainer .slider-dot');
+        const bkvPrevBtn = document.getElementById('bkvSliderPrevBtn');
+        const bkvNextBtn = document.getElementById('bkvSliderNextBtn');
+
+        function bkvMoveSlide(direction) {
+            bkvCurrentSlide += direction;
+            if (bkvCurrentSlide < 0) bkvCurrentSlide = bkvTotalSlides - 1;
+            if (bkvCurrentSlide >= bkvTotalSlides) bkvCurrentSlide = 0;
+            bkvUpdateSlider();
+        }
+
+        function bkvGoToSlide(index) {
+            bkvCurrentSlide = index;
+            bkvUpdateSlider();
+        }
+
+        function bkvUpdateSlider() {
+            if (bkvSliderTrack) {
+                bkvSliderTrack.style.transform = `translateX(-${bkvCurrentSlide * 100}%)`;
+            }
+            bkvUpdateDots();
+        }
+
+        function bkvUpdateDots() {
+            bkvDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === bkvCurrentSlide);
+            });
+        }
+
+        if (bkvPrevBtn) {
+            bkvPrevBtn.addEventListener('click', () => bkvMoveSlide(-1));
+        }
+
+        if (bkvNextBtn) {
+            bkvNextBtn.addEventListener('click', () => bkvMoveSlide(1));
+        }
+
+        bkvDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => bkvGoToSlide(index));
+        });
+
+
+    </script>
+</body>
+
+</html>

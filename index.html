@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbeitgeberförderung</title>
+    <meta name="description"
+        content="Entdecken Sie die wichtigsten Arbeitgeberleistungen: Vermögenswirksame Leistungen, Betriebliche Altersvorsorge und Betriebliche Krankenversicherung.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <!-- Icon for Arbeitgeberförderung -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1>Arbeitgeberförderung</h1>
+                        <p class="hero-subtitle">
+                            Nutzen Sie die finanziellen Vorteile, die Ihr Arbeitgeber bietet.
+                            Von Vermögensaufbau über Altersvorsorge bis zur Krankenversicherung –
+                            entdecken Sie die Möglichkeiten für Ihre finanzielle Zukunft.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/arbeitgeberfoerderung_hero.png"
+                            alt="Finanzielle Vorteile durch Arbeitgeberförderung"
+                            style="width:100%; max-width:340px; object-fit:contain;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Content -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Drei Säulen der Arbeitgeberförderung</h2>
+                        <p>Entdecken Sie, wie Ihr Arbeitgeber Sie finanziell unterstützen kann</p>
+                    </div>
+
+                    <div class="card-grid">
+                        <!-- VL Card -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="8" cy="8" r="6" />
+                                    <path d="M18.09 10.37A6 6 0 1 1 10.34 18" />
+                                    <path d="M7 6h1v4" />
+                                    <path d="M17.12 10.22a3 3 0 0 0-2.12-2.12" />
+                                </svg>
+                            </div>
+                            <h3>Vermögenswirksame Leistungen</h3>
+                            <p>
+                                Ihr Arbeitgeber zahlt monatlich bis zu 40 € extra für Ihren Vermögensaufbau.
+                                Mit staatlicher Förderung und Rendite kann sich Ihr Geld nahezu verdoppeln.
+                            </p>
+                            <a href="vl.html" class="btn btn-primary mt-md">Mehr erfahren</a>
+                        </div>
+
+                        <!-- BAV Card -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="3" y1="22" x2="21" y2="22" />
+                                    <line x1="6" y1="18" x2="6" y2="11" />
+                                    <line x1="10" y1="18" x2="10" y2="11" />
+                                    <line x1="14" y1="18" x2="14" y2="11" />
+                                    <line x1="18" y1="18" x2="18" y2="11" />
+                                    <polygon points="12 2 20 7 4 7" />
+                                </svg>
+                            </div>
+                            <h3>Betriebliche Altersvorsorge</h3>
+                            <p>
+                                Sichern Sie Ihre Rente ab durch arbeitgeberfinanzierte oder
+                                -bezuschusste Altersvorsorge. Profitieren Sie von Steuervorteilen
+                                und garantierten Beiträgen.
+                            </p>
+                            <a href="bav.html" class="btn btn-primary mt-md">Mehr erfahren</a>
+                        </div>
+
+                        <!-- BKV Card -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                </svg>
+                            </div>
+                            <h3>Betriebliche Krankenversicherung</h3>
+                            <p>
+                                Erweiterte Gesundheitsleistungen durch Ihren Arbeitgeber.
+                                Von Zahnzusatzversicherung bis zu Premium-Behandlungen –
+                                für Ihre Gesundheit.
+                            </p>
+                            <a href="bkv.html" class="btn btn-primary mt-md">Mehr erfahren</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center">Warum Arbeitgeberförderung wichtig ist</h2>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Zusätzliches Geld</h4>
+                                <p>
+                                    Arbeitgeberförderung ist wie ein Gehaltsextra – Geld, das Sie sonst
+                                    nicht erhalten würden. Es lohnt sich, diese Angebote zu nutzen.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                    <polyline points="17 6 23 6 23 12" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Langfristiger Vermögensaufbau</h4>
+                                <p>
+                                    Durch kontinuierliche Einzahlungen und Renditen bauen Sie über Jahre
+                                    ein beachtliches Vermögen auf – ohne großen eigenen Aufwand.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <circle cx="12" cy="12" r="6" />
+                                    <circle cx="12" cy="12" r="2" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Staatliche Förderung</h4>
+                                <p>
+                                    Bei vielen Arbeitgeberangeboten gibt es zusätzliche staatliche
+                                    Zulagen und Steuervorteile, die Ihre Rendite weiter erhöhen.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Finanzielle Sicherheit</h4>
+                                <p>
+                                    Ob für die Rente, für Notfälle oder größere Anschaffungen –
+                                    Arbeitgeberförderung schafft finanzielle Stabilität für die Zukunft.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>Diese Website wurde erstellt, um über Arbeitgeberförderung zu informieren.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+
+        // Sidebar Collapse Logic - only toggle on arrow click
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+
+        arrow.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent navigation when clicking arrow
+            e.stopPropagation(); // Stop event from bubbling to parent link
+            subMenu.classList.toggle('open');
+            arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+
+        // Sidebar Collapse Logic - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Remove navLink listener as navLinks have changed
+        /*
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        */
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

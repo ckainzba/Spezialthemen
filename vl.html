@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermögenswirksame Leistungen (VL)</title>
+    <meta name="description"
+        content="Alles über Vermögenswirksame Leistungen: Wie VL funktionieren, welche Anlageformen es gibt und wie Sie als Arbeitnehmer profitieren können.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow"
+                            style="width: 1rem; height: 1rem; cursor: pointer; transform: rotate(180deg);"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link active">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1>Vermögenswirksame Leistungen (VL)</h1>
+                        <p class="hero-subtitle">
+                            Nutzen Sie die finanziellen Vorteile, die Ihr Arbeitgeber bietet.
+                            Sichern Sie sich bis zu 40 € monatlich vom Chef plus staatliche Förderung.
+                            Bauen Sie systematisch Vermögen auf – mit Unterstützung von Arbeitgeber und Staat.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/vl_header_new.png" alt="Vermögenswirksame Leistungen Illustration">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was sind VL -->
+            <section class="section">
+                <div class="container">
+                    <h2>Was sind vermögenswirksame Leistungen?</h2>
+                    <p>
+                        <strong>Vermögenswirksame Leistungen (VL)</strong> sind eine staatlich geförderte
+                        Sparleistung, bei der Ihr Arbeitgeber monatlich einen Betrag in eine Anlageform
+                        Ihrer Wahl einzahlt. Das Ziel: Arbeitnehmern beim langfristigen Vermögensaufbau zu helfen.
+                    </p>
+                    <p>
+                        Je nach Branche und Tarifvertrag zahlt Ihr Arbeitgeber zwischen
+                        <strong>6,65 € und 40 € monatlich</strong> in Ihren VL-Vertrag ein. Zusätzlich können
+                        Sie selbst aufstocken, um die staatliche Förderung voll auszuschöpfen.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Die drei Säulen von VL</h3>
+                        <ul style="margin-top: 1rem;">
+                            <li style="margin-bottom: 0.5rem;">
+                                <strong>Arbeitgeberzuschuss:</strong> Monatliche Zahlungen vom Chef (meist 6-40 €)
+                            </li>
+                            <li style="margin-bottom: 0.5rem;">
+                                <strong>Eigene Aufstockung:</strong> Optional können Sie selbst mehr einzahlen
+                            </li>
+                            <li>
+                                <strong>Staatliche Förderung:</strong> Die Arbeitnehmersparzulage für
+                                Geringverdienende (bis zu 80 € oder 43 € jährlich)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wie funktioniert VL -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center">Wie funktionieren vermögenswirksame Leistungen?</h2>
+                    <p class="text-center mb-xl">
+                        In 4 einfachen Schritten zum systematischen Vermögensaufbau
+                    </p>
+
+                    <div class="steps-grid">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>VL-Anspruch prüfen</h4>
+                            <p>
+                                Prüfen Sie in Ihrem Arbeits- oder Tarifvertrag, ob und wie viel VL Ihr
+                                Arbeitgeber zahlt. Die meisten Tarifverträge sehen VL-Zahlungen vor.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Anlageform wählen</h4>
+                            <p>
+                                Entscheiden Sie sich für eine Anlageform: <strong>Fondssparplan (ETF)</strong>,
+                                <strong>Bausparvertrag</strong> oder <strong>Rentenversicherung</strong>.
+                                Jede Form hat unterschiedliche Rendite- und Fördermöglichkeiten.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Vertrag abschließen</h4>
+                            <p>
+                                Schließen Sie einen VL-Vertrag bei einem Anbieter ab und reichen Sie die
+                                Vertragsunterlagen bei Ihrem Arbeitgeber ein. Der Chef überweist dann
+                                monatlich direkt an Ihren Sparvertrag.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>Staatliche Förderung sichern</h4>
+                            <p>
+                                Beantragen Sie die Arbeitnehmersparzulage jährlich über Ihre
+                                Steuererklärung (Anlage VL). Bei Fondssparplänen gibt es bis zu
+                                <strong>80 € pro Jahr</strong> geschenkt vom Staat!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VL-Anlageformen -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Welche Anlageformen gibt es für VL?</h2>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="20" x2="12" y2="10" />
+                                    <line x1="18" y1="20" x2="18" y2="4" />
+                                    <line x1="6" y1="20" x2="6" y2="16" />
+                                </svg>
+                            </div>
+                            <h3>VL-Fondssparplan (ETF)</h3>
+                            <p><strong>Beste Rendite-Chancen</strong> durch Wertpapiere</p>
+                            <ul>
+                                <li>Höchste Renditechance (historisch 6-8% p.a.)</li>
+                                <li>Staatliche Förderung: <strong>20% auf max. 400 € = bis zu 80 €/Jahr</strong></li>
+                                <li>Einkommensgrenze: 40.000 € (Single) / 80.000 € (Verheiratet)</li>
+                                <li>Gut für langfristigen Vermögensaufbau</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg>
+                            </div>
+                            <h3>VL-Bausparvertrag</h3>
+                            <p><strong>Sicher und planbar</strong> für Wohneigentum</p>
+                            <ul>
+                                <li>Geringe, aber sichere Verzinsung (ca. 0,5-2%)</li>
+                                <li>Staatliche Förderung: <strong>9% auf max. 470 € = bis zu 43 €/Jahr</strong></li>
+                                <li>Einkommensgrenze: 35.000 € (Single) / 70.000 € (Verheiratet)</li>
+                                <li>Ideal für spätere Immobilienfinanzierung</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg>
+                            </div>
+                            <h3>VL-Rentenversicherung</h3>
+                            <p><strong>Altersvorsorge</strong> mit Renditechance</p>
+                            <ul>
+                                <li>Fondsgebundene private Rentenversicherung (3. Schicht)</li>
+                                <li>Rendite abhängig von Fondsentwicklung</li>
+                                <li><strong>Keine staatliche VL-Förderung</strong>, aber steuerliche Vorteile bei
+                                    Auszahlung</li>
+                                <li>Kombination aus Vermögensaufbau und Altersvorsorge</li>
+                            </ul>
+                        </div>
+                    </div>
+            </section>
+
+
+            <!-- Arbeitnehmersparzulage -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-lg">Die Arbeitnehmersparzulage im Detail</h2>
+
+                    <p>
+                        Mit der <strong>staatlichen Arbeitnehmersparzulage</strong> fördert der Staat
+                        vermögenswirksame Leistungen für Arbeitnehmer mit niedrigerem Einkommen.
+                        Um das Extra-Geld zu erhalten, müssen zwei Bedingungen erfüllt sein:
+                    </p>
+
+                    <div class="card-grid mt-lg">
+                        <div class="card">
+                            <h3>📋 Voraussetzung 1: Einkommensgrenze</h3>
+                            <p>
+                                Ihr <strong>zu versteuerndes Einkommen</strong> (nicht Bruttoeinkommen!)
+                                liegt unter diesen Grenzen:
+                            </p>
+                            <ul style="margin-top: 1rem;">
+                                <li><strong>Fondssparplan:</strong> max. 40.000 € (Single) / 80.000 € (Verheiratet)</li>
+                                <li><strong>Bausparvertrag:</strong> max. 35.000 € (Single) / 70.000 € (Verheiratet)
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h3>⏱️ Voraussetzung 2: Laufzeit</h3>
+                            <p>
+                                Sie legen Ihr Geld in einen VL-Sparplan über <strong>7 Jahre</strong> an:
+                            </p>
+                            <ul style="margin-top: 1rem;">
+                                <li><strong>6 Jahre Ansparphase:</strong> Monatliche Einzahlungen</li>
+                                <li><strong>1 Jahr Ruhephase:</strong> Keine Einzahlungen, Geld arbeitet weiter</li>
+                                <li>Vorzeitige Kündigung = Verlust der Förderung</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-box mt-xl">
+                        <h3>💡 Die Vorteile der Arbeitnehmersparzulage</h3>
+                        <ul style="margin-top: 1rem;">
+                            <li style="margin-bottom: 0.5rem;">
+                                <strong>Bis zu 80 € jährlich</strong> für Aktien-, Fonds- und ETF-Sparpläne
+                                (20% von max. 400 € VL-Beiträgen)
+                            </li>
+                            <li style="margin-bottom: 0.5rem;">
+                                <strong>Bis zu 43 € jährlich</strong> für Bausparverträge
+                                (9% von max. 470 € VL-Beiträgen)
+                            </li>
+                            <li style="margin-bottom: 0.5rem;">
+                                Die Förderungen sind <strong>steuer- und sozialversicherungsfrei</strong> –
+                                Sie profitieren ohne zusätzliche Abgaben
+                            </li>
+                            <li>
+                                Beantragung erfolgt einfach über die Steuererklärung (Anlage VL)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vorteile -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Warum sich VL lohnen</h2>
+
+                    <div class="slider-container" id="vlSliderContainer"><button class="slider-btn slider-btn-prev"
+                            id="vlSliderPrevBtn" aria-label="Vorheriger Vorteil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="slider-wrapper">
+                            <div class="slider-track" id="vlSliderTrack">
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 12 20 22 4 22 4 12" />
+                                                <rect x="2" y="7" width="20" height="5" />
+                                                <line x1="12" y1="22" x2="12" y2="7" />
+                                                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                                                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Geschenktes Geld vom Arbeitgeber</h4>
+                                            <p>Bis zu <strong>480 € pro Jahr</strong> (40 € × 12 Monate) zahlt Ihr
+                                                Arbeitgeber für Sie ein –
+                                                ohne dass Sie dafür weniger Gehalt bekommen. Dieses Geld ist ein echter
+                                                Bonus für Ihren
+                                                Vermögensaufbau.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="12" y1="1" x2="12" y2="23" />
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Zusätzliche Staatliche Förderung</h4>
+                                            <p>Mit der Arbeitnehmersparzulage gibt der Staat nochmal <strong>bis zu 80 €
+                                                    pro Jahr</strong> dazu
+                                                (bei Fondssparplänen). Über 7 Jahre sind das bis zu 560 € geschenkt –
+                                                einfach durch cleveres
+                                                Sparen!</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <polyline points="12 6 12 12 16 14" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Automatischer Vermögensaufbau</h4>
+                                            <p>Sie müssen nichts tun – der Arbeitgeber überweist monatlich automatisch.
+                                                So bauen Sie spielend
+                                                leicht ein Vermögen auf, ohne es zu merken. Nach 7 Jahren haben Sie
+                                                mehrere tausend Euro
+                                                angespart.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Flexibilität bei Jobwechsel</h4>
+                                            <p>Bei einem Arbeitgeberwechsel können Sie Ihren VL-Vertrag einfach
+                                                mitnehmen. Der neue Arbeitgeber
+                                                zahlt dann weiter ein. Alternativ können Sie den Vertrag auch selbst
+                                                weiterbesparen oder ruhen
+                                                lassen.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                                <polyline points="22 4 12 14.01 9 11.01" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Gesetzlicher Anspruch</h4>
+                                            <p>Wenn Ihr Tarif- oder Arbeitsvertrag VL vorsieht, haben Sie einen
+                                                <strong>Rechtsanspruch</strong>
+                                                darauf. Prüfen Sie Ihren Vertrag und fordern Sie Ihr Geld ein – es steht
+                                                Ihnen zu!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="12" y1="20" x2="12" y2="10" />
+                                                <line x1="18" y1="20" x2="18" y2="4" />
+                                                <line x1="6" y1="20" x2="6" y2="16" />
+                                            </svg>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Rendite-Potenzial mit ETFs</h4>
+                                            <p>Bei Fondssparplänen profitieren Sie von den Chancen des Aktienmarkts.
+                                                Historisch erzielten breit
+                                                gestreute ETFs durchschnittlich <strong>6-8% Rendite pro Jahr</strong> –
+                                                deutlich mehr als
+                                                Sparbuch oder Festgeld.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="slider-btn slider-btn-next" id="vlSliderNextBtn" aria-label="Nächster Vorteil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="slider-dots">
+                            <button class="slider-dot active" data-index="0" aria-label="Vorteil 1"></button>
+                            <button class="slider-dot" data-index="1" aria-label="Vorteil 2"></button>
+                            <button class="slider-dot" data-index="2" aria-label="Vorteil 3"></button>
+                            <button class="slider-dot" data-index="3" aria-label="Vorteil 4"></button>
+                            <button class="slider-dot" data-index="4" aria-label="Vorteil 5"></button>
+                            <button class="slider-dot" data-index="5" aria-label="Vorteil 6"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufig gestellte Fragen zu VL</h2>
+
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wer hat Anspruch auf vermögenswirksame Leistungen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Anspruch auf VL haben Arbeitnehmer, Beamte, Auszubildende,
+                                        Richter und Soldaten. Der Anspruch ergibt sich aus
+                                        dem Arbeitsvertrag, Tarifvertrag oder einer Betriebsvereinbarung.
+                                        Auch Teilzeitkräfte haben Anspruch, allerdings fallen die
+                                        Arbeitgeberanteile ggf. geringer aus.
+                                    </p>
+                                    <p>
+                                        <strong>Keinen Anspruch</strong> haben freie Mitarbeiter,
+                                        Rentner oder Selbstständige.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie viel zahlt der Arbeitgeber?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Der Höchstbetrag liegt bei <strong>40 € monatlich</strong>. Die
+                                        tatsächliche Höhe variiert je nach Branche und Vereinbarung:
+                                    </p>
+                                    <ul>
+                                        <li>Öffentlicher Dienst: ca. 6,65 €</li>
+                                        <li>Metall- und Elektroindustrie: ca. 26-40 €</li>
+                                        <li>Bankgewerbe: bis zu 40 €</li>
+                                        <li>Chemische Industrie: ca. 26,59 €</li>
+                                    </ul>
+                                    <p>
+                                        Die genaue Höhe finden Sie in Ihrem Arbeits- oder Tarifvertrag
+                                        oder bei Ihrer Personalabteilung.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie lange läuft ein VL-Vertrag?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Ein VL-Vertrag läuft standardmäßig <strong>7 Jahre</strong>:
+                                    </p>
+                                    <ul>
+                                        <li><strong>6 Jahre Ansparphase:</strong> Monatliche Einzahlungen</li>
+                                        <li><strong>1 Jahr Ruhephase:</strong> Keine Einzahlungen, aber
+                                            das Geld arbeitet weiter und erwirtschaftet Rendite</li>
+                                    </ul>
+                                    <p>
+                                        Nach den 7 Jahren können Sie frei über das angesparte Kapital
+                                        verfügen oder einen neuen VL-Vertrag abschließen. Viele Sparer
+                                        starten nach Ablauf direkt den nächsten VL-Vertrag.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich mehrere VL-Verträge gleichzeitig haben?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Nein</strong>, Sie können nur einen VL-Vertrag gleichzeitig
+                                        besparen. Die Arbeitgeberbeiträge müssen in einen einzigen Vertrag
+                                        fließen. Allerdings können Sie nach Ablauf eines Vertrags einen
+                                        neuen abschließen – auch bei einem anderen Anbieter oder mit
+                                        einer anderen Anlageform.
+                                    </p>
+                                    <p>
+                                        Sie dürfen jedoch mehrere VL-Verträge <em>nacheinander</em> haben,
+                                        also z.B. alle 7 Jahre einen neuen Vertrag starten.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert, wenn ich den Job wechsle?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Bei einem Jobwechsel haben Sie mehrere Optionen:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Neuer Arbeitgeber zahlt VL:</strong> Lassen Sie den
+                                            Vertrag einfach weiterlaufen und geben Sie die Vertragsunterlagen
+                                            dem neuen Arbeitgeber</li>
+                                        <li><strong>Neuer Arbeitgeber zahlt keine VL:</strong> Sie können
+                                            den Vertrag mit eigenen Beiträgen weiterführen oder ruhen lassen</li>
+                                        <li><strong>Kündigung:</strong> Möglich, aber die staatliche
+                                            Förderung geht verloren und es können Gebühren anfallen</li>
+                                    </ul>
+                                    <p>
+                                        Am besten: Vertrag weiterlaufen lassen, auch wenn Sie ihn selbst
+                                        weiterbesparen müssen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Muss ich VL versteuern?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Die Einzahlungen:</strong> Ja, VL-Beiträge des Arbeitgebers
+                                        sind Teil des steuerpflichtigen Bruttolohns und werden wie normales
+                                        Gehalt versteuert und sind sozialversicherungspflichtig.
+                                    </p>
+                                    <p>
+                                        <strong>Die Erträge:</strong> Gewinne aus dem VL-Vertrag
+                                        (z.B. Zinsen, Dividenden) unterliegen der Abgeltungssteuer (25%).
+                                        Allerdings greift hier der Sparerpauschbetrag von 1.000 € (Single)
+                                        bzw. 2.000 € (Verheiratete), sodass Erträge bis zu dieser Grenze
+                                        steuerfrei bleiben.
+                                    </p>
+                                    <p>
+                                        <strong>Die Arbeitnehmersparzulage:</strong> Steuerfrei!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Welche Anlageform ist die beste?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Für die meisten: VL-Fondssparplan mit ETFs</strong>
+                                    </p>
+                                    <p>
+                                        Diese Variante bietet die höchste staatliche Förderung (80 €/Jahr)
+                                        und das beste Rendite-Potenzial. Über 7 Jahre können Sie so
+                                        deutlich mehr Vermögen aufbauen als mit Banksparplänen.
+                                    </p>
+                                    <p>
+                                        <strong>Bausparvertrag:</strong> Nur sinnvoll, wenn Sie
+                                        in den nächsten Jahren eine Immobilie kaufen oder bauen möchten.
+                                    </p>
+                                    <p>
+                                        <strong>Rentenversicherung:</strong> Empfehlenswert, wenn Sie
+                                        zusätzlich für das Alter vorsorgen und von potenziellen Renditen am Kapitalmarkt
+                                        profitieren möchten.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich vorzeitig an mein Geld?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Ja, Sie können VL-Verträge vorzeitig kündigen, aber:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Staatliche Förderung verfällt:</strong> Die
+                                            Arbeitnehmersparzulage erhalten Sie nur bei voller Laufzeit</li>
+                                        <li><strong>Kosten:</strong> Bei Fondssparplänen können
+                                            Verkaufsgebühren anfallen</li>
+                                        <li><strong>Rendite-Verlust:</strong> Sie verpassen den
+                                            Zinseszins-Effekt der letzten Jahre</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Unser Tipp:</strong> Nur in echten Notfällen vorzeitig
+                                        kündigen. Die 7 Jahre Laufzeit lohnen sich!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>
+                Diese Seite bietet allgemeine Informationen über vermögenswirksame Leistungen.
+                Für individuelle Beratung wenden Sie sich bitte an einen Finanzberater.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });
+        }
+
+        // Sidebar Collapse Logic - only toggle on arrow click
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+
+        arrow.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent navigation when clicking arrow
+            e.stopPropagation(); // Stop event from bubbling to parent link
+            subMenu.classList.toggle('open');
+            arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+
+        // Sidebar Collapse Logic - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const isActive = accordionItem.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // VL Slider functionality
+        let vlCurrentSlide = 0;
+        const vlSliderTrack = document.getElementById('vlSliderTrack');
+        const vlTotalSlides = vlSliderTrack ? vlSliderTrack.querySelectorAll('.slider-item').length : 0;
+        const vlDots = document.querySelectorAll('.slider-dots .slider-dot');
+        const vlPrevBtn = document.getElementById('vlSliderPrevBtn');
+        const vlNextBtn = document.getElementById('vlSliderNextBtn');
+
+        function vlMoveSlide(direction) {
+            vlCurrentSlide += direction;
+            if (vlCurrentSlide < 0) vlCurrentSlide = vlTotalSlides - 1;
+            if (vlCurrentSlide >= vlTotalSlides) vlCurrentSlide = 0;
+            vlUpdateSlider();
+        }
+
+        function vlGoToSlide(index) {
+            vlCurrentSlide = index;
+            vlUpdateSlider();
+        }
+
+        function vlUpdateSlider() {
+            if (vlSliderTrack) {
+                vlSliderTrack.style.transform = `translateX(-${vlCurrentSlide * 100}%)`;
+            }
+            vlUpdateDots();
+        }
+
+        function vlUpdateDots() {
+            vlDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === vlCurrentSlide);
+            });
+        }
+
+        if (vlPrevBtn) {
+            vlPrevBtn.addEventListener('click', () => vlMoveSlide(-1));
+        }
+
+        if (vlNextBtn) {
+            vlNextBtn.addEventListener('click', () => vlMoveSlide(1));
+        }
+
+        vlDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => vlGoToSlide(index));
+        });
+
+
+    </script>
+</body>
+
+</html>

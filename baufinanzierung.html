@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baufinanzierung</title>
+    <meta name="description"
+        content="Sichern Sie sich niedrige Zinsen für Ihre Anschlussfinanzierung mit einem Forward-Darlehen. Planen Sie Ihre Zukunft schon heute.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                        Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Baufinanzierung</span>
+                        <h1>Baufinanzierung & Forward-Darlehen</h1>
+                        <p class="hero-subtitle">
+                            Sichern Sie sich die Zinsen von heute für Ihre Anschlussfinanzierung von morgen.
+                            Planungssicherheit für Ihr Eigenheim – bis zu 60 Monate im Voraus.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/baufinanzierung_hero.png" alt="Baufinanzierung Illustration">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist ein Forward-Darlehen? -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Was ist ein Forward-Darlehen?</h2>
+                        <p>Zinsen sichern für die Zukunft</p>
+                    </div>
+
+                    <p>
+                        Ein <strong>Forward-Darlehen</strong> ist eine spezielle Form der Anschlussfinanzierung,
+                        mit der Sie sich die aktuellen Zinsen für einen Zeitpunkt in der Zukunft sichern können.
+                        Es eignet sich ideal für Immobilienbesitzer, deren Zinsbindung in den nächsten
+                        12 bis 60 Monaten ausläuft.
+                    </p>
+                    <p>
+                        Sie schließen den Vertrag bereits heute ab, das Darlehen wird aber erst zum Ende
+                        Ihrer aktuellen Zinsbindung ausgezahlt. So machen Sie sich unabhängig von künftigen
+                        Zinssteigerungen.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Wie es funktioniert</h3>
+                        <p>
+                            Das Wort "Forward" bedeutet "Vorwärts". Sie kaufen sich heute das Recht,
+                            zu den aktuellen Konditionen in der Zukunft (bis zu 5 Jahre im Voraus)
+                            finanzieren zu dürfen. Dafür zahlen Sie meist einen geringen Zinsaufschlag.
+                        </p>
+                    </div>
+
+                    <!-- Timeline Graphic -->
+                    <div style="margin-top: 3rem; text-align: center;">
+                        <img src="images/forward_darlehen_timeline.png" alt="Forward-Darlehen Timeline"
+                            style="max-width: 100%; height: auto; border-radius: 0.5rem;">
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Vorteile -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Ihre Vorteile beim Forward-Darlehen</h2>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3>Zinssicherheit</h3>
+                            <p>
+                                Sichern Sie sich das aktuelle Zinsniveau für Ihre Anschlussfinanzierung.
+                                Steigende Zinsen in den nächsten Jahren können Ihnen dann egal sein.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <h3>Planungssicherheit</h3>
+                            <p>
+                                Sie wissen heute schon genau, wie hoch Ihre monatliche Rate in
+                                1, 2 oder 5 Jahren sein wird. Das schafft Ruhe und Sicherheit für Ihre
+                                Finanzplanung.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                            </div>
+                            <h3>Keine Bereitstellungszinsen</h3>
+                            <p>
+                                Für die Zeit bis zur Auszahlung (die sogenannte Forward-Periode)
+                                fallen in der Regel keine Bereitstellungszinsen an.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wann lohnt es sich? -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Wann lohnt sich ein Forward-Darlehen?</h2>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                    <polyline points="17 6 23 6 23 12" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Erwartung steigender Zinsen</h4>
+                                <p>
+                                    Wenn Sie davon ausgehen, dass die Bauzinsen in den nächsten Jahren steigen werden,
+                                    ist ein Forward-Darlehen die perfekte Absicherung.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Auslaufende Zinsbindung</h4>
+                                <p>
+                                    Ihre aktuelle Zinsbindung endet in 12 bis 60 Monaten? Dann sollten Sie
+                                    jetzt aktiv werden und Konditionen vergleichen.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="info-box mt-xl">
+                        <h3>⚠️ Wichtig zu beachten</h3>
+                        <p>
+                            Ein Forward-Darlehen ist verbindlich. Wenn die Zinsen wider Erwarten sinken,
+                            müssen Sie das Darlehen trotzdem zu den vereinbarten Konditionen abnehmen
+                            (oder eine Nichtabnahmeentschädigung zahlen).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rechenbeispiel -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">So sparen Sie mit einem Forward-Darlehen</h2>
+
+                    <p>
+                        Sehen Sie selbst, wie attraktiv ein Forward-Darlehen für Sie sein kann:
+                    </p>
+
+                    <div class="card-grid mt-lg"
+                        style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <!-- Aktuelle Baufinanzierung -->
+                        <div class="card">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: #dc3545;" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem;">Aktuelle Baufinanzierung</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.6; color: #333;">
+                                <p style="margin: 0.25rem 0;"><strong>Zinssatz: 4,30%</strong></p>
+                                <p style="margin: 0.25rem 0;">ursprüngliche Darlehensgröße: 200.000 €</p>
+                                <p style="margin: 0.25rem 0;">Zinsfestschreibung bis 31.05.2027</p>
+                                <p style="margin: 0.25rem 0;">Darlehensende: 31.07.2060*</p>
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: #666;">Monatliche Rate</h4>
+                                <p style="margin: 0; font-size: 1.75rem; font-weight: 700; color: #023e84;">850 €</p>
+                            </div>
+                            <div
+                                style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.875rem; color: #666;">Gesamtkosten</span>
+                                <span style="font-size: 1rem; font-weight: 600;">439.450 €</span>
+                            </div>
+                        </div>
+
+                        <!-- Alternative -->
+                        <div class="card">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: #0066cc;" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem;">Aktuelle Alternative</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.6; color: #0066cc;">
+                                <p style="margin: 0.25rem 0;"><strong>Zinssatz: 3,44%</strong></p>
+                                <p style="margin: 0.25rem 0;">Restschuld zum 31.05.2027: 180.257 €</p>
+                                <p style="margin: 0.25rem 0;">Zinsfestschreibung bis 31.05.2037</p>
+                                <p style="margin: 0.25rem 0;">Darlehensende: 31.07.2060*</p>
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: #666;">Monatliche Rate</h4>
+                                <p style="margin: 0; font-size: 1.75rem; font-weight: 700; color: #0066cc;">759 €</p>
+                            </div>
+                            <div
+                                style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.875rem; color: #666;">Gesamtkosten</span>
+                                <span style="font-size: 1rem; font-weight: 600; color: #0066cc;">403.408 €</span>
+                            </div>
+                        </div>
+
+                        <!-- Ihre Ersparnis -->
+                        <div class="card"
+                            style="background: linear-gradient(135deg, #0066cc 0%, #004c99 100%); color: white; border: none;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: white;" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z" />
+                                    <path d="M2 9v1c0 1.1.9 2 2 2h1" />
+                                    <circle cx="16" cy="11" r="1" fill="currentColor" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem; color: white;">Ihre Ersparnis</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.6; color: white; min-height: 4.8rem;">
+                                <p style="margin: 0.25rem 0; color: white;">Bei Wechsel zum empfohlenen Tarif</p>
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; opacity: 0.9; color: white;">
+                                    Monatliche
+                                    Ersparnis</h4>
+                                <p style="margin: 0; font-size: 1.75rem; font-weight: 700; color: white;">91 €</p>
+                            </div>
+                            <div
+                                style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.875rem; opacity: 0.9; color: white;">Gesamtersparnis</span>
+                                <span style="font-size: 1rem; font-weight: 600; color: white;">36.042 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: #666;">*bei angenommen gleichbleibendem
+                        Zinssatz</p>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen zum Forward-Darlehen</h2>
+
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie weit im Voraus kann ich ein Forward-Darlehen abschließen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        In der Regel können Sie ein Forward-Darlehen bis zu <strong>60 Monate (5
+                                            Jahre)</strong>
+                                        vor Ablauf Ihrer aktuellen Zinsbindung abschließen. Je weiter der
+                                        Auszahlungstermin
+                                        in der Zukunft liegt, desto höher ist meist der Zinsaufschlag.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was kostet ein Forward-Darlehen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Die Kosten bestehen hauptsächlich aus dem <strong>Forward-Aufschlag</strong> auf
+                                        den
+                                        aktuellen Marktzins. Dieser Aufschlag beträgt oft ca. 0,01% bis 0,03% pro Monat
+                                        der Vorlaufzeit.
+                                    </p>
+                                    <p>
+                                        Beispiel: Bei 24 Monaten Vorlaufzeit könnte der Zins z.B. um 0,5% höher liegen
+                                        als bei einem Sofort-Darlehen. Dafür haben Sie aber die Sicherheit gegen
+                                        stark steigende Zinsen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich die Bank wechseln?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Ja, absolut.</strong> Ein Forward-Darlehen ist eine hervorragende
+                                        Gelegenheit,
+                                        die Bank zu wechseln. Oft bieten neue Banken attraktive Neukundenkonditionen
+                                        für die Anschlussfinanzierung an.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert, wenn die Zinsen sinken?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Das Forward-Darlehen ist verbindlich. Sinken die Zinsen bis zum
+                                        Auszahlungstermin
+                                        unter Ihren gesicherten Zinssatz, müssen Sie das Darlehen trotzdem abnehmen.
+                                        Es handelt sich also um eine Wette auf steigende oder gleichbleibende Zinsen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich ein Forward-Darlehen vorzeitig kündigen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        Ein Forward-Darlehen ist <strong>grundsätzlich bindend</strong>. Eine vorzeitige
+                                        Kündigung ist nur in seltenen Ausnahmefällen möglich und führt in der Regel zu
+                                        einer <strong>Vorfälligkeitsentschädigung</strong>.
+                                    </p>
+                                    <p>
+                                        <strong>Wichtige Ausnahme:</strong> Bei einem berechtigten Interesse (z.B.
+                                        Verkauf
+                                        der Immobilie, Tod, Scheidung) können Sie unter Umständen vom Vertrag
+                                        zurücktreten.
+                                        Die Bank berechnet dann aber meist den entgangenen Gewinn als Entschädigung.
+                                    </p>
+                                    <p>
+                                        <strong>Tipp:</strong> Prüfen Sie die Vertragsbedingungen genau und klären Sie
+                                        Kündigungsmodalitäten vor Vertragsabschluss!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Brauche ich eine erneute Bonitätsprüfung?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>
+                                        <strong>Ja.</strong> Bei Abschluss des Forward-Darlehens führt die Bank eine
+                                        <strong>Bonitätsprüfung</strong> durch – genau wie bei einem normalen Darlehen.
+                                    </p>
+                                    <p>
+                                        Geprüft werden:
+                                    </p>
+                                    <ul>
+                                        <li>Ihre aktuelle Einkommenssituation</li>
+                                        <li>Ihre SCHUFA-Auskunft</li>
+                                        <li>Der Wert der Immobilie (Beleihungswert)</li>
+                                        <li>Bestehende Verbindlichkeiten</li>
+                                    </ul>
+                                    <p>
+                                        <strong>Vorteil:</strong> Sie wissen bereits heute, ob Sie die Finanzierung
+                                        bekommen. Es gibt keine bösen Überraschungen kurz vor Ablauf Ihrer Zinsbindung.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung & Baufinanzierung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>
+                Diese Seite bietet allgemeine Informationen.
+                Für individuelle Beratung wenden Sie sich bitte an einen Finanzierungsexperten.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });
+        }
+
+        // Sidebar Collapse Logic - only toggle on arrow click
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+
+        if (subMenu && arrow) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent navigation when clicking arrow
+                e.stopPropagation(); // Stop event from bubbling to parent link
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Sidebar Collapse Logic - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const isActive = accordionItem.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // PKV Slider functionality
+        let pkvCurrentSlide = 0;
+        const pkvSliderTrack = document.getElementById('pkvSliderTrack');
+        const pkvTotalSlides = pkvSliderTrack ? pkvSliderTrack.querySelectorAll('.slider-item').length : 0;
+        const pkvDots = document.querySelectorAll('#pkvSliderContainer .slider-dot');
+        const pkvPrevBtn = document.getElementById('pkvSliderPrevBtn');
+        const pkvNextBtn = document.getElementById('pkvSliderNextBtn');
+
+        function pkvMoveSlide(direction) {
+            pkvCurrentSlide += direction;
+            if (pkvCurrentSlide < 0) pkvCurrentSlide = pkvTotalSlides - 1;
+            if (pkvCurrentSlide >= pkvTotalSlides) pkvCurrentSlide = 0;
+            pkvUpdateSlider();
+        }
+
+        function pkvGoToSlide(index) {
+            pkvCurrentSlide = index;
+            pkvUpdateSlider();
+        }
+
+        function pkvUpdateSlider() {
+            if (pkvSliderTrack) {
+                pkvSliderTrack.style.transform = `translateX(-${pkvCurrentSlide * 100}%)`;
+            }
+            pkvUpdateDots();
+        }
+
+        function pkvUpdateDots() {
+            pkvDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === pkvCurrentSlide);
+            });
+        }
+
+        if (pkvPrevBtn) {
+            pkvPrevBtn.addEventListener('click', () => pkvMoveSlide(-1));
+        }
+
+        if (pkvNextBtn) {
+            pkvNextBtn.addEventListener('click', () => pkvMoveSlide(1));
+        }
+
+        pkvDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => pkvGoToSlide(index));
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost-Average-Effekt – Schritt für Schritt zum günstigeren Durchschnittskurs</title>
+    <meta name="description"
+        content="Der Cost-Average-Effekt: Wie regelmäßige Investitionen in gleicher Höhe automatisch den Durchschnittskurs senken und das Risiko streuen.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Infografik ── */
+        .cae-infographic {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem 1rem;
+            margin: 2rem auto;
+            overflow-x: auto;
+            max-width: fit-content;
+        }
+
+        .cae-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: nowrap;
+            min-width: 680px;
+        }
+
+        .cae-row:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .cae-person {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 90px;
+        }
+
+        .cae-badge {
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            width: 70px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            line-height: 1.1;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .cae-badge.blue {
+            background: #023e84;
+        }
+
+        .cae-person-label {
+            font-size: 0.7rem;
+            color: #444;
+            text-align: center;
+            max-width: 85px;
+            line-height: 1.3;
+        }
+
+        .cae-stations {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .cae-station {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.6rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            min-width: 70px;
+        }
+
+        .cae-price-tag {
+            background: #023e84;
+            color: #fff;
+            border-radius: 0.25rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.1rem 0.35rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cae-pump-icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cae-amount {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #023e84;
+        }
+
+        .cae-plus {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #666;
+            flex-shrink: 0;
+        }
+
+        .cae-equals {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #444;
+            flex-shrink: 0;
+            margin: 0 0.3rem;
+        }
+
+        .cae-result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 90px;
+        }
+
+        .cae-result-badge {
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            width: 74px;
+            height: 84px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.78rem;
+            line-height: 1.2;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .cae-result-badge.red {
+            background: #c0392b;
+        }
+
+        .cae-result-badge.green {
+            background: #27ae60;
+        }
+
+        .cae-result-price {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .cae-result-price.red {
+            color: #c0392b;
+        }
+
+        .cae-result-price.green {
+            color: #27ae60;
+        }
+
+        .cae-divider {
+            border: none;
+            border-top: 2px dashed #bcd0f0;
+            margin: 0.75rem 0;
+        }
+
+        .cae-source {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        /* ── Highlight box ── */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0fe, #dce8fd);
+            border-left: 4px solid #023e84;
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 0.5rem;
+            color: #023e84;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2"
+                            style="width: 1rem; height: 1rem; cursor: pointer; transform: rotate(180deg);"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link active">Cost-Average-Effekt</a>
+                        </li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Vermögensanlage</span>
+                        <h1>Cost-Average-Effekt</h1>
+                        <p class="hero-subtitle">
+                            Wer regelmäßig einen <strong>festen Betrag</strong> investiert, kauft automatisch
+                            mehr Anteile wenn die Kurse niedrig sind – und weniger wenn sie hoch sind.
+                            Das Ergebnis: ein günstigerer Durchschnittskurs als bei der Einmalanlage.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/cost_average_hero.png" alt="Cost-Average-Effekt Illustration"
+                            style="width:100%; max-width:340px; object-fit:contain;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist der Cost-Average-Effekt? -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Was ist der Cost-Average-Effekt?</h2>
+                        <p>Das Prinzip, das Marktschwankungen zu Ihrem Vorteil nutzt</p>
+                    </div>
+                    <p>
+                        Der <strong>Cost-Average-Effekt</strong> (auch Durchschnittskosteneffekt genannt) beschreibt ein
+                        mathematisches Phänomen beim regelmäßigen Investieren: Wer monatlich einen <strong>festen
+                            Geldbetrag</strong> anlegt, erzielt langfristig einen günstigeren Durchschnittspreis als
+                        jemand,
+                        der immer die gleiche Anzahl von Anteilen kauft.
+                    </p>
+                    <p>
+                        Der Schlüssel liegt in der einfachen Mathematik: Bei niedrigen Kursen kaufen Sie für den
+                        gleichen
+                        Betrag <strong>mehr Anteile</strong>, bei hohen Kursen kaufen Sie weniger. Das Ergebnis ist ein
+                        Durchschnittskurs, der <em>immer</em> günstiger ist als der einfache Mittelwert der Kurse.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Das Grundprinzip in einem Satz</h3>
+                        <p>
+                            Investieren Sie monatlich einen <strong>festen Betrag</strong> statt einer festen Anzahl
+                            von Anteilen – und Marktschwankungen senken automatisch Ihren Durchschnittseinkaufskurs.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benzin-Beispiel -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center">Das Benzin-Beispiel: So funktioniert es</h2>
+                    <p class="text-center mb-xl">
+                        Ein alltägliches Beispiel macht das Prinzip sofort verständlich
+                    </p>
+
+                    <p>
+                        Stellen Sie sich zwei Autofahrerinnen vor. <strong>Frau Weiss</strong> tankt immer
+                        <em>die gleiche Menge</em> Benzin (10 Liter). <strong>Frau Liebig</strong> gibt hingegen
+                        immer <em>den gleichen Betrag</em> aus (17,50 €). Beide fahren an vier Tagen mit
+                        unterschiedlichen Preisen zur Tankstelle:
+                    </p>
+
+                    <!-- Infografik -->
+                    <div class="cae-infographic">
+                        <!-- Frau Weiss -->
+                        <div class="cae-row">
+                            <div class="cae-person">
+                                <div class="cae-badge blue">10<br>Liter</div>
+                                <div class="cae-person-label">Frau Weiss tankt immer die gleiche Menge Benzin</div>
+                            </div>
+                            <div class="cae-stations">
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">2,00 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">20 €</div>
+                                </div>
+                                <div class="cae-plus">+</div>
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">1,10 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">11 €</div>
+                                </div>
+                                <div class="cae-plus">+</div>
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">1,40 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">14 €</div>
+                                </div>
+                                <div class="cae-plus">+</div>
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">2,50 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">25 €</div>
+                                </div>
+                            </div>
+                            <div class="cae-equals">=</div>
+                            <div class="cae-result">
+                                <div class="cae-result-badge red">70 €<br>40 L</div>
+                                <div class="cae-result-price red">= 1,75 €/L</div>
+                            </div>
+                        </div>
+
+                        <hr class="cae-divider">
+
+                        <!-- Frau Liebig -->
+                        <div class="cae-row">
+                            <div class="cae-person">
+                                <div class="cae-badge blue">17,50<br>Euro</div>
+                                <div class="cae-person-label">Frau Liebig tankt immer zum selben Betrag</div>
+                            </div>
+                            <div class="cae-stations">
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">2,00 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">8,75 L</div>
+                                </div>
+                                <div class="cae-plus">+</div>
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">1,10 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">15,91 L</div>
+                                </div>
+                                <div class="cae-plus">+</div>
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">1,40 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">12,5 L</div>
+                                </div>
+                                <div class="cae-plus">+</div>
+                                <div class="cae-station">
+                                    <div class="cae-price-tag">2,50 €/L</div>
+                                    <div class="cae-pump-icon">⛽</div>
+                                    <div class="cae-amount">7 L</div>
+                                </div>
+                            </div>
+                            <div class="cae-equals">=</div>
+                            <div class="cae-result">
+                                <div class="cae-result-badge green">70 €<br>44,16 L</div>
+                                <div class="cae-result-price green">= 1,585 €/L</div>
+                            </div>
+                        </div>
+
+                        <p class="cae-source">Quelle: Union Investment. Stand: Januar 2019.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🏆 Das Ergebnis</h3>
+                        <p>
+                            Beide haben insgesamt <strong>70 €</strong> ausgegeben. Frau Weiss hat dafür
+                            <strong>40 Liter</strong> bekommen (Ø 1,75 €/L). Frau Liebig hat hingegen
+                            <strong>44,16 Liter</strong> erhalten (Ø 1,585 €/L) – das sind
+                            <strong>4,16 Liter mehr</strong> für denselben Preis.
+                        </p>
+                        <p style="margin-top:0.5rem;">
+                            Der Effekt: Frau Liebig hat bei günstigem Preis automatisch mehr getankt
+                            und bei teuerem Preis weniger – obwohl sie nie aktiv darüber nachgedacht hat.
+                            <strong>Genau das passiert im Sparplan mit Ihrem Geld.</strong>
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Vorteile -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Ihre Vorteile beim Sparplan</h2>
+                    <div class="slider-container" id="caeSliderContainer">
+                        <button class="slider-btn slider-btn-prev" id="caePrevBtn" aria-label="Zurück">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-wrapper">
+                            <div class="slider-track" id="caeSliderTrack">
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Kein Market-Timing nötig</h4>
+                                            <p>Sie müssen den richtigen Einstiegszeitpunkt nicht erraten. Durch
+                                                regelmäßige Investitionen kaufen Sie automatisch zu verschiedenen
+                                                Kursniveaus – hoch und niedrig.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                                <polyline points="17 6 23 6 23 12" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Crashs werden zur Chance</h4>
+                                            <p>Bei fallenden Kursen kaufen Sie automatisch mehr Anteile. Wenn die Kurse
+                                                sich erholen, profitieren Sie überproportional. Crashs werden so zu
+                                                einem natürlichen Vorteil.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                                                <line x1="2" y1="10" x2="22" y2="10" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Diszipliniertes Sparen</h4>
+                                            <p>Ein automatischer Sparplan zwingt zum regelmäßigen Investieren.
+                                                Emotionale Entscheidungen ("Jetzt ist kein guter Zeitpunkt") werden
+                                                ausgeschaltet – der größte Feind des Anlegers.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <circle cx="12" cy="12" r="6" />
+                                                <circle cx="12" cy="12" r="2" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Günstigerer Durchschnittskurs</h4>
+                                            <p>Das harmonische Mittel des Cost-Average ist <em>mathematisch immer
+                                                    kleiner</em> als der einfache Mittelwert der Kurse – solange die
+                                                Kurse schwanken. Ein garantierter Vorteil.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                                <polyline points="22 4 12 14.01 9 11.01" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Einfach und automatisch</h4>
+                                            <p>Fondsssparpläne ab 25 € monatlich sind bei Banken und Brokern schnell
+                                                eingerichtet. Danach läuft alles automatisch – kein weiterer Aufwand für
+                                                Sie.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="12" y1="20" x2="12" y2="10" />
+                                                <line x1="18" y1="20" x2="18" y2="4" />
+                                                <line x1="6" y1="20" x2="6" y2="16" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Kombination mit Zinseszins</h4>
+                                            <p>Der Cost-Average-Effekt entfaltet seine volle Wirkung in Kombination mit
+                                                dem Zinseszinseffekt. Je früher Sie beginnen, desto mächtiger wird der
+                                                Effekt über die Zeit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="slider-btn slider-btn-next" id="caeNextBtn" aria-label="Weiter">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-dots" id="caeDots">
+                            <button class="slider-dot active" data-index="0" aria-label="1"></button>
+                            <button class="slider-dot" data-index="1" aria-label="2"></button>
+                            <button class="slider-dot" data-index="2" aria-label="3"></button>
+                            <button class="slider-dot" data-index="3" aria-label="4"></button>
+                            <button class="slider-dot" data-index="4" aria-label="5"></button>
+                            <button class="slider-dot" data-index="5" aria-label="6"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen zum Cost-Average-Effekt</h2>
+                    <div class="accordion">
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Funktioniert der Effekt wirklich mathematisch garantiert?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Ja – solange die Kurse <strong>schwanken</strong> (was sie immer tun), ist das
+                                        harmonische Mittel des Cost-Average mathematisch immer kleiner als der einfache
+                                        Durchschnitt der Kurse.</p>
+                                    <p>Bei einem völlig konstanten Kurs gäbe es keinen Effekt – aber der Aktienmarkt war
+                                        noch nie konstant. Schwankungen sind also kein Risiko, sondern für den Sparplan
+                                        ein <strong>Vorteil</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Ab welchem Betrag lohnt sich ein Sparplan?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Viele Broker und Banken bieten ETF-Sparpläne bereits ab <strong>25 €
+                                            monatlich</strong> an. Bei einigen Online-Brokern geht es sogar ab 1 € los.
+                                    </p>
+                                    <p>Entscheidend ist nicht die absolute Höhe, sondern die
+                                        <strong>Regelmäßigkeit</strong>. Auch kleine, konsequente Beträge addieren sich
+                                        durch den Zinseszinseffekt zu bedeutendem Vermögen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Ist eine Einmalanlage schlechter als ein Sparplan?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Nicht zwingend. Studien zeigen: Wer einen größeren Betrag zur Verfügung hat,
+                                        erzielt <strong>statistisch gesehen</strong> bei einer Einmalanlage oft eine
+                                        höhere Rendite – weil das Kapital länger im Markt arbeitet.</p>
+                                    <p>Der Sparplan ist jedoch überlegen, wenn Sie <strong>kein großes
+                                            Startkapital</strong> haben oder <strong>emotionale
+                                            Fehlentscheidungen</strong> (z.B. in Crashs ausstieg) vermeiden möchten. Für
+                                        regelmäßige Einkommensteile ist der Sparplan die ideale Lösung.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert, wenn die Kurse dauerhaft fallen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Beim Cost-Average-Effekt kaufen Sie in einer Abwärtsphase immer mehr Anteile zu
+                                        günstigeren Preisen. Wenn die Kurse sich irgendwann erholen – was historisch
+                                        gesehen immer der Fall war – profitieren Sie <strong>überproportional</strong>.
+                                    </p>
+                                    <p>Ein dauerhaft fallender Markt würde bedeuten, dass Unternehmen dauerhaft an Wert
+                                        verlieren – ein extremes Szenario, das in der Geschichte nie eingetreten ist.
+                                        Langfristig hat der globale Aktienmarkt stets neue Höchststände erreicht.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>In was sollte ich für einen Sparplan investieren?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Für Einsteiger empfehlen viele Experten <strong>breit gestreute ETFs</strong>
+                                        (Exchange Traded Funds), z.B. auf den MSCI World oder FTSE All-World. Diese
+                                        investieren automatisch in Hunderte oder Tausende Unternehmen weltweit.</p>
+                                    <p>Wichtige Kriterien: <strong>breite Diversifikation</strong>, <strong>niedrige
+                                            Kosten</strong> (TER unter 0,3 %), <strong>thesaurierend</strong> (Erträge
+                                        werden reinvestiert für maximalen Zinseszinseffekt) und ein seriöser Anbieter.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann ich den Sparplan jederzeit anpassen oder stoppen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p><strong>Ja, vollständige Flexibilität</strong> ist ein großer Vorteil von
+                                        Fondssparplänen gegenüber anderen Anlageformen. Sie können den Betrag jederzeit
+                                        erhöhen, senken, pausieren oder den Plan komplett stoppen.</p>
+                                    <p>Im Gegensatz zu Versicherungssparplänen oder gebundenen Anlageprodukten sind Sie
+                                        nicht an feste Laufzeiten gebunden. Die bereits angesparten Anteile bleiben in
+                                        Ihrem Eigentum und können flexibel verkauft werden.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>Diese Seite bietet allgemeine Informationen zum Cost-Average-Effekt. Für individuelle Anlageberatung
+                wenden Sie sich bitte an einen Finanzberater.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sidebar Toggle - Arbeitgeberförderung
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+        if (arrow && subMenu) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Sidebar Toggle - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Slider
+        let caeSlide = 0;
+        const caeTrack = document.getElementById('caeSliderTrack');
+        const caeDots = document.querySelectorAll('#caeDots .slider-dot');
+        const caeTotal = caeDots.length;
+
+        function caeGoTo(n) {
+            caeSlide = (n + caeTotal) % caeTotal;
+            caeTrack.style.transform = `translateX(-${caeSlide * 100}%)`;
+            caeDots.forEach((d, i) => d.classList.toggle('active', i === caeSlide));
+        }
+        document.getElementById('caePrevBtn').addEventListener('click', () => caeGoTo(caeSlide - 1));
+        document.getElementById('caeNextBtn').addEventListener('click', () => caeGoTo(caeSlide + 1));
+        caeDots.forEach((d, i) => d.addEventListener('click', () => caeGoTo(i)));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+
+</html>

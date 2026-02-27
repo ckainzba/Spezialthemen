@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immobilie als Kapitalanlage – Rendite, Steuervorteile & mehr</title>
+    <meta name="description"
+        content="Fremdgenutzte Immobilien als Kapitalanlage: Mieteinnahmen, Steuervorteile, Wertsteigerung und Hebeleffekt. Alles was Sie wissen müssen.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── removed custom rendite-card styles (now using .card) ── */
+
+        /* ── Highlight box ── */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0fe, #dce8fd);
+            border-left: 4px solid #023e84;
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 0.5rem;
+            color: #023e84;
+        }
+
+        /* ── Steuer-Tabelle ── */
+        .steuer-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            background: #fff;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        }
+
+        .steuer-table thead {
+            background: #023e84;
+            color: #fff;
+        }
+
+        .steuer-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .steuer-table td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #e8eef8;
+        }
+
+        .steuer-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .steuer-table tr:nth-child(even) {
+            background: #f4f7fc;
+        }
+
+        .steuer-table .check {
+            color: #27ae60;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Kapitalanlage</span>
+                        <h1>Immobilie als Kapitalanlage</h1>
+                        <p class="hero-subtitle">
+                            Eine <strong>fremdgenutzte Immobilie</strong> verbindet regelmäßige Mieteinnahmen,
+                            attraktive Steuervorteile und langfristige Wertsteigerung – und das oft mit
+                            <strong>geringem Eigenkapitaleinsatz</strong> dank des Hebeleffekts.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/immobilie_hero.png" alt="Immobilie als Kapitalanlage Illustration"
+                            style="width:100%; max-width:340px; object-fit:contain;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist eine Kapitalanlage-Immobilie? -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Was ist eine Kapitalanlage-Immobilie?</h2>
+                        <p>Eine Immobilie, die nicht selbst bewohnt, sondern vermietet wird</p>
+                    </div>
+                    <p>
+                        Bei einer <strong>Kapitalanlage-Immobilie</strong> (auch "Investment-Immobilie" oder
+                        "fremdgenutzte Immobilie" genannt) kaufen Sie eine Wohnung oder ein Haus nicht zum Eigennutz,
+                        sondern mit dem Ziel, sie <strong>zu vermieten</strong>. Die monatlichen Mieteinnahmen
+                        decken im Idealfall einen Großteil der Finanzierungskosten – und nach Ende der
+                        Tilgungsphase besitzen Sie eine schuldenfreie Immobilie als dauerhaftes Vermögen.
+                    </p>
+                    <p>
+                        Im Gegensatz zu Aktien oder Fonds bietet die Immobilie als Sachwert eine besondere
+                        <strong>Inflationsschutzfunktion</strong>: Sowohl der Wert der Immobilie als auch die
+                        Mieteinnahmen steigen in der Tendenz mit der Inflation an.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Das Grundprinzip</h3>
+                        <p>
+                            Sie kaufen eine Wohnung, finanzieren sie mit einem Bankdarlehen und vermieten sie.
+                            Der Mieter zahlt Ihnen Miete – und damit im Wesentlichen Ihren Kredit zurück.
+                            Am Ende der Laufzeit gehört Ihnen die Immobilie weitgehend schuldenfrei.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vier Rendite-Quellen -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Vier Renditequellen auf einen Blick</h2>
+                    <p class="text-center" style="margin-bottom: 2rem;">
+                        Bei kaum einer anderen Anlageform profitieren Sie gleichzeitig von so vielen Ertragsquellen
+                    </p>
+
+                    <div class="card-grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23" />
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg>
+                            </div>
+                            <h3>Mieteinnahmen</h3>
+                            <p>Regelmäßige monatliche Einnahmen durch Vermietung – passives Einkommen, das Ihre
+                                Kreditrate mitträgt.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                    <polyline points="17 6 23 6 23 12" />
+                                </svg>
+                            </div>
+                            <h3>Wertsteigerung</h3>
+                            <p>Immobilien steigen langfristig im Wert – zum Verkauf oder als dauerhaftes Vermögen für
+                                spätere Generationen.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3>Hebeleffekt</h3>
+                            <p>Mit Fremdkapital kontrollieren Sie ein größeres Vermögen – Ihre Eigenkapitalrendite
+                                multipliziert sich entsprechend.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <h3>Steuervorteile</h3>
+                            <p>AfA, Zinsen, Werbungskosten – vieles ist absetzbar. Und nach 10 Jahren ist der
+                                Verkaufsgewinn steuerfrei.</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🏆 Typische Nettomietrendite</h3>
+                        <p>
+                            In guten deutschen Lagen erzielen Anleger oft eine <strong>Bruttomietrendite
+                                von 4–6 %</strong> pro Jahr. Die tatsächliche Eigenkapitalrendite kann durch den
+                            Fremdfinanzierungshebel deutlich höher liegen – je nach Zinsniveau
+                            und Kaufpreis.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Der Hebeleffekt -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Der Hebeleffekt: Fremdkapital als Rendite-Booster</h2>
+
+                    <p>
+                        Das besondere Merkmal der Immobilieninvestition ist die Möglichkeit, mit
+                        <strong>vergleichsweise wenig Eigenkapital</strong> ein viel größeres Vermögen
+                        aufzubauen. Dieses Prinzip nennt man <strong>Leverage-Effekt</strong> (Hebeleffekt).
+                    </p>
+
+                    <div class="card-grid mt-lg"
+                        style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <!-- Beispiel ohne Hebel -->
+                        <div class="card">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: #666;" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="16" />
+                                    <line x1="8" y1="12" x2="16" y2="12" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem;">Ohne Hebel (100 % EK)</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.7; color: #333;">
+                                <p style="margin: 0.25rem 0;"><strong>Kaufpreis:</strong> 200.000 €</p>
+                                <p style="margin: 0.25rem 0;"><strong>Eigenkapital:</strong> 200.000 €</p>
+                                <p style="margin: 0.25rem 0;"><strong>Jahresmiete (netto):</strong> 8.000 €</p>
+                                <p style="margin: 0.25rem 0;"><strong>Eigenkapitalrendite:</strong> 4,0 %</p>
+                            </div>
+                        </div>
+
+                        <!-- Beispiel mit Hebel -->
+                        <div class="card"
+                            style="background: linear-gradient(135deg, #0066cc 0%, #004c99 100%); color: white; border: none;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 1.5rem; height: 1.5rem; color: white;" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                    <polyline points="17 6 23 6 23 12" />
+                                </svg>
+                                <h3 style="margin: 0; font-size: 1.125rem; color: white;">Mit Hebel (20 % EK)</h3>
+                            </div>
+                            <div style="font-size: 0.875rem; line-height: 1.7; color: white;">
+                                <p style="margin: 0.25rem 0; color: white;"><strong
+                                        style="color:white;">Kaufpreis:</strong> 200.000 €</p>
+                                <p style="margin: 0.25rem 0; color: white;"><strong
+                                        style="color:white;">Eigenkapital:</strong> 40.000 €</p>
+                                <p style="margin: 0.25rem 0; color: white;"><strong
+                                        style="color:white;">Bankdarlehen:</strong> 160.000 €</p>
+                                <p style="margin: 0.25rem 0; color: white;"><strong style="color:white;">Jahresmiete
+                                        (netto):</strong> 8.000 €</p>
+                            </div>
+                            <div style="margin-top: 1.25rem;">
+                                <h4 style="margin: 0 0 0.25rem 0; font-size: 0.875rem; opacity: 0.9; color: white;">
+                                    Eigenkapitalrendite
+                                </h4>
+                                <p style="margin: 0; font-size: 1.75rem; font-weight: 700; color: white;">~10–15 %*</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 0.75rem; font-size: 0.875rem; color: #666;">
+                        *Vereinfachte Darstellung vor Steuer, abhängig von Zinssatz, Tilgung, Werbungskosten und
+                        Wertsteigerung.
+                    </p>
+
+                    <div class="info-box" style="margin-top: 2rem;">
+                        <h3>⚠️ Wichtig zu beachten</h3>
+                        <p>
+                            Der Hebel wirkt in beide Richtungen: Steigt der Immobilienwert, multipliziert
+                            sich Ihr Gewinn. Fällt er, multipliziert sich auch der Verlust. Kalkulieren Sie
+                            stets einen <strong>monatlichen Puffer</strong> für Mietausfälle, Reparaturen
+                            und Leerstandszeiten ein.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Steuerliche Vorteile -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Steuerliche Vorteile der Kapitalanlage-Immobilie</h2>
+                    <p>
+                        Als Vermieter können Sie eine Vielzahl von Kosten steuerlich geltend machen und so
+                        Ihre effektive Steuerbelastung deutlich senken:
+                    </p>
+
+                    <table class="steuer-table">
+                        <thead>
+                            <tr>
+                                <th>Steuerlicher Vorteil</th>
+                                <th>Beschreibung</th>
+                                <th>Absetzbar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Abschreibung (AfA)</strong></td>
+                                <td>2 % des Gebäudewerts jährlich (bei Neubau 3 %)</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Zinsen</strong></td>
+                                <td>Kreditzinsen für das Darlehen vollständig absetzbar</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Verwaltungskosten</strong></td>
+                                <td>Hausgeld, Verwaltung, Steuerberater</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reparaturen & Instandhaltung</strong></td>
+                                <td>Modernisierungen, Handwerkerkosten</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fahrtkosten</strong></td>
+                                <td>Fahrten zur Immobilie (0,30 €/km)</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Steuerfreier Verkauf</strong></td>
+                                <td>Nach 10 Jahren Haltedauer komplett steuerfrei</td>
+                                <td class="check">✔</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <h3>📋 Die 10-Jahres-Regel</h3>
+                        <p>
+                            Einer der größten steuerlichen Vorteile: Verkaufen Sie Ihre vermietete Immobilie
+                            <strong>erst nach 10 Jahren</strong>, ist der gesamte Veräußerungsgewinn
+                            <strong>steuerfrei</strong>. Das macht die Immobilie als langfristiges
+                            Investment besonders attraktiv.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vorteile Slider -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Weitere Vorteile der Kapitalanlage-Immobilie</h2>
+                    <div class="slider-container" id="immoSliderContainer">
+                        <button class="slider-btn slider-btn-prev" id="immoPrevBtn" aria-label="Zurück">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-wrapper">
+                            <div class="slider-track" id="immoSliderTrack">
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Inflationsschutz</h4>
+                                            <p>Sachwerte wie Immobilien steigen langfristig mit der Inflation.
+                                                Auch Mieteinnahmen können durch Indexmietverträge an die
+                                                Inflation gekoppelt werden.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="12" y1="1" x2="12" y2="23" />
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Passives Einkommen</h4>
+                                            <p>Monatliche Mieteinnahmen fließen auch dann, wenn Sie schlafen.
+                                                Mit einem guten Verwalter können Sie die Immobilie weitgehend
+                                                passiv betreiben.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                                <polyline points="17 6 23 6 23 12" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Altersvorsorge</h4>
+                                            <p>Eine schuldenfreie Mietwohnung im Rentenalter liefert dauerhaft
+                                                Einnahmen – eine ideale Ergänzung zur gesetzlichen Rente,
+                                                die allein oft nicht ausreicht.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                                                <line x1="2" y1="10" x2="22" y2="10" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Fremde zahlen Ihr Vermögen</h4>
+                                            <p>Im Idealfall finanzieren die Mieteinnahmen Ihre
+                                                Kreditrate vollständig. Sie bauen dadurch Vermögen auf,
+                                                ohne monatlich selbst Geld beisteuern zu müssen.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <circle cx="12" cy="12" r="6" />
+                                                <circle cx="12" cy="12" r="2" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Diversifikation</h4>
+                                            <p>Eine Immobilie ergänzt Aktien- und Fondsdepots ideal, da sie
+                                                gering mit dem Kapitalmarkt korreliert. Das senkt das
+                                                Gesamtrisiko Ihres Portfolios.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                                <polyline points="22 4 12 14.01 9 11.01" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Gestaltungsfreiheit</h4>
+                                            <p>Sie entscheiden: Wohnung kaufen, modernisieren, vermieten,
+                                                später selbst einziehen oder verkaufen. Die Immobilie bleibt
+                                                Ihr Sachwert – nicht der der Bank.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="slider-btn slider-btn-next" id="immoNextBtn" aria-label="Weiter">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-dots" id="immoDots">
+                            <button class="slider-dot active" data-index="0" aria-label="1"></button>
+                            <button class="slider-dot" data-index="1" aria-label="2"></button>
+                            <button class="slider-dot" data-index="2" aria-label="3"></button>
+                            <button class="slider-dot" data-index="3" aria-label="4"></button>
+                            <button class="slider-dot" data-index="4" aria-label="5"></button>
+                            <button class="slider-dot" data-index="5" aria-label="6"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen zur Kapitalanlage-Immobilie</h2>
+                    <div class="accordion">
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie viel Eigenkapital brauche ich?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Als Faustregel gilt: Sie sollten mindestens die <strong>Kaufnebenkosten</strong>
+                                        (ca. 8–12 % des Kaufpreises: Grunderwerbsteuer, Notar, Makler) aus
+                                        Eigenkapital bestreiten. Viele Käufer bringen 20–30 % des Kaufpreises mit,
+                                        um günstigere Konditionen zu erhalten.</p>
+                                    <p>Es gibt jedoch Modelle mit sehr geringem Eigenkapital – insbesondere wenn
+                                        der Cashflow stark positiv ist und die Bank das Vorhaben als solide
+                                        bewertet.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert bei Mietausfall oder Leerstand?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Leerstand und Mietausfall gehören zu den typischen Risiken. Planen Sie
+                                        vorsorglich mindestens <strong>1–2 Monatsnettomieten pro Jahr</strong> als
+                                        Reserve ein. Zusätzlich schützt eine
+                                        <strong>Mietverlust-Zusatzversicherung</strong>
+                                        vor dem kompletten Ausfall.
+                                    </p>
+                                    <p>In deutschen Großstädten mit angespanntem Wohnungsmarkt ist Leerstand
+                                        selten ein Problem – in ländlichen Regionen sollten Sie die
+                                        Nachfragesituation sorgfältig prüfen.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wann lohnt sich eine Kapitalanlage-Immobilie?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Eine Kapitalanlage-Immobilie lohnt sich besonders, wenn:</p>
+                                    <ul>
+                                        <li>Die <strong>Bruttomietrendite</strong> deutlich über dem Darlehenszins liegt
+                                        </li>
+                                        <li>Die Lage gute <strong>Wertsteigerungspotenziale</strong> aufweist</li>
+                                        <li>Sie einen <strong>langen Anlagehorizont</strong> (mind. 10 Jahre) mitbringen
+                                        </li>
+                                        <li>Sie bereit sind, Verwaltungsaufwand zu übernehmen oder zu delegieren</li>
+                                    </ul>
+                                    <p>Eine sorgfältige Standort- und Objektanalyse ist dabei entscheidend.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Neubau oder Bestand – was ist besser?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p><strong>Neubau</strong> bietet höhere Abschreibungssätze (3 % AfA), moderne
+                                        Ausstattung und geringen Renovierungsaufwand – aber zu höheren Kaufpreisen
+                                        und oft niedrigeren Anfangsrenditen.</p>
+                                    <p><strong>Bestand</strong> ist günstiger im Kaufpreis, bietet dadurch höhere
+                                        Anfangsrenditen, erfordert aber ggf. Investitionen in die
+                                        Modernisierung. Vorteil: Modernisierungskosten können ebenfalls
+                                        steuermindernd abgesetzt werden.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie läuft die Finanzierung einer Kapitalanlage ab?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Die Finanzierung läuft im Wesentlichen wie bei selbstgenutztem Wohneigentum:</p>
+                                    <ul>
+                                        <li>Eigenkapital + Bankdarlehen den Kaufpreis finanzieren</li>
+                                        <li>Monatliche Rate = Zinsen + Tilgung</li>
+                                        <li>Mieteinnahmen reduzieren die effektive monatliche Belastung</li>
+                                        <li>Zinsen sind als Werbungskosten steuerlich abzugsfähig</li>
+                                    </ul>
+                                    <p>Banken finanzieren Kapitalanlagen oft bis zu <strong>80–90 % des
+                                            Kaufpreises</strong>,
+                                        beurteilen das Vorhaben aber strenger als Eigennutzung – inklusive
+                                        Bonitätsprüfung und Bewertung der Mietertragsfähigkeit.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert nach 10 Jahren – kann ich einfach verkaufen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p><strong>Ja – und das ist steuerlich besonders attraktiv.</strong> Nach einer
+                                        Haltedauer von mindestens 10 Jahren ist der gesamte
+                                        <strong>Veräußerungsgewinn steuerfrei</strong> (§ 23 EStG, Spekulationsfrist).
+                                    </p>
+                                    <p>Achtung: Bis zu dieser Grenze wird der Gewinn als
+                                        <strong>privates Veräußerungsgeschäft</strong> mit dem persönlichen
+                                        Einkommensteuersatz versteuert. Planen Sie daher rechtzeitig, ob und wann
+                                        Sie verkaufen möchten.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Kapitalanlage Immobilien. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>Diese Seite bietet allgemeine Informationen zur Immobilie als Kapitalanlage. Für individuelle
+                Anlageberatung wenden Sie sich bitte an einen Finanzberater oder Steuerberater.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sidebar Toggle - Arbeitgeberförderung
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+        if (arrow && subMenu) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Sidebar Toggle - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Slider
+        let immoSlide = 0;
+        const immoTrack = document.getElementById('immoSliderTrack');
+        const immoDots = document.querySelectorAll('#immoDots .slider-dot');
+        const immoTotal = immoDots.length;
+
+        function immoGoTo(n) {
+            immoSlide = (n + immoTotal) % immoTotal;
+            immoTrack.style.transform = `translateX(-${immoSlide * 100}%)`;
+            immoDots.forEach((d, i) => d.classList.toggle('active', i === immoSlide));
+        }
+        document.getElementById('immoPrevBtn').addEventListener('click', () => immoGoTo(immoSlide - 1));
+        document.getElementById('immoNextBtn').addEventListener('click', () => immoGoTo(immoSlide + 1));
+        immoDots.forEach((d, i) => d.addEventListener('click', () => immoGoTo(i)));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+
+</html>

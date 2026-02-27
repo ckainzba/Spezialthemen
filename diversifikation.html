@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diversifikation – Nicht alles auf eine Karte setzen</title>
+    <meta name="description"
+        content="Diversifikation: Wie breite Streuung über Länder, Branchen und Anlageklassen das Risiko minimiert und warum globale ETFs die ideale Umsetzung sind.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Diversifikation Infografik ── */
+        .div-infographic {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem 1rem;
+            margin: 2rem auto;
+            overflow-x: auto;
+            max-width: fit-content;
+        }
+
+        .div-rows {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .div-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .div-col-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #023e84;
+            text-align: center;
+            max-width: 90px;
+        }
+
+        .div-segments {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            width: 80px;
+        }
+
+        .div-seg {
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: #fff;
+            padding: 0.3rem 0.2rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .div-result-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .div-result-label.red {
+            color: #c0392b;
+        }
+
+        .div-result-label.green {
+            color: #27ae60;
+        }
+
+        .div-vs {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #666;
+            align-self: center;
+            padding-bottom: 1.5rem;
+        }
+
+        /* ── Highlight box ── */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0fe, #dce8fd);
+            border-left: 4px solid #023e84;
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 0.5rem;
+            color: #023e84;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2"
+                            style="width: 1rem; height: 1rem; cursor: pointer; transform: rotate(180deg);"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu2">
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link active">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Vermögensanlage</span>
+                        <h1>Diversifikation</h1>
+                        <p class="hero-subtitle">
+                            Nicht alles auf eine Karte setzen – wer sein Kapital über viele Länder,
+                            Branchen und Anlageklassen streut, reduziert das Risiko, ohne auf Rendite
+                            verzichten zu müssen. Das ist <strong>das Fundament jeder klugen Geldanlage</strong>.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/diversifikation_hero.png" alt="Diversifikation Illustration"
+                            style="width:100%; max-width:340px; object-fit:contain;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Was ist Diversifikation? -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Was ist Diversifikation?</h2>
+                        <p>Das Grundprinzip, das Risiko und Rendite ins Gleichgewicht bringt</p>
+                    </div>
+                    <p>
+                        <strong>Diversifikation</strong> bedeutet, das investierte Kapital auf viele verschiedene
+                        Anlagen zu verteilen, anstatt alles in eine einzelne Aktie, eine Branche oder ein Land zu
+                        stecken. Das Ziel: Verluste in einem Bereich werden durch Gewinne in anderen Bereichen
+                        ausgeglichen – das Gesamtportfolio bleibt stabil.
+                    </p>
+                    <p>
+                        Das Prinzip basiert auf einer simplen mathematischen Erkenntnis: Unterschiedliche Anlagen
+                        entwickeln sich selten gleichzeitig in dieselbe Richtung. Während Tech-Aktien fallen, können
+                        Konsumgüteraktien steigen. Während Europa schwächelt, wächst Asien. Diese
+                        <strong>negative Korrelation</strong> zwischen Anlagen ist der Kern der Diversifikation.
+                    </p>
+
+                    <div class="info-box">
+                        <h3>💡 Der Grundsatz in einem Satz</h3>
+                        <p>
+                            Legen Sie nicht alle Eier in einen Korb – streuen Sie stattdessen über
+                            <strong>Tausende von Unternehmen weltweit</strong>, und kein einzelner Ausfall
+                            kann Ihr Vermögen ernsthaft gefährden.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grundlagen der Diversifikation -->
+            <section class="section section--alt">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Diversifikation im Portfolio: Die Grundlagen</h2>
+                        <p>Drei zentrale Konzepte für eine erfolgreiche Risikostreuung</p>
+                    </div>
+
+                    <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                        <!-- Systematisches vs. unsystematisches Risiko -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3>Systematisches vs. unsystematisches Risiko</h3>
+                            <p>
+                                <strong>Systematische Risiken</strong> (Marktrisiken wie globale Krisen oder
+                                Zinsänderungen) betreffen den gesamten Markt und lassen sich durch Diversifikation nicht
+                                beheben.
+                                <br><br>
+                                <strong>Unsystematische Risiken</strong> hingegen treffen nur einzelne Unternehmen oder
+                                Branchen. Durch die Streuung über verschiedene Anlagen können Sie diese
+                                unternehmensspezifischen Risiken minimieren oder sogar ganz ausgleichen.
+                            </p>
+                        </div>
+
+                        <!-- Korrelation und Diversifikation -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6" />
+                                    <polyline points="8 6 2 12 8 18" />
+                                </svg>
+                            </div>
+                            <h3>Korrelation und Diversifikation</h3>
+                            <p>
+                                Die Korrelation zeigt, wie sich Anlagen zueinander verhalten. Eine <strong>hohe positive
+                                    Korrelation</strong> (Anlagen steigen/fallen gleichzeitig) bietet kaum Vorteile für
+                                die Risikostreuung.
+                                <br><br>
+                                Eine <strong>geringe oder negative Korrelation</strong> ist hingegen ideal: Fällt eine
+                                Anlage, kann eine andere diese Verluste auffangen. Effektiv diversifizieren bedeutet
+                                also, Anlagen zu kombinieren, die unterschiedlich auf Risikofaktoren reagieren.
+                            </p>
+                        </div>
+
+                        <!-- Rebalancing als weitere Grundlage -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.37-5.37" />
+                                </svg>
+                            </div>
+                            <h3>Rebalancing</h3>
+                            <p>
+                                Ein diversifiziertes Portfolio ist kein statisches Gebilde. Das Konzept des
+                                <strong>Rebalancing</strong> ist entscheidend für den langfristigen Erfolg.
+                                <br><br>
+                                Es bedeutet, dass Sie Ihr Portfolio regelmäßig überprüfen und wieder auf die
+                                ursprüngliche Aufteilung zurückführen. So stellen Sie sicher, dass Ihr Portfolio stets
+                                Ihren Anlagezielen und Ihrer aktuellen Lebenssituation (z.B. Einkommen oder
+                                Familiensituation) entspricht.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Beispiel: Klumpenrisiko vs. Streuung -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center">Das Beispiel: Klumpenrisiko vs. breite Streuung</h2>
+                    <p class="text-center mb-xl">
+                        Wie eine Einzelaktie das Portfolio gefährdet – und wie Investmentfonds das verhindern
+                    </p>
+
+                    <p>
+                        Stellen Sie sich zwei Anleger vor, die beide <strong>10.000 €</strong> investieren.
+                        <strong>Herr Huber</strong> kauft ausschließlich Aktien eines deutschen Automobilherstellers.
+                        <strong>Frau Maier</strong> investiert denselben Betrag in einen globalen Investmentfonds mit
+                        über 1.600 Unternehmen aus 23 Ländern. Im Jahr 2025 bricht die Autobranche wegen
+                        Lieferengpässen und E-Mobilität-Unsicherheit ein:
+                    </p>
+
+                    <!-- Infografik -->
+                    <div class="div-infographic"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 2rem; width: 100%; box-sizing: border-box;">
+                        <div class="div-rows"
+                            style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; width: 100%;">
+
+                            <!-- Klumpenrisiko -->
+                            <div class="pie-container"
+                                style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="div-col-label"
+                                    style="font-size: 1rem; max-width: none; margin-bottom: 0.5rem;">Herr Huber<br><span
+                                        style="color:#666; font-weight:400; font-size:0.85rem">1 Aktie</span></div>
+                                <svg width="260" height="300" viewBox="-130 -150 260 300" style="overflow: visible;">
+                                    <!-- Outer decoration -->
+                                    <circle cx="0" cy="0" r="100" fill="none" stroke="#f0f4f8" stroke-width="12" />
+                                    <!-- Slice -->
+                                    <circle cx="0" cy="0" r="90" fill="#c0392b" stroke="#fff" stroke-width="2" />
+
+                                    <!-- Icon: Auto -->
+                                    <g stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="-11" y="-1" width="22" height="10" rx="2" />
+                                        <circle cx="-6" cy="9" r="2.5" />
+                                        <circle cx="6" cy="9" r="2.5" />
+                                        <path d="M -9 -1 L -6 -7 L 4 -7 L 9 -1" />
+                                    </g>
+
+                                    <!-- Label Line (Auto) -->
+                                    <g fill="none" stroke="#888" stroke-width="1">
+                                        <circle cx="-42.5" cy="-73.6" r="3" fill="#888" stroke="#fff"
+                                            stroke-width="1" />
+                                        <polyline points="-42.5,-73.6 -55,-95 -75,-95" />
+                                    </g>
+                                    <g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#333">
+                                        <text x="-82" y="-101" text-anchor="end">Automobil</text>
+                                        <text x="-82" y="-84" font-size="11" fill="#c0392b" text-anchor="end">−38
+                                            %</text>
+                                    </g>
+                                </svg>
+                                <div class="div-result-label red" style="margin-top: -1rem; font-size: 1rem;">= 6.200
+                                    €<br>−3.800 €</div>
+                            </div>
+
+                            <div class="div-vs" style="padding: 0 1rem; padding-bottom: 2rem;">vs.</div>
+
+                            <!-- Breit gestreut -->
+                            <div class="pie-container"
+                                style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="div-col-label"
+                                    style="font-size: 1rem; max-width: none; margin-bottom: 0.5rem;">Frau Maier<br><span
+                                        style="color:#666; font-weight:400; font-size:0.85rem">1.600+ Aktien</span>
+                                </div>
+                                <svg width="440" height="300" viewBox="-220 -150 440 300" style="overflow: visible;">
+                                    <defs>
+                                        <path id="pie-slice" d="M 0 0 L 0 -90 A 90 90 0 0 1 77.94 -45 Z" />
+                                    </defs>
+                                    <!-- Outer decoration -->
+                                    <circle cx="0" cy="0" r="100" fill="none" stroke="#f0f4f8" stroke-width="12" />
+
+                                    <g fill="none" stroke="#fff" stroke-width="2">
+                                        <!-- Slice 1: Tech -->
+                                        <use href="#pie-slice" fill="#023e84" />
+                                        <!-- Slice 2: Gesundheit -->
+                                        <use href="#pie-slice" transform="rotate(60)" fill="#1a56a0" />
+                                        <!-- Slice 3: Konsum -->
+                                        <use href="#pie-slice" transform="rotate(120)" fill="#3478c0" />
+                                        <!-- Slice 4: Energie -->
+                                        <use href="#pie-slice" transform="rotate(180)" fill="#5a9ad4" />
+                                        <!-- Slice 5: Sonstige -->
+                                        <use href="#pie-slice" transform="rotate(240)" fill="#b5c7d6" />
+                                        <!-- Slice 6: Auto -->
+                                        <use href="#pie-slice" transform="rotate(300)" fill="#c0392b" />
+                                    </g>
+
+                                    <!-- Icons inside slices -->
+                                    <g stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <!-- Tech (-60) -->
+                                        <g transform="translate(15.5, -59.6)">
+                                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                                            <rect x="9" y="9" width="6" height="6" />
+                                            <line x1="9" y1="1" x2="9" y2="4" />
+                                            <line x1="15" y1="1" x2="15" y2="4" />
+                                            <line x1="9" y1="20" x2="9" y2="23" />
+                                            <line x1="15" y1="20" x2="15" y2="23" />
+                                            <line x1="20" y1="9" x2="23" y2="9" />
+                                            <line x1="20" y1="14" x2="23" y2="14" />
+                                            <line x1="1" y1="9" x2="4" y2="9" />
+                                            <line x1="1" y1="14" x2="4" y2="14" />
+                                        </g>
+                                        <!-- Gesundheit (0) -->
+                                        <g transform="translate(43, -12)">
+                                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                        </g>
+                                        <!-- Konsum (60) -->
+                                        <g transform="translate(15.5, 35.6)">
+                                            <circle cx="9" cy="21" r="1" />
+                                            <circle cx="20" cy="21" r="1" />
+                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                        </g>
+                                        <!-- Energie (120) -->
+                                        <g transform="translate(-39.5, 35.6)">
+                                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                                        </g>
+                                        <!-- Sonstige (180) -->
+                                        <g transform="translate(-67, -12)">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="M12 2v10l8 5" />
+                                        </g>
+                                        <!-- Auto (240) -->
+                                        <g transform="translate(-39.5, -59.6)">
+                                            <rect x="-1" y="9" width="22" height="10" rx="2" />
+                                            <circle cx="4" cy="19" r="2.5" />
+                                            <circle cx="16" cy="19" r="2.5" />
+                                            <path d="M 1 9 L 4 3 L 14 3 L 19 9" />
+                                        </g>
+                                    </g>
+
+                                    <!-- Labels and connecting lines -->
+                                    <g fill="none" stroke="#888" stroke-width="1">
+                                        <!-- Tech (-60) -->
+                                        <circle cx="42.5" cy="-73.6" r="3" fill="#888" stroke="#fff" stroke-width="1" />
+                                        <polyline points="42.5,-73.6 55,-95 125,-95" />
+
+                                        <!-- Gesundheit (0) -->
+                                        <circle cx="85" cy="0" r="3" fill="#888" stroke="#fff" stroke-width="1" />
+                                        <polyline points="85,0 125,0" />
+
+                                        <!-- Konsum (60) -->
+                                        <circle cx="42.5" cy="73.6" r="3" fill="#888" stroke="#fff" stroke-width="1" />
+                                        <polyline points="42.5,73.6 55,95 125,95" />
+
+                                        <!-- Energie (120) -->
+                                        <circle cx="-42.5" cy="73.6" r="3" fill="#888" stroke="#fff" stroke-width="1" />
+                                        <polyline points="-42.5,73.6 -55,95 -125,95" />
+
+                                        <!-- Sonstige (180) -->
+                                        <circle cx="-85" cy="0" r="3" fill="#888" stroke="#fff" stroke-width="1" />
+                                        <polyline points="-85,0 -125,0" />
+
+                                        <!-- Auto (240) -->
+                                        <circle cx="-42.5" cy="-73.6" r="3" fill="#888" stroke="#fff"
+                                            stroke-width="1" />
+                                        <polyline points="-42.5,-73.6 -55,-95 -125,-95" />
+                                    </g>
+
+                                    <!-- Texts -->
+                                    <g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#333">
+                                        <text x="132" y="-101" text-anchor="start">Technologie</text>
+                                        <text x="132" y="-84" font-size="11" fill="#27ae60" text-anchor="start">+18
+                                            %</text>
+
+                                        <text x="132" y="-6" text-anchor="start">Gesundheit</text>
+                                        <text x="132" y="11" font-size="11" fill="#27ae60" text-anchor="start">+12
+                                            %</text>
+
+                                        <text x="132" y="89" text-anchor="start">Konsumgüter</text>
+                                        <text x="132" y="106" font-size="11" fill="#27ae60" text-anchor="start">+8
+                                            %</text>
+
+                                        <text x="-132" y="89" text-anchor="end">Energie</text>
+                                        <text x="-132" y="106" font-size="11" fill="#27ae60" text-anchor="end">+5
+                                            %</text>
+
+                                        <text x="-132" y="-6" text-anchor="end">Sonstige</text>
+                                        <text x="-132" y="11" font-size="11" fill="#27ae60" text-anchor="end">+3
+                                            %</text>
+
+                                        <text x="-132" y="-101" text-anchor="end">Automobil</text>
+                                        <text x="-132" y="-84" font-size="11" fill="#c0392b" text-anchor="end">−38
+                                            %</text>
+                                    </g>
+                                </svg>
+                                <div class="div-result-label green" style="margin-top: -1rem; font-size: 1rem;">= 10.700
+                                    €<br>+700 €</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🏆 Das Ergebnis</h3>
+                        <p>
+                            Herr Huber verliert <strong>3.800 €</strong> – über ein Drittel seines Kapitals –
+                            weil er auf eine Branche gewettet hat. Frau Maier erzielt trotz des Autobranche-Einbruchs
+                            ein <strong>Plus von 700 €</strong>, weil andere Sektoren den Verlust mehr als ausgleichen.
+                        </p>
+                        <p style="margin-top:0.5rem;">
+                            Genau das ist Diversifikation: Nicht die Prognose, welche Branche gewinnt –
+                            sondern die <strong>Sicherheit, dass das Portfolio als Ganzes stabil bleibt</strong>,
+                            egal was in einem Einzelbereich passiert.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dimensionen der Diversifikation / Slider -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Die Dimensionen der Diversifikation</h2>
+                    <div class="slider-container" id="divSliderContainer">
+                        <button class="slider-btn slider-btn-prev" id="divPrevBtn" aria-label="Zurück">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-wrapper">
+                            <div class="slider-track" id="divSliderTrack">
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <line x1="2" y1="12" x2="22" y2="12" />
+                                                <path
+                                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Geografische Streuung</h4>
+                                            <p>Investieren Sie weltweit – USA, Europa, Asien und Schwellenländer.
+                                                Die Wirtschaft eines einzelnen Landes kann einbrechen, während
+                                                die Weltwirtschaft insgesamt wächst. Ein globaler Investmentfonds bildet
+                                                automatisch alle wichtigen Regionen ab.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="3" width="6" height="18" rx="1" />
+                                                <rect x="9" y="8" width="6" height="13" rx="1" />
+                                                <rect x="16" y="12" width="6" height="9" rx="1" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Sektorale Streuung</h4>
+                                            <p>Verteilen Sie über Branchen: Technologie, Gesundheit, Finanzen,
+                                                Energie, Konsumgüter, Industrie und mehr. Wenn eine Branche
+                                                leidet – z.B. Banken in Finanzkrisen – profitieren andere
+                                                Bereiche oft gleichzeitig davon.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="12" y1="1" x2="12" y2="23" />
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Anlageklassen-Streuung</h4>
+                                            <p>Kombinieren Sie verschiedene Anlageklassen: Aktien, Anleihen,
+                                                Immobilienfonds (REITs), Rohstoffe. Sie entwickeln sich in
+                                                verschiedenen Marktphasen unterschiedlich und dämpfen so
+                                                die Gesamtschwankung des Portfolios.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <polyline points="12 6 12 12 16 14" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Zeitliche Streuung</h4>
+                                            <p>Investieren Sie nicht alles auf einmal, sondern in regelmäßigen
+                                                Abständen – das ist der Cost-Average-Effekt in Kombination mit
+                                                Diversifikation. Sie kaufen automatisch zu verschiedenen
+                                                Kursniveaus und reduzieren das Timing-Risiko.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Währungsstreuung</h4>
+                                            <p>Global diversifizierte Investmentfonds investieren in Unternehmen, die in
+                                                Dollar, Yen, Pfund und vielen anderen Währungen wirtschaften.
+                                                Schwäche des Euro wird so teilweise durch andere Währungsstärken
+                                                ausgeglichen.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                                            </svg></div>
+                                        <div class="feature-content">
+                                            <h4>Unternehmensgröße</h4>
+                                            <p>Mischen Sie Large Caps (Großkonzerne), Mid Caps und Small Caps
+                                                (kleinere Unternehmen). Kleinere Unternehmen haben oft mehr
+                                                Wachstumspotenzial, größere mehr Stabilität – zusammen
+                                                ergänzen sie sich optimal.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="slider-btn slider-btn-next" id="divNextBtn" aria-label="Weiter">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="slider-dots" id="divDots">
+                            <button class="slider-dot active" data-index="0" aria-label="1"></button>
+                            <button class="slider-dot" data-index="1" aria-label="2"></button>
+                            <button class="slider-dot" data-index="2" aria-label="3"></button>
+                            <button class="slider-dot" data-index="3" aria-label="4"></button>
+                            <button class="slider-dot" data-index="4" aria-label="5"></button>
+                            <button class="slider-dot" data-index="5" aria-label="6"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section section--alt">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen zur Diversifikation</h2>
+                    <div class="accordion">
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie viele Aktien brauche ich für eine gute Diversifikation?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Studien zeigen, dass das meiste <strong>unsystematische Risiko</strong>
+                                        (das Risiko einzelner Unternehmen) bei etwa <strong>20–30 sorgfältig
+                                            ausgewählten Aktien aus verschiedenen Branchen</strong> eliminiert
+                                        werden kann.</p>
+                                    <p>Praktisch einfacher und sicherer ist ein globaler ETF: Der MSCI World
+                                        enthält rund <strong>1.600 Unternehmen</strong>, der FTSE All-World
+                                        sogar über 4.000 – aus allen Branchen und Regionen. Das ist maximale
+                                        Diversifikation mit einem einzigen Produkt.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Ist ein MSCI World ETF wirklich ausreichend diversifiziert?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Für die meisten Anleger: <strong>Ja</strong>. Der MSCI World deckt über
+                                        1.600 Unternehmen aus 23 Industrieländern ab – das sind etwa 85 % der
+                                        investierbaren Marktkapitalisierung der Industriestaaten.</p>
+                                    <p>Wer noch breiter streuen möchte, kann auf den <strong>FTSE All-World</strong>
+                                        oder <strong>MSCI ACWI</strong> ausweichen, der auch Schwellenländer
+                                        (Emerging Markets) wie China, Indien und Brasilien einschließt und damit
+                                        rund 90 % des globalen Aktienmarkts abbildet.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Schützt Diversifikation vor einem kompletten Marktcrash?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Nein – Diversifikation eliminiert das sogenannte <strong>systematische
+                                            Risiko</strong> (Marktrisiko) nicht. In einem globalen Crash wie
+                                        2008 oder März 2020 fallen nahezu alle Aktien gleichzeitig, unabhängig
+                                        von der Streuung.</p>
+                                    <p>Was Diversifikation leistet: Sie schützt vor dem <strong>Totalverlust</strong>
+                                        durch einzelne Unternehmen oder Branchen, sorgt für eine schnellere
+                                        Erholung und verhindert, dass ein einzelnes Ereignis Ihr gesamtes
+                                        Vermögen vernichten kann. Gegen systemische Krisen hilft ein langer
+                                        Anlagehorizont am besten – historisch hat sich der Markt immer erholt.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Kann man auch zu stark diversifizieren?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Theoretisch ja – dieses Phänomen nennt sich <strong>„Diworsification"</strong>
+                                        (ein Wortspiel aus „diversification" und „worse"). Es tritt auf, wenn man so
+                                        viele ETFs und Produkte kombiniert, dass man ungewollt dieselben Positionen
+                                        mehrfach hält und dabei hohe Kosten produziert.</p>
+                                    <p>In der Praxis reichen <strong>ein bis zwei globale ETFs</strong> für eine
+                                        optimale Diversifikation aus. Mehr als drei bis vier Positionen machen das
+                                        Portfolio meist nur komplizierter – ohne den Mehrwert wirklich zu steigern.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Sollte ich auch Anleihen in mein Portfolio aufnehmen?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Anleihen (Staatsanleihen, Unternehmensanleihen) gelten als stabilisierendes
+                                        Element in einem Portfolio, weil sie in Aktien-Crashs oft im Wert steigen
+                                        oder zumindest stabil bleiben. Die klassische <strong>60/40-Aufteilung</strong>
+                                        (60 % Aktien, 40 % Anleihen) galt jahrzehntelang als Standard für
+                                        ausgewogene Portfolios.</p>
+                                    <p>Für junge Anleger mit langem Horizont (über 15 Jahre) überwiegen jedoch
+                                        die <strong>höheren Renditechancen von Aktien</strong>. Mit zunehmendem
+                                        Alter und kürzer werdendem Anlagehorizont kann ein wachsender Anleihenanteil
+                                        sinnvoll sein, um das Portfolio stabiler zu machen.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie setze ich Diversifikation konkret mit ETFs um?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Der einfachste Weg ist ein <strong>einziger globaler ETF</strong>, der den
+                                        gesamten Weltaktienmarkt abbildet – z.B. MSCI World, FTSE All-World oder
+                                        MSCI ACWI IMI. Monatlicher Sparplan ab bereits 25 € genügt.</p>
+                                    <p>Wer etwas mehr steuern möchte, kann das sogenannte
+                                        <strong>70/30-Portfolio</strong> nutzen: 70 % MSCI World (Industrieländer)
+                                        + 30 % MSCI Emerging Markets (Schwellenländer). Das deckt noch breiter
+                                        ab und gibt Schwellenländern ein höheres Gewicht als im MSCI ACWI.
+                                        Alles darüber hinaus ist für die meisten Privatanleger unnötig komplex.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        /* Sidebar toggles */
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+        if (arrow && subMenu) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        /* Slider */
+        let divSlide = 0;
+        const divTrack = document.getElementById('divSliderTrack');
+        const divDots = document.querySelectorAll('#divDots .slider-dot');
+        const divTotal = divDots.length;
+
+        function divGoTo(n) {
+            divSlide = (n + divTotal) % divTotal;
+            divTrack.style.transform = `translateX(-${divSlide * 100}%)`;
+            divDots.forEach((d, i) => d.classList.toggle('active', i === divSlide));
+        }
+        document.getElementById('divPrevBtn').addEventListener('click', () => divGoTo(divSlide - 1));
+        document.getElementById('divNextBtn').addEventListener('click', () => divGoTo(divSlide + 1));
+        divDots.forEach((d, i) => d.addEventListener('click', () => divGoTo(i)));
+
+        /* Accordion */
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
