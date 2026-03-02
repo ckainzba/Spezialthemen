@@ -99,6 +99,666 @@
             color: #023e84;
         }
     </style>
+
+    <!-- Portfolio Simulator Dependencies -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.12.2/umd/Recharts.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* ── Simulator: Scoped Light Theme ── */
+        .sim-wrap {
+            --sim-bg: #f8fafc;
+            --sim-card: #ffffff;
+            --sim-border: #e2e8f0;
+            --sim-text: #1e293b;
+            --sim-text-2: #475569;
+            --sim-text-muted: #94a3b8;
+            --sim-accent: #023e84;
+            --sim-accent-light: #3b82f6;
+            --sim-green: #059669;
+            --sim-amber: #d97706;
+            --sim-red: #dc2626;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-layout {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 900px) {
+            .sim-wrap .sim-layout {
+                flex-direction: column;
+            }
+        }
+
+        /* Sidebar */
+        .sim-wrap .sim-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 900px) {
+            .sim-wrap .sim-sidebar {
+                width: 100%;
+            }
+        }
+
+        .sim-wrap .sim-card {
+            background: var(--sim-card);
+            border: 1px solid var(--sim-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .sim-wrap .sim-card-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--sim-border);
+            background: #f1f5f9;
+        }
+
+        .sim-wrap .sim-card-header h3 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--sim-accent);
+            margin: 0;
+        }
+
+        .sim-wrap .sim-card-body {
+            padding: 14px;
+        }
+
+        /* Asset cards */
+        .sim-wrap .sim-asset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .sim-wrap .sim-asset-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1.5px solid var(--sim-border);
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.18s;
+            text-align: left;
+            width: 100%;
+            color: inherit;
+            font-family: inherit;
+        }
+
+        .sim-wrap .sim-asset-card:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .sim-wrap .sim-asset-card.selected {
+            border-color: var(--asset-color, #023e84);
+            background: color-mix(in srgb, var(--asset-color, #023e84) 8%, #fff);
+        }
+
+        .sim-wrap .sim-checkbox {
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            border: 2px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.18s;
+        }
+
+        .sim-wrap .sim-asset-card.selected .sim-checkbox {
+            background: var(--asset-color, #023e84);
+            border-color: transparent;
+        }
+
+        .sim-wrap .sim-asset-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sim-wrap .sim-asset-name {
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-asset-sub {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-top: 1px;
+        }
+
+        .sim-wrap .sim-asset-desc {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-top: 3px;
+        }
+
+        .sim-wrap .sim-asset-metrics {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .sim-wrap .sim-metric-return {
+            font-size: 11px;
+            color: var(--sim-green);
+            font-weight: 600;
+        }
+
+        .sim-wrap .sim-metric-vol {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+        }
+
+        /* Stats */
+        .sim-wrap .sim-stats-section {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--sim-border);
+        }
+
+        .sim-wrap .sim-stats-title {
+            font-size: 10px;
+            color: var(--sim-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sim-wrap .sim-stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3px 0;
+        }
+
+        .sim-wrap .sim-stat-label {
+            font-size: 12px;
+            color: var(--sim-text-2);
+        }
+
+        .sim-wrap .sim-stat-value {
+            font-size: 12px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sim-wrap .sim-info-box {
+            margin-top: 10px;
+            padding: 9px 11px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            font-size: 11px;
+            color: var(--sim-text-2);
+            line-height: 1.5;
+        }
+
+        /* Badges */
+        .sim-wrap .sim-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 12px;
+        }
+
+        .sim-wrap .sim-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .sim-wrap .sim-badge-crash {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+        }
+
+        .sim-wrap .sim-badge-portfolio {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+
+        .sim-wrap .sim-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .sim-wrap .sim-badge-dot.pulse {
+            animation: simPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes simPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .5;
+                transform: scale(1.4)
+            }
+        }
+
+        /* Main content */
+        .sim-wrap .sim-main {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Chart */
+        .sim-wrap .sim-chart-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--sim-accent);
+            margin-bottom: 2px;
+        }
+
+        .sim-wrap .sim-chart-sub {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-bottom: 14px;
+        }
+
+        .sim-wrap .sim-chart-empty {
+            height: 360px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sim-text-muted);
+            font-size: 13px;
+            border: 1.5px dashed #e2e8f0;
+            border-radius: 12px;
+        }
+
+        /* Tooltip */
+        .sim-wrap .sim-tooltip {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px 13px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+            min-width: 170px;
+            font-size: 12px;
+        }
+
+        .sim-wrap .sim-tooltip-header {
+            color: var(--sim-accent);
+            font-weight: 700;
+            font-size: 11px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 7px;
+            margin-bottom: 7px;
+        }
+
+        .sim-wrap .sim-tooltip-crash {
+            color: #dc2626;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .sim-wrap .sim-tooltip-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 2px 0;
+        }
+
+        .sim-wrap .sim-tooltip-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--sim-text-2);
+        }
+
+        .sim-wrap .sim-tooltip-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .sim-wrap .sim-tooltip-value {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Explanation */
+        .sim-wrap .sim-explain {
+            display: flex;
+            gap: 14px;
+        }
+
+        .sim-wrap .sim-explain-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .sim-wrap .sim-explain-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--sim-accent);
+            margin-bottom: 6px;
+        }
+
+        .sim-wrap .sim-explain-text {
+            color: var(--sim-text-2);
+            font-size: 13px;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .sim-wrap .sim-explain-text strong {
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-explain-text em {
+            color: var(--sim-accent-light);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Table */
+        .sim-wrap .sim-table-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-table-sub {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-top: 2px;
+        }
+
+        .sim-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sim-wrap thead th {
+            text-align: left;
+            padding: 10px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #fff;
+            background: var(--sim-accent);
+            white-space: nowrap;
+        }
+
+        .sim-wrap thead th:not(:first-child) {
+            text-align: right;
+        }
+
+        .sim-wrap tbody td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 13px;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap tbody td:not(:first-child) {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+        }
+
+        .sim-wrap tbody tr:hover td {
+            background: #f8fafc;
+        }
+
+        .sim-wrap tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .sim-wrap .sim-portfolio-row td {
+            background: #eff6ff;
+            border-top: 2px solid #bfdbfe !important;
+        }
+
+        .sim-wrap .sim-portfolio-row td:first-child {
+            font-weight: 700;
+            color: var(--sim-accent);
+        }
+
+        .sim-wrap .sim-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .sim-wrap .sim-color-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Legend + disclaimer */
+        .sim-wrap .sim-legend-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .sim-wrap .sim-tag {
+            padding: 3px 9px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            font-size: 11px;
+            color: var(--sim-text-muted);
+        }
+
+        .sim-wrap .sim-disclaimer {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Weight sliders */
+        .sim-wrap .sim-slider-section {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--sim-border);
+        }
+
+        .sim-wrap .sim-slider-section-title {
+            font-size: 10px;
+            color: var(--sim-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sim-wrap .sim-slider-row {
+            margin-bottom: 9px;
+        }
+
+        .sim-wrap .sim-slider-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .sim-wrap .sim-slider-asset-name {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-slider-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .sim-wrap .sim-slider-pct {
+            font-size: 11px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            min-width: 34px;
+            text-align: right;
+        }
+
+        .sim-wrap input[type=range].sim-weight-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: #e2e8f0;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .sim-wrap input[type=range].sim-weight-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--sim-thumb-color, #023e84);
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.12s;
+        }
+
+        .sim-wrap input[type=range].sim-weight-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .sim-wrap .sim-weight-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding: 7px 10px;
+            border-radius: 7px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+        }
+
+        .sim-wrap .sim-weight-total-label {
+            font-size: 11px;
+            color: var(--sim-text-2);
+            font-weight: 500;
+        }
+
+        .sim-wrap .sim-weight-total-value {
+            font-size: 12px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            color: #059669;
+        }
+
+        .sim-wrap .sim-btn-row {
+            display: flex;
+            gap: 5px;
+            margin-top: 7px;
+        }
+
+        .sim-wrap .sim-reset-btn {
+            flex: 1;
+            padding: 6px;
+            border-radius: 7px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            color: var(--sim-text-2);
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .sim-wrap .sim-reset-btn:hover {
+            background: #e2e8f0;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-mvp-btn {
+            flex: 1;
+            padding: 6px;
+            border-radius: 7px;
+            border: 1px solid #bfdbfe;
+            background: #eff6ff;
+            color: var(--sim-accent);
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .sim-wrap .sim-mvp-btn:hover {
+            background: #dbeafe;
+            color: #1e3a8a;
+            border-color: #93c5fd;
+        }
+
+        /* Recharts light overrides */
+        .sim-wrap .recharts-cartesian-grid-horizontal line,
+        .sim-wrap .recharts-cartesian-grid-vertical line {
+            stroke: rgba(0, 0, 0, 0.06) !important;
+        }
+
+        .sim-wrap .recharts-default-legend .recharts-legend-item-text {
+            color: #475569 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -528,8 +1188,9 @@
                         </div>
                     </div>
 
-                    <div class="highlight-box">
-                        <h3>🏆 Das Ergebnis</h3>
+                    <div
+                        style="background: #fff; border-left: 4px solid #023e84; border-radius: 0 0.5rem 0.5rem 0; padding: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-top: 1.5rem;">
+                        <h3 style="color: #023e84; margin-bottom: 0.5rem;">🏆 Das Ergebnis</h3>
                         <p>
                             Herr Huber verliert <strong>3.800 €</strong> – über ein Drittel seines Kapitals –
                             weil er auf eine Branche gewettet hat. Frau Maier erzielt trotz des Autobranche-Einbruchs
@@ -686,6 +1347,34 @@
                     </div>
                 </div>
             </section>
+
+            <!-- ── Portfolio Simulator ── -->
+            <section class="section"
+                style="background: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+                <div class="container" style="max-width: 1360px;">
+                    <div class="text-center mb-xl">
+                        <h2>Interaktiver Portfolio-Simulator</h2>
+                        <p>Wählen Sie Anlageklassen aus und beobachten Sie live, wie Gewichtung und Korrelation Rendite
+                            und Risiko Ihres Portfolios beeinflussen.</p>
+                    </div>
+                    <div id="simulator-root">
+                        <div
+                            style="display:flex;align-items:center;justify-content:center;height:200px;color:#94a3b8;gap:12px;">
+                            <div
+                                style="width:28px;height:28px;border:3px solid #e2e8f0;border-top-color:#023e84;border-radius:50%;animation:simSpin 0.8s linear infinite;">
+                            </div>
+                            Lade Simulator…
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <style>
+                @keyframes simSpin {
+                    to {
+                        transform: rotate(360deg)
+                    }
+                }
+            </style>
 
             <!-- FAQ -->
             <section class="section section--alt">
@@ -872,6 +1561,478 @@
             });
         });
     </script>
+
+    <!-- ── Portfolio Simulator React App ── -->
+    <script type="text/babel" data-presets="react">
+        const {
+            LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+            Legend, ResponsiveContainer, ReferenceLine
+        } = Recharts;
+        const { useState, useMemo, useCallback } = React;
+
+        const SIM_ASSETS = [
+            { id: 'msci', label: 'MSCI World', sub: 'Basis-Investment', ret: 0.126, vol: 0.14, color: '#64748b', icon: '🌍', desc: '+227% in 10 Jahren — der globale Standard' },
+            { id: 'usTech', label: 'US-Tech Aktien', sub: 'Nasdaq-100 (real)', ret: 0.162, vol: 0.22, color: '#3b82f6', icon: '🇺🇸', desc: '+497% in 10 Jahren — echte Daten' },
+            { id: 'europa', label: 'Europa Aktien', sub: 'STOXX 600 ETF (real)', ret: 0.067, vol: 0.16, color: '#10b981', icon: '🇪🇺', desc: '+92% in 10 Jahren — moderate Volatilität' },
+            { id: 'anleihen', label: 'Staatsanleihen', sub: 'Global Bond ETF (real)', ret: 0.005, vol: 0.05, color: '#f59e0b', icon: '📜', desc: 'Kaum Ertrag, neg. Korrelation 2020' },
+            { id: 'gold', label: 'Gold', sub: 'Gold Spot USD (real)', ret: 0.147, vol: 0.13, color: '#d97706', icon: '🥇', desc: '+334% — sicherer Hafen bei Krisen' },
+            { id: 'immo', label: 'Immobilienfonds', sub: 'Global REITs ETF (real)', ret: 0.034, vol: 0.18, color: '#a78bfa', icon: '🏢', desc: '+41% — COVID-Crash deutlich sichtbar' },
+        ];
+
+        // Echte historische Monatsdaten (Jan 2016 – Jan 2026)
+        // Quellen: Nasdaq-100, STOXX600 ETF (EXSA.DE), Vanguard BND, Gold Spot (XAU/USD), Global REITs (REET.US)
+        const SIM_REAL_DATA = [
+            { month: 0, label: '2016-01', msci: 100, usTech: 100.00, europa: 100.00, anleihen: 100.00, gold: 100.00, immo: 100.00 },
+            { month: 1, label: '2016-02', msci: 99.42, usTech: 98.18, europa: 96.29, anleihen: 100.86, gold: 110.84, immo: 100.57 },
+            { month: 2, label: '2016-03', msci: 106.15, usTech: 104.78, europa: 102.85, anleihen: 101.74, gold: 110.31, immo: 109.99 },
+            { month: 3, label: '2016-04', msci: 107.53, usTech: 101.45, europa: 102.28, anleihen: 102.16, gold: 115.69, immo: 109.36 },
+            { month: 4, label: '2016-05', msci: 108.15, usTech: 105.72, europa: 101.43, anleihen: 102.17, gold: 108.77, immo: 109.99 },
+            { month: 5, label: '2016-06', msci: 107.45, usTech: 103.24, europa: 91.44, anleihen: 104.25, gold: 118.27, immo: 115.17 },
+            { month: 6, label: '2016-07', msci: 111.8, usTech: 110.54, europa: 98.58, anleihen: 104.84, gold: 121.00, immo: 120.25 },
+            { month: 7, label: '2016-08', msci: 112.18, usTech: 111.50, europa: 100.00, anleihen: 104.52, gold: 117.10, immo: 116.62 },
+            { month: 8, label: '2016-09', msci: 112.5, usTech: 113.94, europa: 100.86, anleihen: 104.63, gold: 117.89, immo: 115.33 },
+            { month: 9, label: '2016-10', msci: 110.26, usTech: 112.20, europa: 97.14, anleihen: 103.65, gold: 114.22, immo: 108.14 },
+            { month: 10, label: '2016-11', msci: 111.96, usTech: 112.41, europa: 100.86, anleihen: 101.12, gold: 104.98, immo: 105.08 },
+            { month: 11, label: '2016-12', msci: 114.29, usTech: 113.64, europa: 103.71, anleihen: 101.32, gold: 102.97, immo: 109.30 },
+            { month: 12, label: '2017-01', msci: 117.46, usTech: 119.56, europa: 104.57, anleihen: 101.50, gold: 108.31, immo: 109.17 },
+            { month: 13, label: '2017-02', msci: 120.54, usTech: 124.55, europa: 105.14, anleihen: 102.13, gold: 111.74, immo: 112.42 },
+            { month: 14, label: '2017-03', msci: 121.78, usTech: 127.02, europa: 109.04, anleihen: 102.09, gold: 111.59, immo: 110.81 },
+            { month: 15, label: '2017-04', msci: 123.83, usTech: 130.46, europa: 111.03, anleihen: 102.90, gold: 113.46, immo: 111.33 },
+            { month: 16, label: '2017-05', msci: 126.42, usTech: 135.27, europa: 112.91, anleihen: 103.63, gold: 113.50, immo: 111.38 },
+            { month: 17, label: '2017-06', msci: 126.91, usTech: 131.94, europa: 110.04, anleihen: 103.68, gold: 111.07, immo: 112.47 },
+            { month: 18, label: '2017-07', msci: 129.99, usTech: 137.40, europa: 109.81, anleihen: 104.10, gold: 113.57, immo: 114.66 },
+            { month: 19, label: '2017-08', msci: 130.1, usTech: 139.93, europa: 109.02, anleihen: 104.99, gold: 118.16, immo: 114.40 },
+            { month: 20, label: '2017-09', msci: 132.85, usTech: 139.71, europa: 113.06, anleihen: 104.50, gold: 114.57, immo: 114.00 },
+            { month: 21, label: '2017-10', msci: 135.68, usTech: 146.00, europa: 114.72, anleihen: 104.48, gold: 113.75, immo: 112.77 },
+            { month: 22, label: '2017-11', msci: 138.33, usTech: 148.73, europa: 112.77, anleihen: 104.36, gold: 114.07, immo: 115.97 },
+            { month: 23, label: '2017-12', msci: 140.52, usTech: 149.45, europa: 113.71, anleihen: 104.93, gold: 116.61, immo: 117.51 },
+            { month: 24, label: '2018-01', msci: 147.8, usTech: 162.40, europa: 116.99, anleihen: 103.62, gold: 120.35, immo: 115.70 },
+            { month: 25, label: '2018-02', msci: 141.36, usTech: 160.17, europa: 110.95, anleihen: 102.55, gold: 117.94, immo: 108.10 },
+            { month: 26, label: '2018-03', msci: 138.96, usTech: 153.79, europa: 108.90, anleihen: 103.26, gold: 118.59, immo: 111.81 },
+            { month: 27, label: '2018-04', msci: 139.98, usTech: 154.36, europa: 113.67, anleihen: 102.38, gold: 117.74, immo: 112.90 },
+            { month: 28, label: '2018-05', msci: 140.92, usTech: 162.83, europa: 113.98, anleihen: 103.08, gold: 116.18, immo: 115.53 },
+            { month: 29, label: '2018-06', msci: 141.13, usTech: 164.54, europa: 113.36, anleihen: 103.03, gold: 112.06, immo: 118.29 },
+            { month: 30, label: '2018-07', msci: 145.37, usTech: 168.99, europa: 117.04, anleihen: 102.99, gold: 109.42, immo: 119.36 },
+            { month: 31, label: '2018-08', msci: 147.03, usTech: 178.87, europa: 114.43, anleihen: 103.68, gold: 107.32, immo: 121.23 },
+            { month: 32, label: '2018-09', msci: 148.13, usTech: 178.24, europa: 114.81, anleihen: 103.12, gold: 106.65, immo: 118.68 },
+            { month: 33, label: '2018-10', msci: 137.56, usTech: 162.81, europa: 108.36, anleihen: 102.23, gold: 108.74, immo: 114.67 },
+            { month: 34, label: '2018-11', msci: 139.11, usTech: 162.39, europa: 107.36, anleihen: 102.84, gold: 109.34, immo: 118.99 },
+            { month: 35, label: '2018-12', msci: 128.48, usTech: 147.91, europa: 101.14, anleihen: 104.79, gold: 114.76, immo: 111.34 },
+            { month: 36, label: '2019-01', msci: 138.4, usTech: 161.41, europa: 107.88, anleihen: 105.96, gold: 118.22, immo: 124.04 },
+            { month: 37, label: '2019-02', msci: 142.52, usTech: 165.86, europa: 112.23, anleihen: 105.87, gold: 117.42, immo: 124.42 },
+            { month: 38, label: '2019-03', msci: 144.64, usTech: 172.44, europa: 114.76, anleihen: 107.92, gold: 115.63, immo: 128.30 },
+            { month: 39, label: '2019-04', msci: 150.01, usTech: 181.84, europa: 119.15, anleihen: 107.90, gold: 114.83, immo: 127.43 },
+            { month: 40, label: '2019-05', msci: 141.33, usTech: 166.56, europa: 113.43, anleihen: 109.86, gold: 116.84, immo: 127.01 },
+            { month: 41, label: '2019-06', msci: 150.28, usTech: 179.26, europa: 118.59, anleihen: 111.22, gold: 126.25, immo: 129.34 },
+            { month: 42, label: '2019-07', msci: 151.67, usTech: 183.41, europa: 118.77, anleihen: 111.38, gold: 126.49, immo: 129.83 },
+            { month: 43, label: '2019-08', msci: 148.34, usTech: 179.72, europa: 117.32, anleihen: 114.46, gold: 136.33, immo: 133.36 },
+            { month: 44, label: '2019-09', msci: 151.54, usTech: 181.09, europa: 121.10, anleihen: 113.81, gold: 131.77, immo: 137.46 },
+            { month: 45, label: '2019-10', msci: 155.41, usTech: 188.88, europa: 122.81, anleihen: 114.16, gold: 135.39, immo: 140.45 },
+            { month: 46, label: '2019-11', msci: 159.76, usTech: 196.36, europa: 126.26, anleihen: 114.13, gold: 130.99, immo: 138.83 },
+            { month: 47, label: '2019-12', msci: 164.63, usTech: 204.08, europa: 129.89, anleihen: 113.79, gold: 135.76, immo: 138.52 },
+            { month: 48, label: '2020-01', msci: 162.88, usTech: 210.10, europa: 127.61, anleihen: 116.03, gold: 141.98, immo: 139.62 },
+            { month: 49, label: '2020-02', msci: 149.45, usTech: 197.74, europa: 117.19, anleihen: 117.96, gold: 141.15, immo: 128.38 },
+            { month: 50, label: '2020-03', msci: 129.88, usTech: 182.59, europa: 99.74, anleihen: 116.28, gold: 140.93, immo: 97.49 },
+            { month: 51, label: '2020-04', msci: 143.93, usTech: 210.33, europa: 106.06, anleihen: 119.48, gold: 150.92, immo: 103.68 },
+            { month: 52, label: '2020-05', msci: 151.17, usTech: 223.30, europa: 109.64, anleihen: 120.05, gold: 154.92, immo: 104.39 },
+            { month: 53, label: '2020-06', msci: 155.13, usTech: 237.36, europa: 112.91, anleihen: 120.86, gold: 159.34, immo: 107.19 },
+            { month: 54, label: '2020-07', msci: 162.72, usTech: 254.86, europa: 111.93, anleihen: 122.39, gold: 176.63, immo: 110.65 },
+            { month: 55, label: '2020-08', msci: 173.33, usTech: 283.02, europa: 115.41, anleihen: 121.22, gold: 176.06, immo: 112.24 },
+            { month: 56, label: '2020-09', msci: 167.55, usTech: 266.83, europa: 113.04, anleihen: 120.90, gold: 168.72, immo: 108.95 },
+            { month: 57, label: '2020-10', msci: 162.52, usTech: 258.30, europa: 107.36, anleihen: 120.02, gold: 168.06, immo: 105.60 },
+            { month: 58, label: '2020-11', msci: 183.42, usTech: 286.70, europa: 122.14, anleihen: 121.48, gold: 158.97, immo: 119.05 },
+            { month: 59, label: '2020-12', msci: 190.6, usTech: 301.19, europa: 125.98, anleihen: 121.07, gold: 169.88, immo: 123.98 },
+            { month: 60, label: '2021-01', msci: 189.05, usTech: 302.05, europa: 123.82, anleihen: 120.02, gold: 164.88, immo: 123.44 },
+            { month: 61, label: '2021-02', msci: 193.77, usTech: 301.68, europa: 127.12, anleihen: 117.99, gold: 154.56, immo: 128.49 },
+            { month: 62, label: '2021-03', msci: 200.92, usTech: 305.93, europa: 135.08, anleihen: 116.48, gold: 152.78, immo: 133.26 },
+            { month: 63, label: '2021-04', msci: 209.6, usTech: 323.91, europa: 137.90, anleihen: 117.22, gold: 158.18, immo: 142.43 },
+            { month: 64, label: '2021-05', msci: 212.99, usTech: 319.84, europa: 141.96, anleihen: 117.40, gold: 170.60, immo: 144.07 },
+            { month: 65, label: '2021-06', msci: 216.34, usTech: 340.13, europa: 142.78, anleihen: 118.45, gold: 158.38, immo: 146.10 },
+            { month: 66, label: '2021-07', msci: 220.19, usTech: 349.60, europa: 145.29, anleihen: 119.65, gold: 162.29, immo: 152.09 },
+            { month: 67, label: '2021-08', msci: 225.65, usTech: 364.15, europa: 148.75, anleihen: 119.42, gold: 162.25, immo: 154.50 },
+            { month: 68, label: '2021-09', msci: 216.15, usTech: 343.28, europa: 142.82, anleihen: 118.23, gold: 157.19, immo: 145.39 },
+            { month: 69, label: '2021-10', msci: 228.76, usTech: 370.41, europa: 149.38, anleihen: 118.13, gold: 159.51, immo: 155.16 },
+            { month: 70, label: '2021-11', msci: 224.07, usTech: 377.08, europa: 145.67, anleihen: 118.37, gold: 158.81, immo: 152.80 },
+            { month: 71, label: '2021-12', msci: 231.43, usTech: 381.38, europa: 153.28, anleihen: 118.00, gold: 163.69, immo: 164.22 },
+            { month: 72, label: '2022-01', msci: 219.46, usTech: 348.90, europa: 147.13, anleihen: 115.56, gold: 160.81, immo: 153.68 },
+            { month: 73, label: '2022-02', msci: 213.06, usTech: 332.72, europa: 141.93, anleihen: 114.25, gold: 170.78, immo: 149.84 },
+            { month: 74, label: '2022-03', msci: 219.18, usTech: 346.76, europa: 141.33, anleihen: 111.10, gold: 173.33, immo: 157.46 },
+            { month: 75, label: '2022-04', msci: 200.81, usTech: 300.40, europa: 139.26, anleihen: 106.69, gold: 169.67, immo: 149.29 },
+            { month: 76, label: '2022-05', msci: 201.7, usTech: 295.43, europa: 136.44, anleihen: 107.57, gold: 164.41, immo: 142.70 },
+            { month: 77, label: '2022-06', msci: 184.37, usTech: 268.83, europa: 125.40, anleihen: 105.78, gold: 161.69, immo: 131.06 },
+            { month: 78, label: '2022-07', msci: 199.36, usTech: 302.58, europa: 133.90, anleihen: 108.31, gold: 157.56, immo: 142.10 },
+            { month: 79, label: '2022-08', msci: 190.24, usTech: 286.79, europa: 128.67, anleihen: 105.27, gold: 153.10, immo: 132.77 },
+            { month: 80, label: '2022-09', msci: 172.42, usTech: 256.39, europa: 119.31, anleihen: 100.87, gold: 148.68, immo: 116.74 },
+            { month: 81, label: '2022-10', msci: 185.31, usTech: 266.54, europa: 123.18, anleihen: 99.49, gold: 146.08, immo: 121.35 },
+            { month: 82, label: '2022-11', msci: 199.14, usTech: 281.13, europa: 133.30, anleihen: 103.14, gold: 158.24, immo: 129.53 },
+            { month: 83, label: '2022-12', msci: 188.46, usTech: 255.65, europa: 130.32, anleihen: 102.06, gold: 163.15, immo: 124.64 },
+            { month: 84, label: '2023-01', msci: 201.85, usTech: 282.81, europa: 138.85, anleihen: 105.44, gold: 172.52, immo: 136.44 },
+            { month: 85, label: '2023-02', msci: 196.62, usTech: 281.41, europa: 140.72, anleihen: 102.39, gold: 163.44, immo: 130.02 },
+            { month: 86, label: '2023-03', msci: 202.99, usTech: 308.04, europa: 142.59, anleihen: 104.89, gold: 176.33, immo: 125.85 },
+            { month: 87, label: '2023-04', msci: 206.64, usTech: 309.55, europa: 146.02, anleihen: 105.24, gold: 177.98, immo: 127.83 },
+            { month: 88, label: '2023-05', msci: 204.59, usTech: 333.10, europa: 141.04, anleihen: 103.76, gold: 175.62, immo: 122.83 },
+            { month: 89, label: '2023-06', msci: 214.8, usTech: 354.72, europa: 145.70, anleihen: 103.27, gold: 171.80, immo: 126.07 },
+            { month: 90, label: '2023-07', msci: 221.74, usTech: 368.23, europa: 147.26, anleihen: 102.88, gold: 175.86, immo: 130.30 },
+            { month: 91, label: '2023-08', msci: 216.84, usTech: 362.24, europa: 141.36, anleihen: 101.93, gold: 173.58, immo: 125.69 },
+            { month: 92, label: '2023-09', msci: 207.3, usTech: 343.88, europa: 137.33, anleihen: 99.13, gold: 165.38, immo: 116.19 },
+            { month: 93, label: '2023-10', msci: 202.02, usTech: 336.74, europa: 132.35, anleihen: 97.36, gold: 177.57, immo: 110.81 },
+            { month: 94, label: '2023-11', msci: 220.43, usTech: 372.69, europa: 143.23, anleihen: 101.48, gold: 182.18, immo: 122.56 },
+            { month: 95, label: '2023-12', msci: 229.47, usTech: 393.21, europa: 148.97, anleihen: 104.49, gold: 184.60, immo: 132.71 },
+            { month: 96, label: '2024-01', msci: 231.5, usTech: 400.48, europa: 149.89, anleihen: 104.32, gold: 182.48, immo: 127.06 },
+            { month: 97, label: '2024-02', msci: 241.99, usTech: 421.67, europa: 155.63, anleihen: 102.60, gold: 182.90, immo: 127.33 },
+            { month: 98, label: '2024-03', msci: 249.98, usTech: 426.59, europa: 161.50, anleihen: 103.18, gold: 199.88, immo: 129.97 },
+            { month: 99, label: '2024-04', msci: 240.08, usTech: 407.57, europa: 160.58, anleihen: 100.40, gold: 204.52, immo: 121.41 },
+            { month: 100, label: '2024-05', msci: 246.98, usTech: 433.18, europa: 164.29, anleihen: 101.78, gold: 208.27, immo: 125.08 },
+            { month: 101, label: '2024-06', msci: 254.43, usTech: 459.97, europa: 158.26, anleihen: 102.36, gold: 208.04, immo: 127.61 },
+            { month: 102, label: '2024-07', msci: 258.71, usTech: 452.48, europa: 162.13, anleihen: 104.45, gold: 218.99, immo: 135.62 },
+            { month: 103, label: '2024-08', msci: 265.97, usTech: 457.44, europa: 164.29, anleihen: 105.64, gold: 223.90, immo: 143.14 },
+            { month: 104, label: '2024-09', msci: 270.68, usTech: 468.80, europa: 164.35, anleihen: 106.71, gold: 235.73, immo: 146.49 },
+            { month: 105, label: '2024-10', msci: 265.19, usTech: 464.82, europa: 158.26, anleihen: 103.78, gold: 245.70, immo: 140.01 },
+            { month: 106, label: '2024-11', msci: 277.98, usTech: 489.12, europa: 160.36, anleihen: 104.56, gold: 237.14, immo: 144.40 },
+            { month: 107, label: '2024-12', msci: 268.25, usTech: 491.03, europa: 158.48, anleihen: 102.16, gold: 234.82, immo: 131.56 },
+            { month: 108, label: '2025-01', msci: 277.15, usTech: 501.92, europa: 169.39, anleihen: 102.77, gold: 250.63, immo: 133.48 },
+            { month: 109, label: '2025-02', msci: 276.01, usTech: 488.05, europa: 175.29, anleihen: 104.65, gold: 255.43, immo: 137.16 },
+            { month: 110, label: '2025-03', msci: 264.24, usTech: 450.52, europa: 167.90, anleihen: 104.35, gold: 279.44, immo: 133.15 },
+            { month: 111, label: '2025-04', msci: 266.14, usTech: 457.36, europa: 167.08, anleihen: 104.42, gold: 294.21, immo: 132.66 },
+            { month: 112, label: '2025-05', msci: 281.72, usTech: 498.72, europa: 175.48, anleihen: 103.38, gold: 294.80, immo: 136.39 },
+            { month: 113, label: '2025-06', msci: 292.19, usTech: 529.99, europa: 171.08, anleihen: 104.60, gold: 295.52, immo: 135.57 },
+            { month: 114, label: '2025-07', msci: 295.16, usTech: 542.58, europa: 172.98, anleihen: 103.99, gold: 294.36, immo: 134.25 },
+            { month: 115, label: '2025-08', msci: 303.4, usTech: 547.20, europa: 174.56, anleihen: 104.84, gold: 308.88, immo: 140.40 },
+            { month: 116, label: '2025-09', msci: 313.2, usTech: 576.75, europa: 175.33, anleihen: 105.65, gold: 345.24, immo: 140.29 },
+            { month: 117, label: '2025-10', msci: 319.19, usTech: 604.28, europa: 180.05, anleihen: 105.95, gold: 358.13, immo: 138.36 },
+            { month: 118, label: '2025-11', msci: 320.27, usTech: 594.39, europa: 181.54, anleihen: 106.24, gold: 380.43, immo: 140.83 },
+            { month: 119, label: '2025-12', msci: 320.46, usTech: 590.06, europa: 185.85, anleihen: 105.23, gold: 386.39, immo: 136.94 },
+            { month: 120, label: '2026-01', msci: 327.12, usTech: 597.13, europa: 192.01, anleihen: 105.46, gold: 433.74, immo: 140.89 },
+        ];
+        // Korrelationsmatrix für Min-Varianz-Portfolio
+        // Reale Korrelationen Jan 2016 – Jan 2026 | [usTech, europa, anleihen, gold, immo]
+        const SIM_CORR = [
+            [1.00,  0.89,  0.85,  0.47,  0.14,  0.82],
+            [0.89,  1.00,  0.69,  0.45,  0.09,  0.64],
+            [0.85,  0.69,  1.00,  0.32,  0.03,  0.73],
+            [0.47,  0.45,  0.32,  1.00,  0.41,  0.58],
+            [0.14,  0.09,  0.03,  0.41,  1.00,  0.21],
+            [0.82,  0.64,  0.73,  0.58,  0.21,  1.00],
+        ];
+
+        function simGetStats(data, key) {
+            const vals = data.map(d => d[key]);
+            const rets = vals.slice(1).map((v, i) => (v - vals[i]) / vals[i]);
+            const mean = rets.reduce((a, b) => a + b, 0) / rets.length;
+            const vol = Math.sqrt(rets.reduce((a, b) => a + (b - mean) ** 2, 0) / rets.length * 12);
+            let peak = vals[0], maxDD = 0;
+            for (const v of vals) { if (v > peak) peak = v; maxDD = Math.max(maxDD, (peak - v) / peak); }
+            return { vol, maxDD, finalVal: vals[vals.length - 1] };
+        }
+        function simGetPFStats(data, ids, weights) {
+            if (!ids.length) return { vol: 0, maxDD: 0, finalVal: 100 };
+            const totalW = ids.reduce((s, id) => s + (weights[id] || 1), 0) || 1;
+            const aug = data.map(d => { const ws = ids.reduce((acc, id) => acc + d[id] * (weights[id] || 1), 0); return { ...d, __pf: ws / totalW }; });
+            return simGetStats(aug, '__pf');
+        }
+        function simMatInverse(M) {
+            const n = M.length;
+            const A = M.map((row, i) => { const aug = [...row]; for (let j = 0; j < n; j++) aug.push(i === j ? 1 : 0); return aug; });
+            for (let col = 0; col < n; col++) {
+                let maxRow = col;
+                for (let r = col + 1; r < n; r++) if (Math.abs(A[r][col]) > Math.abs(A[maxRow][col])) maxRow = r;
+                [A[col], A[maxRow]] = [A[maxRow], A[col]];
+                const pivot = A[col][col];
+                if (Math.abs(pivot) < 1e-12) return null;
+                for (let j = 0; j < 2 * n; j++) A[col][j] /= pivot;
+                for (let r = 0; r < n; r++) { if (r === col) continue; const f = A[r][col]; for (let j = 0; j < 2 * n; j++) A[r][j] -= f * A[col][j]; }
+            }
+            return A.map(row => row.slice(n));
+        }
+        function simCalcMVP(ids) {
+            if (ids.length === 1) return { [ids[0]]: 100 };
+            const idxMap = Object.fromEntries(SIM_ASSETS.map((a, i) => [a.id, i]));
+            
+            let activeIds = [...ids];
+            let finalWeights = {};
+            
+            while (activeIds.length > 0) {
+                const n = activeIds.length;
+                if (n === 1) {
+                    finalWeights[activeIds[0]] = 100;
+                    break;
+                }
+                const vols = activeIds.map(id => SIM_ASSETS.find(a => a.id === id).vol);
+                const Sigma = Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => 
+                    (vols[i] * vols[j] * SIM_CORR[idxMap[activeIds[i]]][idxMap[activeIds[j]]]) + (i === j ? 0.0001 : 0)
+                ));
+                const SigmaInv = simMatInverse(Sigma);
+                if (!SigmaInv) {
+                    activeIds.forEach(id => finalWeights[id] = +(100 / n).toFixed(2));
+                    break;
+                }
+                const wRaw = SigmaInv.map(row => row.reduce((s, v) => s + v, 0));
+                
+                let minW = 0, minIdx = -1;
+                for (let i = 0; i < n; i++) {
+                    if (wRaw[i] < -1e-4 && wRaw[i] < minW) { minW = wRaw[i]; minIdx = i; }
+                }
+                
+                if (minIdx === -1) {
+                    const total = wRaw.reduce((s, v) => s + Math.max(v, 0), 0) || 1;
+                    activeIds.forEach((id, i) => finalWeights[id] = +(Math.max(wRaw[i], 0) / total * 100).toFixed(2));
+                    break;
+                } else {
+                    activeIds.splice(minIdx, 1);
+                }
+            }
+            return Object.fromEntries(ids.map(id => [id, finalWeights[id] || 0]));
+        }
+        const simVolColor = v => v < 0.08 ? '#059669' : v < 0.18 ? '#d97706' : '#dc2626';
+        const simDdColor = v => v < 0.15 ? '#059669' : v < 0.30 ? '#d97706' : '#dc2626';
+        const simRetColor = v => v >= 100 ? '#059669' : '#dc2626';
+
+        function SimTooltip({ active, payload }) {
+            if (!active || !payload || !payload.length) return null;
+            const m = payload[0].payload.month;
+            const year = 2016 + Math.floor(m / 12), month = m % 12;
+            const months = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+            const sorted = [...payload].sort((a, b) => b.value - a.value);
+            return (
+                <div className="sim-tooltip">
+                    <div className="sim-tooltip-header">
+                        {months[month]} {year}
+                        {m === 50 && <span className="sim-tooltip-crash">📉 COVID-Crash</span>}
+                        {m === 72 && <span className="sim-tooltip-crash">📈 Zinswende</span>}
+                    </div>
+                    {sorted.map(e => (
+                        <div key={e.dataKey} className="sim-tooltip-row">
+                            <div className="sim-tooltip-label">
+                                <div className="sim-tooltip-dot" style={{ background: e.color }} />
+                                <span>{e.name}</span>
+                            </div>
+                            <span className="sim-tooltip-value" style={{ color: +e.value >= 100 ? '#059669' : '#dc2626' }}>{(+e.value).toFixed(1)}</span>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
+        function SimAssetCard({ asset, selected, onToggle }) {
+            return (
+                <button onClick={() => onToggle(asset.id)} className={'sim-asset-card' + (selected ? ' selected' : '')} style={{ '--asset-color': asset.color }}>
+                    <div className="sim-checkbox">
+                        {selected && (<svg width="10" height="8" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
+                    </div>
+                    <div className="sim-asset-info">
+                        <div className="sim-asset-name"><span>{asset.icon}</span><span>{asset.label}</span></div>
+                        <div className="sim-asset-sub">{asset.sub}</div>
+                        <div className="sim-asset-desc">{asset.desc}</div>
+                        <div className="sim-asset-metrics">
+                            <span className="sim-metric-return">↑ {(asset.ret * 100).toFixed(1)}% p.a.</span>
+                            <span className="sim-metric-vol">σ {(asset.vol * 100).toFixed(0)}%</span>
+                        </div>
+                    </div>
+                </button>
+            );
+        }
+
+        function SimPerfTable({ simData, selectedIds, weights }) {
+            if (!selectedIds.length) return <div style={{ padding: '20px', textAlign: 'center', color: '#94a3b8', fontSize: '13px' }}>Bitte wählen Sie mindestens eine Anlageklasse aus.</div>;
+            const pfStats = simGetPFStats(simData, selectedIds, weights || {});
+            return (
+                <table>
+                    <thead><tr>
+                        <th>Anlageklasse</th><th>Endwert</th><th>Volatilität (Risiko)</th><th>Max. Verlust</th>
+                    </tr></thead>
+                    <tbody>
+                        {selectedIds.map(id => {
+                            const asset = SIM_ASSETS.find(a => a.id === id);
+                            const s = simGetStats(simData, id);
+                            return (
+                                <tr key={id}>
+                                    <td><div className="sim-name-cell"><div className="sim-color-dot" style={{ background: asset.color }} /><span>{asset.icon} {asset.label}</span></div></td>
+                                    <td><span style={{ color: simRetColor(s.finalVal) }}>{s.finalVal.toFixed(1)}</span></td>
+                                    <td><span style={{ color: simVolColor(s.vol) }}>{(s.vol * 100).toFixed(1)}%</span></td>
+                                    <td><span style={{ color: simDdColor(s.maxDD) }}>-{(s.maxDD * 100).toFixed(1)}%</span></td>
+                                </tr>
+                            );
+                        })}
+                        <tr className="sim-portfolio-row">
+                            <td><div className="sim-name-cell"><div className="sim-color-dot" style={{ background: '#023e84' }} /><span>⚡ Mein Portfolio</span></div></td>
+                            <td><span style={{ color: simRetColor(pfStats.finalVal) }}>{pfStats.finalVal.toFixed(1)}</span></td>
+                            <td><span style={{ color: simVolColor(pfStats.vol) }}>{(pfStats.vol * 100).toFixed(1)}%</span></td>
+                            <td><span style={{ color: simDdColor(pfStats.maxDD) }}>-{(pfStats.maxDD * 100).toFixed(1)}%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            );
+        }
+
+        function SimApp() {
+            const initialIds = ['msci', 'usTech', 'anleihen'];
+            const [selectedIds, setSelectedIds] = useState(initialIds);
+            const [weights, setWeights] = useState(() => Object.fromEntries(initialIds.map(id => [id, 33.3])));
+            const simData = SIM_REAL_DATA;
+            const chartData = simData;
+            const chartDataPF = useMemo(() => {
+                if (!selectedIds.length) return chartData.map(d => ({ ...d, portfolio: 100 }));
+                const totalW = selectedIds.reduce((s, id) => s + (weights[id] || 0), 0) || 1;
+                return chartData.map(d => { const ws = selectedIds.reduce((acc, id) => acc + d[id] * (weights[id] || 0), 0); return { ...d, portfolio: +(ws / totalW).toFixed(2) }; });
+            }, [chartData, selectedIds, weights]);
+
+            const toggle = useCallback(id => {
+                setSelectedIds(prev => {
+                    if (prev.includes(id)) { setWeights(w => { const n = { ...w }; delete n[id]; return n; }); return prev.filter(x => x !== id); }
+                    else {
+                        const newIds = [...prev, id], share = +(100 / newIds.length).toFixed(1);
+                        setWeights(() => { const n = {}; newIds.forEach(x => { n[x] = share; }); return n; });
+                        return newIds;
+                    }
+                });
+            }, []);
+            const handleWeight = useCallback((id, val) => { setWeights(w => ({ ...w, [id]: +val })); }, []);
+            const resetWeights = useCallback(() => { const s = +(100 / selectedIds.length).toFixed(1); setWeights(Object.fromEntries(selectedIds.map(id => [id, s]))); }, [selectedIds]);
+            const applyMVP = useCallback(() => { if (!selectedIds.length) return; setWeights(simCalcMVP(selectedIds)); }, [selectedIds]);
+
+            const allVals = useMemo(() => {
+                const vs = []; chartDataPF.forEach(d => { selectedIds.forEach(id => vs.push(d[id])); vs.push(d.portfolio); }); return vs;
+            }, [chartDataPF, selectedIds]);
+            const yMin = selectedIds.length ? Math.max(0, Math.floor(Math.min(...allVals) / 10) * 10 - 10) : 50;
+            const yMax = selectedIds.length ? Math.ceil(Math.max(...allVals) / 50) * 50 + 30 : 400;
+            const pfStats = useMemo(() => simGetPFStats(SIM_REAL_DATA, selectedIds, weights), [selectedIds, weights]);
+
+            return (
+                <div className="sim-wrap">
+                    <div className="sim-layout">
+                        {/* Sidebar */}
+                        <aside className="sim-sidebar">
+                            <div className="sim-card">
+                                <div className="sim-card-header"><h3>Anlageklassen wählen</h3></div>
+                                <div className="sim-card-body">
+                                    <div className="sim-asset-list">
+                                        {SIM_ASSETS.map(a => <SimAssetCard key={a.id} asset={a} selected={selectedIds.includes(a.id)} onToggle={toggle} />)}
+                                    </div>
+                                    {selectedIds.length > 0 && (
+                                        <div className="sim-slider-section">
+                                            <div className="sim-slider-section-title">Gewichtung manuell einstellen</div>
+                                            {selectedIds.map(id => {
+                                                const asset = SIM_ASSETS.find(a => a.id === id);
+                                                const totalW = selectedIds.reduce((s, x) => s + (weights[x] || 0), 0) || 1;
+                                                const pct = ((weights[id] || 0) / totalW * 100).toFixed(1);
+                                                return (
+                                                    <div key={id} className="sim-slider-row">
+                                                        <div className="sim-slider-label-row">
+                                                            <div className="sim-slider-asset-name">
+                                                                <div className="sim-slider-dot" style={{ background: asset.color }} />
+                                                                <span>{asset.icon} {asset.label}</span>
+                                                            </div>
+                                                            <span className="sim-slider-pct" style={{ color: asset.color }}>{pct}%</span>
+                                                        </div>
+                                                        <input type="range" className="sim-weight-slider" min="1" max="100" step="1"
+                                                            value={weights[id] || 1}
+                                                            onChange={e => handleWeight(id, e.target.value)}
+                                                            style={{ '--sim-thumb-color': asset.color }} />
+                                                    </div>
+                                                );
+                                            })}
+                                            <div className="sim-weight-total-row">
+                                                <span className="sim-weight-total-label">Normalisierte Gewichtung</span>
+                                                <span className="sim-weight-total-value">= 100 %</span>
+                                            </div>
+                                            <div className="sim-btn-row">
+                                                <button className="sim-reset-btn" onClick={resetWeights}>↺ Gleich</button>
+                                                <button className="sim-mvp-btn" onClick={applyMVP}>📊 Min-Varianz</button>
+                                            </div>
+                                        </div>
+                                    )}
+                                    <div className="sim-stats-section">
+                                        <div className="sim-stats-title">Portfolio-Überblick</div>
+                                        <div className="sim-stat-row"><span className="sim-stat-label">Assets gewählt</span><span className="sim-stat-value">{selectedIds.length} / {SIM_ASSETS.length}</span></div>
+                                        <div className="sim-stat-row"><span className="sim-stat-label">Endwert (Index)</span><span className="sim-stat-value" style={{ color: simRetColor(pfStats.finalVal) }}>{pfStats.finalVal.toFixed(1)}</span></div>
+                                        <div className="sim-stat-row"><span className="sim-stat-label">Volatilität p.a.</span><span className="sim-stat-value" style={{ color: simVolColor(pfStats.vol) }}>{(pfStats.vol * 100).toFixed(1)}%</span></div>
+                                        <div className="sim-stat-row"><span className="sim-stat-label">Max. Drawdown</span><span className="sim-stat-value" style={{ color: simDdColor(pfStats.maxDD) }}>-{(pfStats.maxDD * 100).toFixed(1)}%</span></div>
+                                        {selectedIds.length > 1 && <div className="sim-info-box">💡 Die blaue Portfolio-Linie gewichtet alle aktiven Assets nach den Schiebern. Gleich = gleichgewichtetes Portfolio.</div>}
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+
+                        {/* Main */}
+                        <main className="sim-main">
+                            <div className="sim-badges">
+                                <div className="sim-badge sim-badge-crash"><div className="sim-badge-dot pulse" style={{ background: '#dc2626' }} />COVID-Crash März 2020</div>
+                                <div className="sim-badge sim-badge-crash" style={{ background: 'rgba(217,119,6,0.1)', border: '1px solid rgba(217,119,6,0.3)', color: '#d97706' }}><div className="sim-badge-dot pulse" style={{ background: '#d97706' }} />Zinswende Jan 2022</div>
+                                <div className="sim-badge sim-badge-portfolio"><div className="sim-badge-dot" style={{ background: '#023e84' }} />Blaue Linie = Mein Portfolio</div>
+                            </div>
+
+                            <div className="sim-card" style={{ padding: '20px' }}>
+                                <div className="sim-chart-title">Kursverlauf (indexiert, Basis = 100)</div>
+                                <div className="sim-chart-sub">Echte Monatsdaten: Jan 2016 – Jan 2026 · Quellen: MSCI World ETF, Nasdaq-100, STOXX 600 ETF, BND, Gold Spot, Global REITs</div>
+                                {selectedIds.length === 0 ? (
+                                    <div className="sim-chart-empty">← Bitte wählen Sie mindestens eine Anlageklasse aus</div>
+                                ) : (
+                                    <ResponsiveContainer width="100%" height={380}>
+                                        <LineChart data={chartDataPF} margin={{ top: 10, right: 16, left: 0, bottom: 10 }}>
+                                            <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+                                            <XAxis dataKey="month" type="number" domain={[0, 120]}
+                                                ticks={[0, 12, 24, 36, 48, 60, 72, 84, 96, 108, 120]}
+                                                tickFormatter={v => v === 120 ? '2026' : (2016 + Math.floor(v / 12)).toString()}
+                                                tick={{ fill: '#94a3b8', fontSize: 11, fontFamily: 'Inter' }}
+                                                axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
+                                            <YAxis domain={[yMin, yMax]}
+                                                tick={{ fill: '#94a3b8', fontSize: 11, fontFamily: 'Inter' }}
+                                                axisLine={false} tickLine={false}
+                                                tickFormatter={v => Math.round(v)} width={44} />
+                                            <Tooltip content={<SimTooltip />} />
+                                            <ReferenceLine x={50} stroke="rgba(220,38,38,0.5)" strokeDasharray="5 4" strokeWidth={1.5}
+                                                label={{ value: '📉 COVID', position: 'insideTopLeft', fill: '#dc2626', fontSize: 10, dy: -4 }} />
+                                            <ReferenceLine x={72} stroke="rgba(217,119,6,0.5)" strokeDasharray="5 4" strokeWidth={1.5}
+                                                label={{ value: '📈 Zinswende', position: 'insideTopLeft', fill: '#d97706', fontSize: 10, dy: -4 }} />
+                                            <ReferenceLine y={100} stroke="rgba(0,0,0,0.1)" strokeDasharray="4 3" />
+                                            {SIM_ASSETS.map(a => selectedIds.includes(a.id) && (
+                                                <Line key={a.id} type="monotone" dataKey={a.id} name={a.icon + ' ' + a.label}
+                                                    stroke={a.color} strokeWidth={1.5} dot={false}
+                                                    activeDot={{ r: 4, fill: a.color, strokeWidth: 0 }} isAnimationActive={false} />
+                                            ))}
+                                            <Line type="monotone" dataKey="portfolio" name="⚡ Mein Portfolio"
+                                                stroke="#023e84" strokeWidth={3} dot={false}
+                                                activeDot={{ r: 5, fill: '#023e84', strokeWidth: 0 }} isAnimationActive={false} />
+                                            <Legend iconType="circle" iconSize={8} wrapperStyle={{ paddingTop: '14px', fontSize: '12px' }} />
+                                        </LineChart>
+                                    </ResponsiveContainer>
+                                )}
+                            </div>
+
+                            <div className="sim-card" style={{ padding: '20px' }}>
+                                <div className="sim-explain">
+                                    <div className="sim-explain-icon">💡</div>
+                                    <div>
+                                        <div className="sim-explain-title">Warum verläuft die Portfolio-Linie glatter?</div>
+                                        <p className="sim-explain-text">Wenn einzelne Assets fallen, steigen andere – oder bleiben stabil. Dieses Prinzip der <strong>negativen oder niedrigen Korrelation</strong> dämpft die Schwankungen des Gesamtportfolios erheblich. Die Volatilität des Portfolios ist <em>geringer als der Durchschnitt der Einzelvolatilitäten</em> – das ist der Kern des Diversifikationsgewinns (nach Harry Markowitz, Nobelpreis 1990).</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="sim-card" style={{ overflow: 'hidden' }}>
+                                <div style={{ padding: '14px 18px', borderBottom: '1px solid #e2e8f0', background: '#f8fafc' }}>
+                                    <div className="sim-table-title">Performancevergleich der ausgewählten Assets</div>
+                                    <div className="sim-table-sub">Endwert: indexiert (Start = 100) · Volatilität: annualisiert · 🟢 &lt;8% · 🟡 8–18% · 🔴 &gt;18%</div>
+                                </div>
+                                <SimPerfTable simData={simData} selectedIds={selectedIds} weights={weights} />
+                            </div>
+
+                            <div className="sim-legend-tags">
+                                {['🟢 Vol. <8%', '🟡 Vol. 8–18%', '🔴 Vol. >18%', '🟢 Verlust <15%', '🟡 Verlust 15–30%', '🔴 Verlust >30%'].map(t => (
+                                    <span key={t} className="sim-tag">{t}</span>
+                                ))}
+                            </div>
+                            <p className="sim-disclaimer">⚠️ Echte historische Monatsdaten (Jan 2016–Jan 2026): MSCI World (URTH.US), Nasdaq-100 (^ndx), STOXX 600 ETF (EXSA.DE), Vanguard BND, Gold Spot (XAU/USD), iShares Global REITs (REET.US) — alle von Stooq.com. Vergangene Wertentwicklungen sind keine Garantie für künftige Renditen. Keine Anlageberatung.</p>
+                        </main>
+                    </div>
+                </div>
+            );
+        }
+
+        const simRoot = ReactDOM.createRoot(document.getElementById('simulator-root'));
+        simRoot.render(React.createElement(SimApp));
+    </script>
 </body>
+
 
 </html>

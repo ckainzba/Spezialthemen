@@ -11,6 +11,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CAE Simulator Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { corePlugins: { preflight: false } }</script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.12.2/umd/Recharts.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         /* ── Infografik ── */
         .cae-infographic {
@@ -180,20 +189,6 @@
             margin-top: 1rem;
             text-align: right;
         }
-
-        /* ── Highlight box ── */
-        .highlight-box {
-            background: linear-gradient(135deg, #e8f0fe, #dce8fd);
-            border-left: 4px solid #023e84;
-            border-radius: 0 0.5rem 0.5rem 0;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .highlight-box h3 {
-            margin-bottom: 0.5rem;
-            color: #023e84;
-        }
     </style>
 </head>
 
@@ -287,7 +282,7 @@
                         <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
                     </ul>
                 </li>
-                                <li class="sidebar-item">
+                <li class="sidebar-item">
                     <a href="immobilie.html" class="sidebar-link"
                         style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
@@ -452,7 +447,7 @@
                         <p class="cae-source">Quelle: Union Investment. Stand: Januar 2019.</p>
                     </div>
 
-                    <div class="highlight-box">
+                    <div class="info-box">
                         <h3>🏆 Das Ergebnis</h3>
                         <p>
                             Beide haben insgesamt <strong>70 €</strong> ausgegeben. Frau Weiss hat dafür
@@ -467,6 +462,18 @@
                         </p>
                     </div>
 
+                </div>
+            </section>
+
+            <!-- CAE Interaktiver Simulator -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Erleben Sie den Effekt live</h2>
+                        <p>Passen Sie die Parameter an und beobachten Sie, wie der Cost-Average-Effekt in verschiedenen
+                            Marktszenarien wirkt</p>
+                    </div>
+                    <div id="cae-simulator-root"></div>
                 </div>
             </section>
 
@@ -734,6 +741,396 @@
                 wenden Sie sich bitte an einen Finanzberater.</p>
         </div>
     </footer>
+
+    <!-- CAE Simulator React Component -->
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+        const {
+            ComposedChart, BarChart, Bar, Line, XAxis, YAxis,
+            CartesianGrid, Tooltip, ResponsiveContainer, Legend
+        } = window.Recharts;
+
+        const fmtEur = (v) =>
+            new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+        const fmtNum = (v, d = 4) => new Intl.NumberFormat('de-DE', { minimumFractionDigits: d, maximumFractionDigits: d }).format(v);
+
+        /* ── Seeded PRNG (mulberry32) für reproduzierbare Kursverläufe ── */
+        function mulberry32(seed) {
+            return function () {
+                seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+                let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+                t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+                return ((t ^ t >>> 14) >>> 0) / 4294967296;
+            };
+        }
+
+        /* ── Kursmodelle ──
+           Grundprinzip: Damit der Sparplan die Einmalanlage garantiert schlägt,
+           müssen die Kurse während des Investitionszeitraums deutlich unter den
+           Startkurs (100 €) fallen – denn dann kauft der Sparplan preiswert viele
+           Anteile und drückt den harmonischen Ø-Kaufkurs unter 100 €.
+        ── */
+        function buildPrices(months, scenario) {
+            const seeds = { v: 42, linear: 137, bear: 271 };
+            const rand = mulberry32(seeds[scenario] || 42);
+
+            // Box-Muller → Standardnormalverteilung
+            function randn() {
+                const u = 1 - rand(), v = rand();
+                return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+            }
+
+            const vol = 0.038; // Rausch-Amplitude (ca. ±4 % pro Monat)
+            const prices = [100]; // Startpreis fix 100 €
+
+            for (let i = 1; i < months; i++) {
+                const t = i / (months - 1); // Fortschritt 0…1
+
+                let base;
+                if (scenario === 'v') {
+                    // ── Aufwärtstrend: V-Kurve ──
+                    // Erst tief (~65 €), dann kräftige Erholung (>140 €).
+                    // Sparplan kauft im Tief günstig → harmonischer Ø weit unter 100 €.
+                    const dipAt = 0.38;
+                    const dipLevel = 65;
+                    const endLevel = 142;
+                    if (t <= dipAt) {
+                        base = 100 - (100 - dipLevel) * (t / dipAt);
+                    } else {
+                        base = dipLevel + (endLevel - dipLevel) * ((t - dipAt) / (1 - dipAt));
+                    }
+                } else if (scenario === 'linear') {
+                    // ── Abwärtstrend: Bärenmarkt mit Erholungsrally ──
+                    // Fällt von 100 → 70, Zwischenrally auf ~85, Schluss ~65.
+                    // Alle Kurse ≤ 100 → Sparplan kauft immer günstiger als 100 €.
+                    if (t <= 0.4) {
+                        base = 100 - 75 * t;             // 100 → 70
+                    } else if (t <= 0.65) {
+                        base = 70 + 60 * (t - 0.4);      // 70 → 85
+                    } else {
+                        base = 85 - 57 * (t - 0.65);     // 85 → 65
+                    }
+                } else {
+                    // ── Seitwärts: 1,5 Schwingungen um 100 € ──
+                    // sin(3π·t): t=0 → 0, t=1 → 0 (Anfang = Ende = 100)
+                    // Extrema bei ~68 € und ~132 €.
+                    // Harmonischer Mittelwert der Schwingung < 100 → Sparplan gewinnt.
+                    base = 100 - 32 * Math.sin(3 * Math.PI * t);
+                }
+
+                // Multiplikatives Rauschen (lässt Basiskurve erkennbar, wirkt realistisch)
+                prices.push(Math.max(base * (1 + vol * randn()), 1));
+            }
+
+            // Endkurs auf Zielwert kalibrieren (proportionale Skalierung, Kurvenform bleibt erhalten)
+            const finalRaw = prices[months - 1];
+            let targetFinal;
+            if (scenario === 'v') targetFinal = 140;   // deutlich über Start → steigend
+            else if (scenario === 'linear') targetFinal = 65;  // deutlich unter Start → fallend
+            else targetFinal = 100;   // ≈ Start → seitwärts
+
+            const scale = targetFinal / finalRaw;
+            return prices.map(p => Math.max(p * scale, 1));
+        }
+
+        /* ── Hauptrechnung ── */
+        function calcCAE(sparrate, months, scenario) {
+            const prices = buildPrices(months, scenario);
+            let totalShares = 0;
+            let totalInvested = 0;
+            const data = [];
+
+            for (let i = 0; i < months; i++) {
+                const price = prices[i];
+                const shares = sparrate / price;
+                totalShares += shares;
+                totalInvested += sparrate;
+                const avgCost = totalInvested / totalShares;
+                data.push({
+                    monat: i + 1,
+                    kurs: +price.toFixed(2),
+                    avg: +avgCost.toFixed(2),
+                    anteile: +shares.toFixed(4),
+                });
+            }
+
+            const endKurs = prices[months - 1];
+            const depotwert = totalShares * endKurs;
+            const avgKauf = totalInvested / totalShares;
+
+            // Einmalanlage: gleicher Gesamtbetrag, nur zum Startkurs 100
+            const sharesLump = totalInvested / 100;
+            const lumpWert = sharesLump * endKurs;
+
+            return { data, totalInvested, totalShares, avgKauf, depotwert, lumpWert, endKurs };
+        }
+
+        /* ── Tooltip Kurschart ── */
+        const PriceTooltip = ({ active, payload, label }) => {
+            if (!active || !payload || !payload.length) return null;
+            return (
+                <div className="bg-white/95 backdrop-blur-sm shadow-xl p-3 rounded-xl border border-slate-100 text-sm">
+                    <p className="font-bold text-slate-700 mb-2 border-b border-slate-100 pb-1">Monat {label}</p>
+                    {payload.map(p => (
+                        <div key={p.dataKey} className="flex justify-between gap-4">
+                            <span style={{ color: p.color }} className="font-medium">{p.name}:</span>
+                            <span className="font-bold text-slate-800">{fmtEur(p.value)}</span>
+                        </div>
+                    ))}
+                </div>
+            );
+        };
+
+        /* ── Tooltip Anteil-Chart ── */
+        const ShareTooltip = ({ active, payload, label }) => {
+            if (!active || !payload || !payload.length) return null;
+            return (
+                <div className="bg-white/95 backdrop-blur-sm shadow-xl p-3 rounded-xl border border-slate-100 text-sm">
+                    <p className="font-bold text-slate-700 mb-1">Monat {label}</p>
+                    <div className="flex justify-between gap-4">
+                        <span className="text-slate-500 font-medium">Anteile:</span>
+                        <span className="font-bold text-slate-800">{fmtNum(payload[0].value)}</span>
+                    </div>
+                </div>
+            );
+        };
+
+        /* ── Slider-Komponente ── */
+        const Slider = ({ label, value, onChange, min, max, step, format }) => (
+            <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                    <span className="text-sm font-semibold text-slate-700">{label}</span>
+                    <span className="font-bold text-slate-900 bg-slate-100 px-3 py-1 rounded-lg text-sm">{format(value)}</span>
+                </div>
+                <input
+                    type="range" min={min} max={max} step={step} value={value}
+                    onChange={e => onChange(Number(e.target.value))}
+                    className="w-full h-1.5 rounded-full outline-none cursor-pointer"
+                    style={{ WebkitAppearance: 'none', appearance: 'none', background: `linear-gradient(to right, #1e40af ${((value - min) / (max - min)) * 100}%, #e2e8f0 0%)` }}
+                />
+                <div className="flex justify-between text-xs text-slate-400 font-medium">
+                    <span>{format(min)}</span>
+                    <span>{format(max)}</span>
+                </div>
+            </div>
+        );
+
+        /* ── Result Card ── */
+        const ResultCard = ({ label, value, sub, accent, icon }) => (
+            <div className={`bg-white rounded-2xl shadow-sm border p-4 flex flex-col gap-1 ${accent ? 'border-blue-200 bg-blue-50/30' : 'border-slate-100'}`}>
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                    <span>{icon}</span>{label}
+                </div>
+                <div className={`text-xl font-black ${accent ? 'text-[#1e40af]' : 'text-slate-800'}`}>{value}</div>
+                {sub && <div className="text-xs text-slate-500">{sub}</div>}
+            </div>
+        );
+
+        /* ── Hauptkomponente ── */
+        const CAESimulator = () => {
+            const [sparrate, setSparrate] = useState(100);
+            const [months, setMonths] = useState(24);
+            const [scenario, setScenario] = useState('v');
+
+            const result = useMemo(() => calcCAE(sparrate, months, scenario), [sparrate, months, scenario]);
+            const { data, totalInvested, totalShares, avgKauf, depotwert, lumpWert } = result;
+
+            const gewinnSparplan = depotwert - totalInvested;
+            const gewinnLump = lumpWert - totalInvested;
+            const vorteil = depotwert - lumpWert;
+
+            const scenarios = [
+                { key: 'v', label: '📈 Aufwärtstrend', desc: 'Schwankend steigend' },
+                { key: 'linear', label: '📉 Abwärtstrend', desc: 'Schwankend fallend' },
+                { key: 'bear', label: '↔️ Seitwärts', desc: 'Schwankend, kein Trend' },
+            ];
+
+            const inputBtnStyle = (active) => ({
+                padding: '0.5rem 1rem',
+                borderRadius: '0.625rem',
+                fontSize: '0.8rem',
+                fontWeight: active ? 700 : 500,
+                cursor: 'pointer',
+                border: 'none',
+                transition: 'all 0.15s',
+                background: active ? '#1e40af' : '#f1f5f9',
+                color: active ? '#fff' : '#475569',
+            });
+
+            return (
+                <div style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+                    {/* Slider-Thumbs via global style */}
+                    <style>{`
+                        #cae-simulator-root input[type=range]::-webkit-slider-thumb {
+                            -webkit-appearance: none; appearance: none;
+                            width: 20px; height: 20px; border-radius: 50%;
+                            background: #fff; border: 2.5px solid #1e40af;
+                            cursor: pointer; box-shadow: 0 2px 6px rgba(30,64,175,0.3);
+                            transition: transform 0.1s;
+                        }
+                        #cae-simulator-root input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+                        #cae-simulator-root input[type=range]::-moz-range-thumb {
+                            width: 20px; height: 20px; border-radius: 50%;
+                            background: #fff; border: 2.5px solid #1e40af;
+                            cursor: pointer; box-shadow: 0 2px 6px rgba(30,64,175,0.3);
+                        }
+                    `}</style>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6">
+
+                        {/* LEFT: Inputs */}
+                        <div className="flex flex-col gap-4">
+                            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex items-center gap-3">
+                                <div style={{ background: '#eff6ff', borderRadius: '0.75rem', padding: '0.5rem' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" strokeWidth="2.2">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
+                                    </svg>
+                                </div>
+                                <h3 className="font-bold text-[#023e84] text-lg" style={{ margin: 0 }}>Parameter</h3>
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+                                <Slider
+                                    label="Monatliche Sparrate"
+                                    value={sparrate} onChange={setSparrate}
+                                    min={25} max={1000} step={25}
+                                    format={v => `${new Intl.NumberFormat('de-DE').format(v)} €`}
+                                />
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+                                <Slider
+                                    label="Laufzeit"
+                                    value={months} onChange={setMonths}
+                                    min={12} max={60} step={1}
+                                    format={v => `${v} Monate`}
+                                />
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+                                <p className="text-sm font-semibold text-slate-700 mb-3">Marktszenario</p>
+                                <div className="flex flex-col gap-2">
+                                    {scenarios.map(s => (
+                                        <button key={s.key} style={inputBtnStyle(scenario === s.key)}
+                                            onClick={() => setScenario(s.key)}>
+                                            {s.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* RIGHT: Charts + Cards */}
+                        <div className="flex flex-col gap-5">
+
+                            {/* Kurs-Liniendiagramm */}
+                            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+                                <div className="flex items-center gap-5 mb-4 flex-wrap">
+                                    <h4 className="font-bold text-[#023e84]" style={{ margin: 0 }}>Kursverlauf & Ø Kaufkurs</h4>
+                                    <div className="flex items-center gap-4 text-xs font-medium">
+                                        <span className="flex items-center gap-1.5">
+                                            <span className="inline-block w-4 h-0.5 rounded" style={{ background: '#1e40af', height: '3px' }}></span>
+                                            <span className="text-slate-500">Aktueller Kurs</span>
+                                        </span>
+                                        <span className="flex items-center gap-1.5">
+                                            <span className="inline-block w-4 rounded" style={{ background: '#d97706', height: '3px' }}></span>
+                                            <span className="text-slate-500">Ø Kaufkurs</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ResponsiveContainer width="100%" height={220}>
+                                    <ComposedChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                                        <XAxis dataKey="monat" axisLine={false} tickLine={false}
+                                            tick={{ fontSize: 11, fill: '#94a3b8' }}
+                                            label={{ value: 'Monat', position: 'insideBottom', offset: -2, fontSize: 11, fill: '#94a3b8' }}
+                                        />
+                                        <YAxis axisLine={false} tickLine={false}
+                                            tickFormatter={v => `${v} €`}
+                                            tick={{ fontSize: 11, fill: '#94a3b8' }} width={62}
+                                        />
+                                        <Tooltip content={<PriceTooltip />} />
+                                        <Line type="monotone" dataKey="kurs" name="Aktueller Kurs"
+                                            stroke="#1e40af" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+                                        <Line type="monotone" dataKey="avg" name="Ø Kaufkurs"
+                                            stroke="#d97706" strokeWidth={2} dot={false} strokeDasharray="6 3" activeDot={{ r: 5 }} />
+                                    </ComposedChart>
+                                </ResponsiveContainer>
+                            </div>
+
+                            {/* Anteile-Balkenchart */}
+                            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <h4 className="font-bold text-[#023e84]" style={{ margin: 0 }}>Monatlich gekaufte Anteile</h4>
+                                    <span className="text-xs text-slate-400 font-medium">(Hoher Balken = Niedriger Kurs)</span>
+                                </div>
+                                <ResponsiveContainer width="100%" height={160}>
+                                    <BarChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+                                        <XAxis dataKey="monat" axisLine={false} tickLine={false}
+                                            tick={{ fontSize: 11, fill: '#94a3b8' }}
+                                        />
+                                        <YAxis axisLine={false} tickLine={false}
+                                            tick={{ fontSize: 11, fill: '#94a3b8' }} width={50}
+                                        />
+                                        <Tooltip content={<ShareTooltip />} />
+                                        <Bar dataKey="anteile" name="Anteile" fill="#1e40af" radius={[3, 3, 0, 0]}
+                                            fillOpacity={0.75}
+                                        />
+                                    </BarChart>
+                                </ResponsiveContainer>
+                            </div>
+
+                            {/* Ergebnis-Cards */}
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <ResultCard icon="💶" label="Investiertes Kapital" value={fmtEur(totalInvested)} />
+                                <ResultCard icon="📦" label="Gesamte Anteile" value={fmtNum(totalShares, 2)} sub={`à Ø ${fmtEur(avgKauf)}`} />
+                                <ResultCard icon="💼" label="Aktueller Depotwert" value={fmtEur(depotwert)}
+                                    sub={(
+                                        <span style={{ color: gewinnSparplan >= 0 ? '#16a34a' : '#dc2626', fontWeight: 700 }}>
+                                            {gewinnSparplan >= 0 ? '▲ +' : '▼ '}{fmtEur(Math.abs(gewinnSparplan))}
+                                        </span>
+                                    )}
+                                    accent={true}
+                                />
+                                <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 flex flex-col gap-1">
+                                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide">⚖️ vs. Einmalanlage</div>
+                                    <div className="text-xl font-black" style={{ color: vorteil >= 0 ? '#16a34a' : '#dc2626' }}>
+                                        {vorteil >= 0 ? '+' : ''}{fmtEur(vorteil)}
+                                    </div>
+                                    <div className="text-xs text-slate-500">
+                                        Sparplan {vorteil >= 0 ? 'besser' : 'schlechter'} als Einmalanlage
+                                        <br />
+                                        <span className="text-slate-400">(Einmalanlage: {fmtEur(lumpWert)})</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Erklärungsbox */}
+                            <div style={{ background: 'linear-gradient(135deg, #eff6ff, #dbeafe)', borderLeft: '4px solid #1e40af', borderRadius: '0 0.75rem 0.75rem 0', padding: '1rem 1.25rem' }}>
+                                <p style={{ margin: 0, fontSize: '0.85rem', color: '#1e3a8a', lineHeight: 1.6 }}>
+                                    <strong>Ø Kaufkurs: {fmtEur(avgKauf)}</strong> — Sie haben {fmtNum(totalShares, 2)} Anteile erworben.
+                                    Im Vergleich dazu hätte eine Einmalanlage von {fmtEur(totalInvested)} zum Startkurs (100 €)
+                                    nur {fmtNum(totalInvested / 100, 2)} Anteile gebracht.
+                                    {vorteil > 0
+                                        ? ` Der Sparplan ist um ${fmtEur(vorteil)} besser – der Cost-Average-Effekt wirkt! 🎯`
+                                        : ` Im Aufwärtstrend ohne Volatilität profitiert die Einmalanlage mehr – weil das gesamte Kapital früher investiert war. 📊`
+                                    }
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const rootEl = document.getElementById('cae-simulator-root');
+        if (rootEl) {
+            const root = ReactDOM.createRoot(rootEl);
+            root.render(<CAESimulator />);
+        }
+    </script>
 
     <!-- JavaScript -->
     <script>
