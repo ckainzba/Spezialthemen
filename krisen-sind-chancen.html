@@ -96,6 +96,51 @@
             position: relative;
         }
 
+        /* Crisis label toggle switch */
+        .crisis-toggle {
+            position: relative;
+            display: inline-block;
+            width: 38px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .crisis-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .crisis-slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: #ccc;
+            border-radius: 22px;
+            transition: background 0.25s;
+        }
+
+        .crisis-slider::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.25s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .crisis-toggle input:checked+.crisis-slider {
+            background: #023e84;
+        }
+
+        .crisis-toggle input:checked+.crisis-slider::before {
+            transform: translateX(16px);
+        }
+
         .calc-reset-btn {
             background: #95a5a6;
             color: white;
@@ -109,6 +154,114 @@
 
         .calc-reset-btn:hover {
             background: #7f8c8d;
+        }
+
+        /* Extra Investment Rows */
+        .btn-add-inv {
+            background: none;
+            border: 1.5px dashed #023e84;
+            color: #023e84;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-add-inv:hover {
+            background: #f0f4ff;
+        }
+
+        .inv-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 0;
+            border-bottom: 1px dashed #e8e8e8;
+            flex-wrap: wrap;
+        }
+
+        .inv-row label {
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .inv-row input[type="text"] {
+            width: 85px;
+            font-size: 13px;
+        }
+
+        .btn-set-date {
+            background: none;
+            border: 1.5px solid #e67e22;
+            color: #e67e22;
+            padding: 4px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .btn-set-date.is-picking {
+            background: #e67e22;
+            color: white;
+            animation: blink 0.8s ease-in-out infinite alternate;
+        }
+
+        .btn-set-date.is-set {
+            background: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+
+        @keyframes blink {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0.55;
+            }
+        }
+
+        .inv-date-label {
+            font-size: 12px;
+            color: #888;
+            min-width: 65px;
+        }
+
+        .btn-del-inv {
+            background: none;
+            border: none;
+            color: #c0392b;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            padding: 0 4px;
+            margin-left: auto;
+        }
+
+        .btn-del-inv:hover {
+            color: #922b21;
+        }
+
+        /* Portfolio total results block */
+        .portfolio-results {
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 2px solid #e67e22;
+        }
+
+        .portfolio-results-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #e67e22;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
         }
 
         .calc-hint {
@@ -302,7 +455,7 @@
             </section>
 
 
-            
+
             <!-- Einleitung -->
             <section class="section">
                 <div class="container">
@@ -311,23 +464,32 @@
                         <p>Die größte Gefahr an der Börse ist nicht der Absturz, sondern die eigene Panik.</p>
                     </div>
                     <p>
-                        Ein Blick auf die Finanznachrichten in Krisenzeiten lässt oft nur einen Schluss zu: Rette sich, wer kann. 
-                        Tatsächlich sind <strong>Börsenkorrekturen und Crashs völlig normale Ereignisse</strong> im Rhythmus der Märkte. 
-                        Für Anleger, die einen langfristigen Vermögensaufbau betreiben (z.B. für die Altersvorsorge in 15 oder 20 Jahren), 
-                        stellen diese Krisen keine Bedrohung dar, sondern oft die besten Einstiegs- oder Nachkaufgelegenheiten.
+                        Ein Blick auf die Finanznachrichten in Krisenzeiten lässt oft nur einen Schluss zu: Rette sich,
+                        wer kann.
+                        Tatsächlich sind <strong>Börsenkorrekturen und Crashs völlig normale Ereignisse</strong> im
+                        Rhythmus der Märkte.
+                        Für Anleger, die einen langfristigen Vermögensaufbau betreiben (z.B. für die Altersvorsorge in
+                        15 oder 20 Jahren),
+                        stellen diese Krisen keine Bedrohung dar, sondern oft die besten Einstiegs- oder
+                        Nachkaufgelegenheiten.
                     </p>
                     <p>
-                        Besonders beim regelmäßigen Sparen (siehe <a href="cost-average-effekt.html">Cost-Average-Effekt</a>) wirken fallende Kurse wie ein 
-                        <strong>Schlussverkauf für Aktienanteile</strong>: Sie erhalten für Ihre monatliche Sparrate automatisch mehr Anteile. 
-                        Wenn sich die Märkte danach erholen – was der breite globale Aktienmarkt historisch gesehen stets getan hat – 
+                        Besonders beim regelmäßigen Sparen (siehe <a
+                            href="cost-average-effekt.html">Cost-Average-Effekt</a>) wirken fallende Kurse wie ein
+                        <strong>Schlussverkauf für Aktienanteile</strong>: Sie erhalten für Ihre monatliche Sparrate
+                        automatisch mehr Anteile.
+                        Wenn sich die Märkte danach erholen – was der breite globale Aktienmarkt historisch gesehen
+                        stets getan hat –
                         profitieren Sie überproportional von diesen günstig erworbenen Anteilen.
                     </p>
 
                     <div class="info-box" style="margin-top: 2rem; margin-bottom: 2rem;">
                         <h3>💡 Die Krisen-Regel Nummer 1: Ruhe bewahren</h3>
                         <p>
-                            Die einzigen Verluste an der Börse, die wirklich wehtun, sind die <strong>realisierten Verluste</strong>. 
-                            Wer in Krisenzeiten aus Angst verkauft, macht aus vorübergehenden Buchwertschwankungen echte Geldverluste 
+                            Die einzigen Verluste an der Börse, die wirklich wehtun, sind die <strong>realisierten
+                                Verluste</strong>.
+                            Wer in Krisenzeiten aus Angst verkauft, macht aus vorübergehenden Buchwertschwankungen echte
+                            Geldverluste
                             und verpasst meist den besten Teil der anschließenden Erholung.
                         </p>
                     </div>
@@ -343,10 +505,9 @@
                             Anlagezeiträume.</p>
                     </div>
 
-                    <div class="calc-hint">
-                        Klicke auf den Chart, um den <b>Startzeitpunkt</b> und <b>Endzeitpunkt</b> zu setzen. Durch
-                        weitere Klicks
-                        kannst du die Linien verschieben. Nutze den Reset-Button für eine komplett neue Auswahl.
+                    <div class="calc-hint" id="calc-hint">
+                        Klicke auf den Chart, um den <b>Startzeitpunkt</b> und <b>Endzeitpunkt</b> zu setzen. Ziehe die
+                        grünen Linien, um den Zeitraum anzupassen.
                     </div>
 
                     <div class="calc-controls calc-box">
@@ -354,6 +515,10 @@
                             <label>Investitionssumme (€)</label>
                             <input type="text" id="invest" value="10.000" oninput="calc()" onchange="formatField(this)">
                         </div>
+
+                        <!-- Extra Investments -->
+                        <div id="extra-inv-list"></div>
+                        <button class="btn-add-inv" onclick="addInvestment()">+ Investition hinzufügen</button>
 
                         <div class="calc-input-group"
                             style="margin-left: 20px; display: flex; align-items: center; height: 100%; padding-top: 15px;">
@@ -384,9 +549,47 @@
                             </div>
                             <button class="calc-reset-btn" onclick="reset()">Reset</button>
                         </div>
+
+                        <!-- Portfolio total results (visible when ≥1 extra investment is set) -->
+                        <div class="portfolio-results" id="portfolio-results" style="display:none;">
+                            <div class="portfolio-results-title">📊 Gesamt-Portfolio</div>
+                            <div class="calc-results" style="padding-top:0;">
+                                <div class="calc-res-item">
+                                    <div class="calc-res-label">Gesamt investiert</div>
+                                    <div class="calc-res-value" id="res-total-inv">--- €</div>
+                                </div>
+                                <div class="calc-res-item">
+                                    <div class="calc-res-label">Portfolio-Endwert</div>
+                                    <div class="calc-res-value" id="res-total-val">--- €</div>
+                                </div>
+                                <div class="calc-res-item">
+                                    <div class="calc-res-label">Gesamtrendite</div>
+                                    <div class="calc-res-value" id="res-total-pct">--- %</div>
+                                </div>
+                                <div class="calc-res-item">
+                                    <div class="calc-res-label">CAGR p.a.</div>
+                                    <div class="calc-res-value" id="res-total-cagr">--- %</div>
+                                </div>
+                                <div class="calc-res-item"
+                                    style="border-top: 1px dashed #e67e22; padding-top: 8px; margin-top: 4px;">
+                                    <div class="calc-res-label" style="color:#e67e22; font-weight:600;">Mehrgewinn durch
+                                        Krisen-Kauf ⬆</div>
+                                    <div class="calc-res-value" id="res-mehrgewinn" style="color:#e67e22;">--- €</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="calc-box" style="padding: 20px 0; overflow: hidden;">
+                        <!-- Krisen-Labels Toggle -->
+                        <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0 8px 12px 8px;">
+                            <span
+                                style="font-size: 0.85rem; color: #555; font-family: Inter, sans-serif;">Krisen-Bezeichnungen</span>
+                            <label class="crisis-toggle" title="Krisenbeschriftungen ein-/ausblenden">
+                                <input type="checkbox" id="crisisToggle">
+                                <span class="crisis-slider"></span>
+                            </label>
+                        </div>
                         <div id="chart-container"></div>
                     </div>
                 </div>
@@ -406,8 +609,15 @@
                             </div>
                             <div class="accordion-content">
                                 <div class="accordion-body">
-                                    <p>Selbst wenn Sie den denkbar schlechtesten Zeitpunkt (den Allzeithoch-Punkt direkt vor einem Crash) für ein Einmal-Investment erwischen, führt dies <strong>langfristig fast immer trotzdem zu positiven Renditen</strong>, vorausgesetzt Sie bringen ausreichend Zeit mit (10-15 Jahre) und investieren breit gestreut (z.B. in einen Welt-ETF).</p>
-                                    <p>Bei einem monatlichen Sparplan ist der Zeitpunkt des Starts ohnehin irrelevant, da Sie durch den Cost-Average-Effekt die tieferen Kurse nach dem Einbruch direkt zum günstigen Nachkauf nutzen.</p>
+                                    <p>Selbst wenn Sie den denkbar schlechtesten Zeitpunkt (den Allzeithoch-Punkt direkt
+                                        vor einem Crash) für ein Einmal-Investment erwischen, führt dies
+                                        <strong>langfristig fast immer trotzdem zu positiven Renditen</strong>,
+                                        vorausgesetzt Sie bringen ausreichend Zeit mit (10-15 Jahre) und investieren
+                                        breit gestreut (z.B. in einen globalen Investmentfonds).
+                                    </p>
+                                    <p>Bei einem monatlichen Sparplan ist der Zeitpunkt des Starts ohnehin irrelevant,
+                                        da Sie durch den Cost-Average-Effekt die tieferen Kurse nach dem Einbruch direkt
+                                        zum günstigen Nachkauf nutzen.</p>
                                 </div>
                             </div>
                         </div>
@@ -419,8 +629,14 @@
                             </div>
                             <div class="accordion-content">
                                 <div class="accordion-body">
-                                    <p>Das sogenannte "Market Timing" (das Abpassen des perfekten Zeitpunkts) funktioniert in der Praxis fast nie. Die stärksten Erholungstage an der Börse folgen oft unmittelbar auf die stärksten Absturztage.</p>
-                                    <p>Wer an der Seitenlinie wartet, bis die Nachrichtenlage wieder "sicher" erscheint, verpasst meist einen großen Teil des Aufschwungs, da die Börse zukünftige Entwicklungen vorwegnimmt. <strong>"Time in the market beats timing the market"</strong> (Zeit im Markt schlägt die Wahl des Zeitpunkts) ist eine bewährte Börsenweisheit.</p>
+                                    <p>Das sogenannte "Market Timing" (das Abpassen des perfekten Zeitpunkts)
+                                        funktioniert in der Praxis fast nie. Die stärksten Erholungstage an der Börse
+                                        folgen oft unmittelbar auf die stärksten Absturztage.</p>
+                                    <p>Wer an der Seitenlinie wartet, bis die Nachrichtenlage wieder "sicher" erscheint,
+                                        verpasst meist einen großen Teil des Aufschwungs, da die Börse zukünftige
+                                        Entwicklungen vorwegnimmt. <strong>"Time in the market beats timing the
+                                            market"</strong> (Zeit im Markt schlägt die Wahl des Zeitpunkts) ist eine
+                                        bewährte Börsenweisheit.</p>
                                 </div>
                             </div>
                         </div>
@@ -432,8 +648,14 @@
                             </div>
                             <div class="accordion-content">
                                 <div class="accordion-body">
-                                    <p>Einzelne Länder oder Branchen können durchaus über Jahrzehnte stagnieren (Beispiel: Japanischer Aktienmarkt nach 1989). Deswegen ist <strong>Diversifikation</strong> so entscheidend.</p>
-                                    <p>Ein Ausfall oder eine Stagnation der <em>gesamten Weltwirtschaft</em> ist historisch gesehen noch nie passiert. Breit gestreute Welt-Portfolios haben sich bislang von jeder Krise (Weltkriege, Ölkrisen, Finanzkrisen, Pandemien) nicht nur erholt, sondern stets neue historische Höchststände erreicht.</p>
+                                    <p>Einzelne Länder oder Branchen können durchaus über Jahrzehnte stagnieren
+                                        (Beispiel: Japanischer Aktienmarkt nach 1989). Deswegen ist
+                                        <strong>Diversifikation</strong> so entscheidend.
+                                    </p>
+                                    <p>Ein Ausfall oder eine Stagnation der <em>gesamten Weltwirtschaft</em> ist
+                                        historisch gesehen noch nie passiert. Breit gestreute Welt-Portfolios haben sich
+                                        bislang von jeder Krise (Weltkriege, Ölkrisen, Finanzkrisen, Pandemien) nicht
+                                        nur erholt, sondern stets neue historische Höchststände erreicht.</p>
                                 </div>
                             </div>
                         </div>
@@ -445,8 +667,13 @@
                             </div>
                             <div class="accordion-content">
                                 <div class="accordion-body">
-                                    <p>Krisen auszusitzen funktioniert nur, wenn Sie das investierte Geld nicht zwingend benötigen. Geld, das Sie in den nächsten 3 bis 5 Jahren gesichert brauchen (z.B. für einen Hauskauf), gehört <strong>nicht in den Aktienmarkt</strong>.</p>
-                                    <p>Wenn das Ende Ihrer Anlageziele (z.B. der Renteneintritt) näher rückt, sollten Sie beginnen, das Risiko schrittweise zu reduzieren (sog. "Ablaufmanagement"), indem Sie Anteile in schwankungsärmere Anlagen (Tagesgeld, Festgeld, bestimmte Anleihen) umschichten.</p>
+                                    <p>Krisen auszusitzen funktioniert nur, wenn Sie das investierte Geld nicht zwingend
+                                        benötigen. Geld, das Sie in den nächsten 3 bis 5 Jahren gesichert brauchen (z.B.
+                                        für einen Hauskauf), gehört <strong>nicht in den Aktienmarkt</strong>.</p>
+                                    <p>Wenn das Ende Ihrer Anlageziele (z.B. der Renteneintritt) näher rückt, sollten
+                                        Sie beginnen, das Risiko schrittweise zu reduzieren (sog. "Ablaufmanagement"),
+                                        indem Sie Anteile in schwankungsärmere Anlagen (Tagesgeld, Festgeld, bestimmte
+                                        Anleihen) umschichten.</p>
                                 </div>
                             </div>
                         </div>
@@ -531,6 +758,81 @@
         }
         flushBuffer(); // Last segment
 
+        const crisisAnnotations = [
+            {
+                x: '1973-11-30', y: Math.log10(96),
+                xref: 'x', yref: 'y',
+                text: '<b>Ölkrise</b><br>1973/74',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: 10, ay: -90,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            },
+            {
+                x: '1981-09-30', y: Math.log10(150),
+                xref: 'x', yref: 'y',
+                text: '<b>Volcker-Rezession</b><br>1980–82',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: -10, ay: -90,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            },
+            {
+                x: '1987-10-05', y: Math.log10(425),
+                xref: 'x', yref: 'y',
+                text: '<b>Schwarzer Montag</b><br>1987',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: 55, ay: -80,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            },
+            {
+                x: '2001-06-30', y: Math.log10(1133),
+                xref: 'x', yref: 'y',
+                text: '<b>Dotcom-Crash</b><br>& 9/11',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: -55, ay: -85,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            },
+            {
+                x: '2008-04-30', y: Math.log10(1300),
+                xref: 'x', yref: 'y',
+                text: '<b>Globale Finanzkrise</b><br>2008/09',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: -65, ay: -85,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            },
+            {
+                x: '2011-07-15', y: Math.log10(1235),
+                xref: 'x', yref: 'y',
+                text: '<b>Eurokrise</b><br>2011',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: 65, ay: -70,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            },
+            {
+                x: '2020-03-10', y: Math.log10(2750),
+                xref: 'x', yref: 'y',
+                text: '<b>COVID-19</b><br>2020',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: -55, ay: -75,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            },
+            {
+                x: '2022-08-30', y: Math.log10(3200),
+                xref: 'x', yref: 'y',
+                text: '<b>Zinswende &</b><br>Ukraine-Krieg',
+                showarrow: true, arrowhead: 2, arrowsize: 1, arrowwidth: 1.5, arrowcolor: '#c0392b',
+                ax: 55, ay: -75,
+                font: { size: 10, color: '#c0392b', family: 'Inter, sans-serif' },
+                bgcolor: 'rgba(255,255,255,0.90)', bordercolor: '#c0392b', borderwidth: 1, borderpad: 3
+            }
+        ];
+
         const layout = {
             margin: { t: 20, l: 50, r: 20, b: 50 },
             xaxis: { fixedrange: true, title: 'Jahr', tickmode: 'linear', dtick: 'M60', tick0: '1970-01-01', tickformat: '%Y' },
@@ -543,7 +845,8 @@
             },
             showlegend: false,
             hovermode: 'closest',
-            dragmode: false
+            dragmode: false,
+            annotations: []
         };
 
         const locale = {
@@ -567,26 +870,93 @@
 
         Plotly.newPlot('chart-container', traces, layout, config);
 
-        // --- Logik ---
-        let state = 0; // 0=None, 1=Start set, 2=End set
+        // Toggle: Krisen-Bezeichnungen ein-/ausblenden
+        document.getElementById('crisisToggle').addEventListener('change', function () {
+            Plotly.relayout('chart-container', {
+                annotations: this.checked ? crisisAnnotations : []
+            });
+        });
+
+        // --- State ---
+        let state = 0; // 0=None, 1=Start set, 2=Both set
         let startData = null;
         let endData = null;
+        let dragging = null;   // null | 'start' | 'end' | 'extra-{id}'
+        let dragMoved = false; // suppress click after drag
+        let extraInvs = [];    // [{ id, data: {d,p}|null }]
+        let pickingId = null;  // id of inv whose date is being set, or null
+        let nextInvId = 0;
 
         const chart = document.getElementById('chart-container');
 
+        // ── Coordinate helpers ────────────────────────────────────────────
+        function getPlotX(e) {
+            const rect = chart.getBoundingClientRect();
+            const margin = chart._fullLayout ? chart._fullLayout.margin : { l: 0 };
+            return e.clientX - rect.left - margin.l;
+        }
+
+        function dateToPx(dateStr) {
+            const xaxis = chart._fullLayout.xaxis;
+            const ms = new Date(dateStr).getTime();
+            const frac = (ms - xaxis._rl[0]) / (xaxis._rl[1] - xaxis._rl[0]);
+            return Math.max(0, Math.min(1, frac)) * xaxis._length;
+        }
+
+        function pixelToNearest(plotX) {
+            const xaxis = chart._fullLayout.xaxis;
+            const frac = Math.max(0, Math.min(1, plotX / xaxis._length));
+            const ms = xaxis._rl[0] + frac * (xaxis._rl[1] - xaxis._rl[0]);
+            let best = null, bestDist = Infinity;
+            for (const d of data) {
+                const dist = Math.abs(new Date(d.d).getTime() - ms);
+                if (dist < bestDist) { bestDist = dist; best = d; }
+            }
+            return best;
+        }
+
+        // ── Click: set first & second marker ────────────────────────────
         chart.on('plotly_click', function (evt) {
             if (!evt.points) return;
+            if (dragMoved) { dragMoved = false; return; } // suppress after drag
+
             const pt = evt.points[0];
             const dateClicked = pt.x;
             const priceClicked = pt.y;
 
+            // ── Picking mode: set date for an extra investment ──
+            if (pickingId !== null) {
+                if (state === 2) {
+                    const tC = new Date(dateClicked).getTime();
+                    const tS = new Date(startData.d).getTime();
+                    const tE = new Date(endData.d).getTime();
+                    if (tC < tS || tC > tE) {
+                        document.getElementById('calc-hint').innerHTML =
+                            '⚠️ Wähle einen Zeitpunkt <b>innerhalb</b> des Analyse-Zeitraums (grüne Linien).';
+                        return;
+                    }
+                }
+                const inv = extraInvs.find(i => i.id === pickingId);
+                if (inv) {
+                    inv.data = { d: dateClicked, p: priceClicked };
+                    const btn = document.getElementById('inv-btn-' + pickingId);
+                    if (btn) { btn.classList.remove('is-picking'); btn.classList.add('is-set'); btn.textContent = '✓ Datum ändern'; }
+                    const lbl = document.getElementById('inv-date-' + pickingId);
+                    if (lbl) lbl.textContent = dateClicked.split('-').reverse().join('.');
+                }
+                pickingId = null;
+                updateHint();
+                drawMarkers();
+                calc();
+                return;
+            }
+
+            // ── Normal state machine ──
             if (state === 0) {
-                // Set Start
                 startData = { d: dateClicked, p: priceClicked };
                 state = 1;
                 drawMarkers();
             } else if (state === 1) {
-                // Set End
                 if (new Date(dateClicked) < new Date(startData.d)) {
                     endData = startData;
                     startData = { d: dateClicked, p: priceClicked };
@@ -596,31 +966,104 @@
                 state = 2;
                 drawMarkers();
                 calc();
-            } else if (state === 2) {
-                // Move the closest line
-                const timeClicked = new Date(dateClicked).getTime();
-                const timeStart = new Date(startData.d).getTime();
-                const timeEnd = new Date(endData.d).getTime();
+            }
+            // state 2 → drag only
+        });
 
-                if (Math.abs(timeClicked - timeStart) < Math.abs(timeClicked - timeEnd)) {
-                    // Update start
-                    if (timeClicked >= timeEnd) {
-                        startData = endData;
-                        endData = { d: dateClicked, p: priceClicked };
-                    } else {
-                        startData = { d: dateClicked, p: priceClicked };
-                    }
-                } else {
-                    // Update end
-                    if (timeClicked <= timeStart) {
-                        endData = startData;
-                        startData = { d: dateClicked, p: priceClicked };
-                    } else {
-                        endData = { d: dateClicked, p: priceClicked };
-                    }
+        // ── Mousedown: start drag if near a marker line ───
+        chart.addEventListener('mousedown', function (e) {
+            if (state !== 2 || !chart._fullLayout) return;
+            const px = getPlotX(e);
+            const startPx = dateToPx(startData.d);
+            const endPx = dateToPx(endData.d);
+            const dStart = Math.abs(px - startPx);
+            const dEnd = Math.abs(px - endPx);
+            const THRESH = 14;
+
+            // Check extra markers first
+            let minExtraDist = Infinity, minExtraId = null;
+            extraInvs.forEach(inv => {
+                if (inv.data) {
+                    const d = Math.abs(px - dateToPx(inv.data.d));
+                    if (d < minExtraDist) { minExtraDist = d; minExtraId = inv.id; }
                 }
-                drawMarkers();
-                calc();
+            });
+
+            if (minExtraId !== null && minExtraDist < THRESH && minExtraDist <= Math.min(dStart, dEnd)) {
+                dragging = 'extra-' + minExtraId;
+                dragMoved = false;
+                e.preventDefault(); e.stopPropagation();
+            } else if (dStart < THRESH || dEnd < THRESH) {
+                dragging = dStart <= dEnd ? 'start' : 'end';
+                dragMoved = false;
+                e.preventDefault(); e.stopPropagation();
+            }
+        });
+
+        // ── Mousemove: drag or update cursor ───
+        document.addEventListener('mousemove', function (e) {
+            if (!chart._fullLayout) return;
+
+            // Cursor feedback
+            if (state === 2 && !dragging) {
+                const rect = chart.getBoundingClientRect();
+                if (e.clientX >= rect.left && e.clientX <= rect.right &&
+                    e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    const px = getPlotX(e);
+                    const nearGreen = Math.abs(px - dateToPx(startData.d)) < 14 ||
+                        Math.abs(px - dateToPx(endData.d)) < 14;
+                    const nearOrange = extraInvs.some(inv => inv.data && Math.abs(px - dateToPx(inv.data.d)) < 14);
+                    chart.style.cursor = (nearGreen || nearOrange) ? 'ew-resize' : '';
+                }
+            }
+
+            if (!dragging) return;
+            dragMoved = true;
+
+            // Extra marker drag
+            if (dragging.startsWith('extra-')) {
+                const id = parseInt(dragging.split('-')[1]);
+                const inv = extraInvs.find(i => i.id === id);
+                if (!inv) return;
+                const nearest = pixelToNearest(getPlotX(e));
+                if (!nearest) return;
+                const t = new Date(nearest.d).getTime();
+                const tS = new Date(startData.d).getTime();
+                const tE = new Date(endData.d).getTime();
+                if (t >= tS && t <= tE) {
+                    inv.data = nearest;
+                    const lbl = document.getElementById('inv-date-' + id);
+                    if (lbl) lbl.textContent = nearest.d.split('-').reverse().join('.');
+                    drawMarkers(); calc();
+                }
+                return;
+            }
+
+            const nearest = pixelToNearest(getPlotX(e));
+            if (!nearest) return;
+
+            if (dragging === 'start') {
+                startData = nearest;
+                if (new Date(startData.d) >= new Date(endData.d)) {
+                    [startData, endData] = [endData, startData];
+                    dragging = 'end';
+                }
+            } else {
+                endData = nearest;
+                if (new Date(endData.d) <= new Date(startData.d)) {
+                    [startData, endData] = [endData, startData];
+                    dragging = 'start';
+                }
+            }
+            drawMarkers();
+            calc();
+        });
+
+        // ── Mouseup: end drag ────────────────────────────────────────────
+        document.addEventListener('mouseup', function () {
+            if (dragging) {
+                dragging = null;
+                chart.style.cursor = '';
             }
         });
 
@@ -649,6 +1092,15 @@
                     type: 'rect', x0: endData.d, x1: xMax, y0: 0, y1: 1, xref: 'x', yref: 'paper',
                     fillcolor: 'rgba(255,255,255,0.7)', line: { width: 0 }
                 });
+                // Orange markers for extra investments
+                extraInvs.forEach(inv => {
+                    if (inv.data) {
+                        shapes.push({
+                            type: 'line', x0: inv.data.d, x1: inv.data.d, y0: 0, y1: 1, yref: 'paper',
+                            line: { color: '#e67e22', width: 2, dash: 'dot' }
+                        });
+                    }
+                });
             }
 
             Plotly.relayout(chart, { shapes: shapes });
@@ -670,28 +1122,21 @@
             const p1 = startData.p;
             const p2 = endData.p;
             const ratio = p2 / p1;
-
             const finalVal = inv * ratio;
             const pct = (ratio - 1) * 100;
 
-            document.getElementById('res-endval').innerText = finalVal.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+            document.getElementById('res-endval').innerText =
+                finalVal.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
 
             const pctEl = document.getElementById('res-perf');
             pctEl.innerText = (pct > 0 ? '+' : '') + pct.toFixed(2) + ' %';
             pctEl.className = 'calc-res-value ' + (pct >= 0 ? 'pos' : 'neg');
 
-            // Calculate Annualized Return (CAGR)
             const date1 = new Date(startData.d);
             const date2 = new Date(endData.d);
-            const diffTime = Math.abs(date2 - date1);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            const years = diffDays / 365.25;
+            const years = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24 * 365.25);
 
-            let cagr = 0;
-            if (years > 0) {
-                cagr = (Math.pow(ratio, 1 / years) - 1) * 100;
-            }
-
+            let cagr = years > 0 ? (Math.pow(ratio, 1 / years) - 1) * 100 : 0;
             const cagrEl = document.getElementById('res-cagr');
             cagrEl.innerText = (cagr > 0 ? '+' : '') + cagr.toFixed(2) + ' %';
             cagrEl.className = 'calc-res-value ' + (cagr >= 0 ? 'pos' : 'neg');
@@ -699,17 +1144,117 @@
             const d1 = startData.d.split('-').reverse().join('.');
             const d2 = endData.d.split('-').reverse().join('.');
             document.getElementById('res-dates').innerText = d1 + ' – ' + d2;
+
+            // Portfolio: combine all investments with a set date
+            const activeExtras = extraInvs.filter(i => i.data !== null);
+            const portfolioBlock = document.getElementById('portfolio-results');
+
+            if (activeExtras.length === 0) {
+                portfolioBlock.style.display = 'none';
+                return;
+            }
+            portfolioBlock.style.display = '';
+
+            let totalInv = inv;
+            let totalVal = finalVal;
+            activeExtras.forEach(extra => {
+                const amt = parseGerman(document.getElementById('inv-amount-' + extra.id).value || '0');
+                const extraRatio = p2 / extra.data.p; // extra inv date → end date
+                totalInv += amt;
+                totalVal += amt * extraRatio;
+            });
+
+            const totalPct = (totalVal / totalInv - 1) * 100;
+            const totalCagr = years > 0 ? (Math.pow(totalVal / totalInv, 1 / years) - 1) * 100 : 0;
+
+            document.getElementById('res-total-inv').innerText =
+                totalInv.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+            document.getElementById('res-total-val').innerText =
+                totalVal.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+
+            const tpEl = document.getElementById('res-total-pct');
+            tpEl.innerText = (totalPct > 0 ? '+' : '') + totalPct.toFixed(2) + ' %';
+            tpEl.className = 'calc-res-value ' + (totalPct >= 0 ? 'pos' : 'neg');
+
+            const tcEl = document.getElementById('res-total-cagr');
+            tcEl.innerText = (totalCagr > 0 ? '+' : '') + totalCagr.toFixed(2) + ' %';
+            tcEl.className = 'calc-res-value ' + (totalCagr >= 0 ? 'pos' : 'neg');
+
+            // Mehrgewinn: net profit of extra investments vs. not investing that capital at all
+            let actualExtraVal = 0;
+            let extraCapital = 0;
+            activeExtras.forEach(extra => {
+                const amt = parseGerman(document.getElementById('inv-amount-' + extra.id).value || '0');
+                actualExtraVal += amt * (p2 / extra.data.p);
+                extraCapital += amt;
+            });
+            const mehrgewinn = actualExtraVal - extraCapital;
+            const mgEl = document.getElementById('res-mehrgewinn');
+            mgEl.innerText = (mehrgewinn >= 0 ? '+' : '') +
+                mehrgewinn.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+            mgEl.style.color = mehrgewinn >= 0 ? '#e67e22' : '#c0392b';
         }
 
         function reset() {
             state = 0;
             startData = null;
             endData = null;
+            extraInvs = [];
+            pickingId = null;
+            document.getElementById('extra-inv-list').innerHTML = '';
+            document.getElementById('portfolio-results').style.display = 'none';
             Plotly.relayout(chart, { shapes: [] });
             document.getElementById('res-endval').innerText = '--- €';
             document.getElementById('res-perf').innerText = '--- %';
             document.getElementById('res-cagr').innerText = '--- %';
             document.getElementById('res-dates').innerText = '-';
+            updateHint();
+        }
+
+        // ── Extra investment management ───────────────────────────────────
+        function addInvestment() {
+            const id = nextInvId++;
+            extraInvs.push({ id, data: null });
+            const row = document.createElement('div');
+            row.className = 'inv-row';
+            row.id = 'inv-row-' + id;
+            row.innerHTML = `
+                <label>Betrag (€)</label>
+                <input type="text" id="inv-amount-${id}" value="10.000"
+                    oninput="calc()" onchange="formatField(this)">
+                <button class="btn-set-date" id="inv-btn-${id}"
+                    onclick="startPickDate(${id})">Datum wählen ▾</button>
+                <span class="inv-date-label" id="inv-date-${id}">–</span>
+                <button class="btn-del-inv" onclick="removeInvestment(${id})">&times;</button>
+            `;
+            document.getElementById('extra-inv-list').appendChild(row);
+        }
+
+        function removeInvestment(id) {
+            extraInvs = extraInvs.filter(i => i.id !== id);
+            const row = document.getElementById('inv-row-' + id);
+            if (row) row.remove();
+            if (pickingId === id) { pickingId = null; updateHint(); }
+            drawMarkers();
+            calc();
+        }
+
+        function startPickDate(id) {
+            // Cancel previous picking mode
+            if (pickingId !== null) {
+                const prev = document.getElementById('inv-btn-' + pickingId);
+                if (prev) { prev.classList.remove('is-picking'); prev.textContent = 'Datum wählen ▾'; }
+            }
+            pickingId = id;
+            const btn = document.getElementById('inv-btn-' + id);
+            if (btn) { btn.classList.remove('is-set'); btn.classList.add('is-picking'); btn.textContent = 'Im Chart klicken…'; }
+            document.getElementById('calc-hint').innerHTML =
+                '📍 Klicke auf den Chart, um den <b>Investitionszeitpunkt</b> (orange Linie) zu setzen – muss innerhalb des Analysezeitraums liegen.';
+        }
+
+        function updateHint() {
+            document.getElementById('calc-hint').innerHTML =
+                'Klicke auf den Chart, um den <b>Startzeitpunkt</b> und <b>Endzeitpunkt</b> zu setzen. Ziehe die grünen Linien, um den Zeitraum anzupassen.';
         }
 
         function toggleScale() {
@@ -723,7 +1268,7 @@
             Plotly.relayout('chart-container', update);
         }
 
-    
+
         // Accordion
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {

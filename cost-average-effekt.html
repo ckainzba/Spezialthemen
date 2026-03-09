@@ -308,7 +308,7 @@
                         <p class="hero-subtitle">
                             Wer regelmäßig einen <strong>festen Betrag</strong> investiert, kauft automatisch
                             mehr Anteile wenn die Kurse niedrig sind – und weniger wenn sie hoch sind.
-                            Das Ergebnis: ein günstigerer Durchschnittskurs als bei der Einmalanlage.
+                            Das Ergebnis: ein günstigerer Durchschnittskurs.
                         </p>
                     </div>
                     <div class="hero-illustration">
@@ -516,7 +516,7 @@
                                                 <polyline points="17 6 23 6 23 12" />
                                             </svg></div>
                                         <div class="feature-content">
-                                            <h4>Crashs werden zur Chance</h4>
+                                            <h4>Krisen werden zur Chance</h4>
                                             <p>Bei fallenden Kursen kaufen Sie automatisch mehr Anteile. Wenn die Kurse
                                                 sich erholen, profitieren Sie überproportional. Crashs werden so zu
                                                 einem natürlichen Vorteil.</p>
@@ -644,7 +644,7 @@
                             </div>
                             <div class="accordion-content">
                                 <div class="accordion-body">
-                                    <p>Viele Broker und Banken bieten ETF-Sparpläne bereits ab <strong>25 €
+                                    <p>Viele Broker und Banken bieten Investmentfonds-Sparpläne bereits ab <strong>25 €
                                             monatlich</strong> an. Bei einigen Online-Brokern geht es sogar ab 1 € los.
                                     </p>
                                     <p>Entscheidend ist nicht die absolute Höhe, sondern die
@@ -698,8 +698,9 @@
                             </div>
                             <div class="accordion-content">
                                 <div class="accordion-body">
-                                    <p>Für Einsteiger empfehlen viele Experten <strong>breit gestreute ETFs</strong>
-                                        (Exchange Traded Funds), z.B. auf den MSCI World oder FTSE All-World. Diese
+                                    <p>Für Einsteiger empfehlen viele Experten <strong>breit gestreute
+                                            Investmentfonds</strong>,
+                                        z.B. auf den MSCI World oder FTSE All-World. Diese
                                         investieren automatisch in Hunderte oder Tausende Unternehmen weltweit.</p>
                                     <p>Wichtige Kriterien: <strong>breite Diversifikation</strong>, <strong>niedrige
                                             Kosten</strong> (TER unter 0,3 %), <strong>thesaurierend</strong> (Erträge
@@ -771,7 +772,7 @@
            Anteile und drückt den harmonischen Ø-Kaufkurs unter 100 €.
         ── */
         function buildPrices(months, scenario) {
-            const seeds = { v: 42, linear: 137, bear: 271 };
+            const seeds = { v: 42, linear: 137, bear: 271, bull: 512 };
             const rand = mulberry32(seeds[scenario] || 42);
 
             // Box-Muller → Standardnormalverteilung
@@ -810,6 +811,13 @@
                     } else {
                         base = 85 - 57 * (t - 0.65);     // 85 → 65
                     }
+                } else if (scenario === 'bull') {
+                    // ── Linearer Aufwärtstrend: fast perfekte Gerade von 100 → ~160 € ──
+                    // Minimales Rauschen (×0.004) → nahezu durchgezogene Linie.
+                    // Alle Kurse ab Monat 2 über 100 € → Einmalanlage gewinnt.
+                    base = 100 + 60 * t;
+                    prices.push(Math.max(base * (1 + 0.004 * randn()), 1));
+                    continue;
                 } else {
                     // ── Seitwärts: 1,5 Schwingungen um 100 € ──
                     // sin(3π·t): t=0 → 0, t=1 → 0 (Anfang = Ende = 100)
@@ -825,8 +833,9 @@
             // Endkurs auf Zielwert kalibrieren (proportionale Skalierung, Kurvenform bleibt erhalten)
             const finalRaw = prices[months - 1];
             let targetFinal;
-            if (scenario === 'v') targetFinal = 140;   // deutlich über Start → steigend
-            else if (scenario === 'linear') targetFinal = 65;  // deutlich unter Start → fallend
+            if (scenario === 'v') targetFinal = 140;       // deutlich über Start → steigend
+            else if (scenario === 'linear') targetFinal = 65;    // deutlich unter Start → fallend
+            else if (scenario === 'bull') targetFinal = 160;     // kontinuierlich steigend, kein Dip
             else targetFinal = 100;   // ≈ Start → seitwärts
 
             const scale = targetFinal / finalRaw;
@@ -943,6 +952,7 @@
                 { key: 'v', label: '📈 Aufwärtstrend', desc: 'Schwankend steigend' },
                 { key: 'linear', label: '📉 Abwärtstrend', desc: 'Schwankend fallend' },
                 { key: 'bear', label: '↔️ Seitwärts', desc: 'Schwankend, kein Trend' },
+                { key: 'bull', label: '🚀 Linearer Anstieg', desc: 'Einmalanlage gewinnt' },
             ];
 
             const inputBtnStyle = (active) => ({
@@ -1038,7 +1048,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <ResponsiveContainer width="100%" height={220}>
+                                <ResponsiveContainer width="100%" height={320}>
                                     <ComposedChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
                                         <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                                         <XAxis dataKey="monat" axisLine={false} tickLine={false}
