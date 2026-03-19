@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparen vs. Investieren – Kaufkraft erhalten und Vermögen aufbauen</title>
+    <meta name="description" content="Sparen vs. Investieren: Warum bloßes Sparen durch Inflation zu einem Kaufkraftverlust führt und wie Sie mit Investmentfonds Vermögen aufbauen.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Diversifikation Infografik ── */
+        .div-infographic {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem 1rem;
+            margin: 2rem auto;
+            overflow-x: auto;
+            max-width: fit-content;
+        }
+
+        .div-rows {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .div-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .div-col-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #023e84;
+            text-align: center;
+            max-width: 90px;
+        }
+
+        .div-segments {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            width: 80px;
+        }
+
+        .div-seg {
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: #fff;
+            padding: 0.3rem 0.2rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .div-result-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .div-result-label.red {
+            color: #c0392b;
+        }
+
+        .div-result-label.green {
+            color: #27ae60;
+        }
+
+        .div-vs {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #666;
+            align-self: center;
+            padding-bottom: 1.5rem;
+        }
+
+        /* ── Highlight box ── */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0fe, #dce8fd);
+            border-left: 4px solid #023e84;
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 0.5rem;
+            color: #023e84;
+        }
+    </style>
+
+    <!-- Portfolio Simulator Dependencies -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.12.2/umd/Recharts.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* ── Simulator: Scoped Light Theme ── */
+        .sim-wrap {
+            --sim-bg: #f8fafc;
+            --sim-card: #ffffff;
+            --sim-border: #e2e8f0;
+            --sim-text: #1e293b;
+            --sim-text-2: #475569;
+            --sim-text-muted: #94a3b8;
+            --sim-accent: #023e84;
+            --sim-accent-light: #3b82f6;
+            --sim-green: #059669;
+            --sim-amber: #d97706;
+            --sim-red: #dc2626;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-layout {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 900px) {
+            .sim-wrap .sim-layout {
+                flex-direction: column;
+            }
+        }
+
+        /* Sidebar */
+        .sim-wrap .sim-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 900px) {
+            .sim-wrap .sim-sidebar {
+                width: 100%;
+            }
+        }
+
+        .sim-wrap .sim-card {
+            background: var(--sim-card);
+            border: 1px solid var(--sim-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .sim-wrap .sim-card-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--sim-border);
+            background: #f1f5f9;
+        }
+
+        .sim-wrap .sim-card-header h3 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--sim-accent);
+            margin: 0;
+        }
+
+        .sim-wrap .sim-card-body {
+            padding: 14px;
+        }
+
+        /* Asset cards */
+        .sim-wrap .sim-asset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .sim-wrap .sim-asset-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1.5px solid var(--sim-border);
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.18s;
+            text-align: left;
+            width: 100%;
+            color: inherit;
+            font-family: inherit;
+        }
+
+        .sim-wrap .sim-asset-card:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .sim-wrap .sim-asset-card.selected {
+            border-color: var(--asset-color, #023e84);
+            background: color-mix(in srgb, var(--asset-color, #023e84) 8%, #fff);
+        }
+
+        .sim-wrap .sim-checkbox {
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            border: 2px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.18s;
+        }
+
+        .sim-wrap .sim-asset-card.selected .sim-checkbox {
+            background: var(--asset-color, #023e84);
+            border-color: transparent;
+        }
+
+        .sim-wrap .sim-asset-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sim-wrap .sim-asset-name {
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-asset-sub {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-top: 1px;
+        }
+
+        .sim-wrap .sim-asset-desc {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-top: 3px;
+        }
+
+        .sim-wrap .sim-asset-metrics {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .sim-wrap .sim-metric-return {
+            font-size: 11px;
+            color: var(--sim-green);
+            font-weight: 600;
+        }
+
+        .sim-wrap .sim-metric-vol {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+        }
+
+        /* Stats */
+        .sim-wrap .sim-stats-section {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--sim-border);
+        }
+
+        .sim-wrap .sim-stats-title {
+            font-size: 10px;
+            color: var(--sim-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sim-wrap .sim-stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3px 0;
+        }
+
+        .sim-wrap .sim-stat-label {
+            font-size: 12px;
+            color: var(--sim-text-2);
+        }
+
+        .sim-wrap .sim-stat-value {
+            font-size: 12px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sim-wrap .sim-info-box {
+            margin-top: 10px;
+            padding: 9px 11px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            font-size: 11px;
+            color: var(--sim-text-2);
+            line-height: 1.5;
+        }
+
+        /* Badges */
+        .sim-wrap .sim-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 12px;
+        }
+
+        .sim-wrap .sim-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .sim-wrap .sim-badge-crash {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+        }
+
+        .sim-wrap .sim-badge-portfolio {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+
+        .sim-wrap .sim-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .sim-wrap .sim-badge-dot.pulse {
+            animation: simPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes simPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .5;
+                transform: scale(1.4)
+            }
+        }
+
+        /* Main content */
+        .sim-wrap .sim-main {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Chart */
+        .sim-wrap .sim-chart-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--sim-accent);
+            margin-bottom: 2px;
+        }
+
+        .sim-wrap .sim-chart-sub {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-bottom: 14px;
+        }
+
+        .sim-wrap .sim-chart-empty {
+            height: 360px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sim-text-muted);
+            font-size: 13px;
+            border: 1.5px dashed #e2e8f0;
+            border-radius: 12px;
+        }
+
+        /* Tooltip */
+        .sim-wrap .sim-tooltip {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px 13px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+            min-width: 170px;
+            font-size: 12px;
+        }
+
+        .sim-wrap .sim-tooltip-header {
+            color: var(--sim-accent);
+            font-weight: 700;
+            font-size: 11px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 7px;
+            margin-bottom: 7px;
+        }
+
+        .sim-wrap .sim-tooltip-crash {
+            color: #dc2626;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .sim-wrap .sim-tooltip-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 2px 0;
+        }
+
+        .sim-wrap .sim-tooltip-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--sim-text-2);
+        }
+
+        .sim-wrap .sim-tooltip-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .sim-wrap .sim-tooltip-value {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Explanation */
+        .sim-wrap .sim-explain {
+            display: flex;
+            gap: 14px;
+        }
+
+        .sim-wrap .sim-explain-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .sim-wrap .sim-explain-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--sim-accent);
+            margin-bottom: 6px;
+        }
+
+        .sim-wrap .sim-explain-text {
+            color: var(--sim-text-2);
+            font-size: 13px;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .sim-wrap .sim-explain-text strong {
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-explain-text em {
+            color: var(--sim-accent-light);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Table */
+        .sim-wrap .sim-table-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-table-sub {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            margin-top: 2px;
+        }
+
+        .sim-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sim-wrap thead th {
+            text-align: left;
+            padding: 10px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #fff;
+            background: var(--sim-accent);
+            white-space: nowrap;
+        }
+
+        .sim-wrap thead th:not(:first-child) {
+            text-align: right;
+        }
+
+        .sim-wrap tbody td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 13px;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap tbody td:not(:first-child) {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+        }
+
+        .sim-wrap tbody tr:hover td {
+            background: #f8fafc;
+        }
+
+        .sim-wrap tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .sim-wrap .sim-portfolio-row td {
+            background: #eff6ff;
+            border-top: 2px solid #bfdbfe !important;
+        }
+
+        .sim-wrap .sim-portfolio-row td:first-child {
+            font-weight: 700;
+            color: var(--sim-accent);
+        }
+
+        .sim-wrap .sim-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .sim-wrap .sim-color-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Legend + disclaimer */
+        .sim-wrap .sim-legend-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .sim-wrap .sim-tag {
+            padding: 3px 9px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            font-size: 11px;
+            color: var(--sim-text-muted);
+        }
+
+        .sim-wrap .sim-disclaimer {
+            font-size: 11px;
+            color: var(--sim-text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Weight sliders */
+        .sim-wrap .sim-slider-section {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--sim-border);
+        }
+
+        .sim-wrap .sim-slider-section-title {
+            font-size: 10px;
+            color: var(--sim-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sim-wrap .sim-slider-row {
+            margin-bottom: 9px;
+        }
+
+        .sim-wrap .sim-slider-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .sim-wrap .sim-slider-asset-name {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-slider-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .sim-wrap .sim-slider-pct {
+            font-size: 11px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            min-width: 34px;
+            text-align: right;
+        }
+
+        .sim-wrap input[type=range].sim-weight-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: #e2e8f0;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .sim-wrap input[type=range].sim-weight-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--sim-thumb-color, #023e84);
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.12s;
+        }
+
+        .sim-wrap input[type=range].sim-weight-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .sim-wrap .sim-weight-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding: 7px 10px;
+            border-radius: 7px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+        }
+
+        .sim-wrap .sim-weight-total-label {
+            font-size: 11px;
+            color: var(--sim-text-2);
+            font-weight: 500;
+        }
+
+        .sim-wrap .sim-weight-total-value {
+            font-size: 12px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            color: #059669;
+        }
+
+        .sim-wrap .sim-btn-row {
+            display: flex;
+            gap: 5px;
+            margin-top: 7px;
+        }
+
+        .sim-wrap .sim-reset-btn {
+            flex: 1;
+            padding: 6px;
+            border-radius: 7px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            color: var(--sim-text-2);
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .sim-wrap .sim-reset-btn:hover {
+            background: #e2e8f0;
+            color: var(--sim-text);
+        }
+
+        .sim-wrap .sim-mvp-btn {
+            flex: 1;
+            padding: 6px;
+            border-radius: 7px;
+            border: 1px solid #bfdbfe;
+            background: #eff6ff;
+            color: var(--sim-accent);
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .sim-wrap .sim-mvp-btn:hover {
+            background: #dbeafe;
+            color: #1e3a8a;
+            border-color: #93c5fd;
+        }
+
+        /* Recharts light overrides */
+        .sim-wrap .recharts-cartesian-grid-horizontal line,
+        .sim-wrap .recharts-cartesian-grid-vertical line {
+            stroke: rgba(0, 0, 0, 0.06) !important;
+        }
+
+        .sim-wrap .recharts-default-legend .recharts-legend-item-text {
+            color: #475569 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2"
+                            style="width: 1rem; height: 1rem; cursor: pointer; transform: rotate(180deg);"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu open" id="sidebarSubMenu2">
+                        <li><a href="sparen-vs-investieren.html" class="sidebar-sub-link active">Sparen vs. Investieren</a></li>
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+                    <main class="main-content">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Vermögensanlage</span>
+                        <h1>Sparen vs. Investieren</h1>
+                        <p class="hero-subtitle">
+                            Warum das Sparbuch ausgedient hat – wer heute nur spart, verliert auf lange Sicht Geld. 
+                            Erfahren Sie, wie Inflation Ihre <strong>Kaufkraft mindert</strong> und warum Investieren 
+                            der einzige Weg zum <strong>echten Vermögensaufbau</strong> ist.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/sparen_investieren_hero.png" alt="Sparen vs. Investieren Illustration"
+                            style="width:100%; max-width:340px; object-fit:contain;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Warum bloßes Sparen Geld vernichtet -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Der unsichtbare Dieb: Die Inflation</h2>
+                        <p>Warum Ihr Geld auf dem Tagesgeldkonto an Wert verliert</p>
+                    </div>
+                    <p>
+                        <strong>Sparen</strong> gibt vielen Menschen ein sicheres Gefühl. Doch dieses Gefühl trügt. 
+                        Wenn Sie Ihr Geld auf einem Sparbuch, Girokonto oder Tagesgeldkonto liegen lassen, 
+                        bekommen Sie zwar die Garantie, dass der <em>nominale</em> Betrag (die Zahl auf dem Kontoauszug) 
+                        sich nicht verringert – doch der <strong>echte Wert</strong> (die Kaufkraft) sinkt stetig.
+                    </p>
+                    <p>
+                        Der Grund dafür ist die Inflation: Güter und Dienstleistungen werden jedes Jahr etwas teurer. 
+                        Liegt die Inflation bei 2% und der Zins auf Ihrem Konto nur bei 1%, verlieren Sie effektiv 
+                        jedes Jahr 1% an Kaufkraft. Auf Dauer summiert sich dieser schleichende Kaufkraftverlust enorm.
+                    </p>
+
+                    <div class="info-box" style="margin-top: 2rem;">
+                        <h3>💡 Investieren bedeutet, das Geld für sich arbeiten zu lassen</h3>
+                        <p>
+                            Beim Investieren beteiligen Sie sich am Produktivkapital der Wirtschaft – zum Beispiel 
+                            über Aktien, Immobilien oder Investmentfonds. Anstatt das Geld brachliegen zu lassen, profitiert 
+                            es vom weltweiten Wirtschaftswachstum und schlägt so die Inflation dauerhaft.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── Zinseszins Calculator React App Container ── -->
+            <section class="section section--alt" style="border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+                <div class="container" style="max-width: 1000px;">
+                    <div class="text-center mb-xl">
+                        <h2>Der direkte Vergleich: 10 Jahre Sparplan</h2>
+                        <p>Was passiert, wenn Sie monatlich 100 € zur Seite legen? Vergleichen Sie Sparbuch, Tagesgeld, Immobilienfonds und globale Aktienfonds (z.B. MSCI World).</p>
+                    </div>
+                    <div id="sparen-calculator-root">
+                        <div style="display:flex;align-items:center;justify-content:center;height:200px;color:#94a3b8;gap:12px;">
+                            Lade Rechner…
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Arbeitgeberförderung. Alle Informationen dienen nur zu Bildungszwecken.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        /* Sidebar toggles */
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+        if (arrow && subMenu) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        /* Slider */
+        let divSlide = 0;
+        const divTrack = document.getElementById('divSliderTrack');
+        const divDots = document.querySelectorAll('#divDots .slider-dot');
+        const divTotal = divDots.length;
+
+        function divGoTo(n) {
+            divSlide = (n + divTotal) % divTotal;
+            divTrack.style.transform = `translateX(-${divSlide * 100}%)`;
+            divDots.forEach((d, i) => d.classList.toggle('active', i === divSlide));
+        }
+        document.getElementById('divPrevBtn').addEventListener('click', () => divGoTo(divSlide - 1));
+        document.getElementById('divNextBtn').addEventListener('click', () => divGoTo(divSlide + 1));
+        divDots.forEach((d, i) => d.addEventListener('click', () => divGoTo(i)));
+
+        /* Accordion */
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+
+    <!-- ── Sparen vs Investieren React App ── -->
+    <script type="text/babel" data-presets="react">
+        const {
+            BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+            Legend, ResponsiveContainer, Cell, ReferenceLine
+        } = Recharts;
+        const { useState, useMemo } = React;
+
+        function CalculatorApp() {
+            const [monthlyRate, setMonthlyRate] = useState(100);
+            const [years, setYears] = useState(10);
+            const [inflationRate, setInflationRate] = useState(2.0);
+
+            // Assumptions for annual return rates
+            const rates = {
+                sparbuch: 0.001,
+                tagesgeld: 0.010,
+                immo: 0.040,
+                msci: 0.120
+            };
+
+            const calculateFV = (rate, pmt, yrs) => {
+                const r = rate / 12;
+                const n = yrs * 12;
+                if (r === 0) return pmt * n;
+                return pmt * ((Math.pow(1 + r, n) - 1) / r);
+            };
+
+            const totalInvested = monthlyRate * years * 12;
+            const fvSparbuch = calculateFV(rates.sparbuch, monthlyRate, years);
+            const fvTagesgeld = calculateFV(rates.tagesgeld, monthlyRate, years);
+            const fvImmo = calculateFV(rates.immo, monthlyRate, years);
+            const fvMsci = calculateFV(rates.msci, monthlyRate, years);
+
+            // Calculate real value based on real return (Rendite - Inflation)
+            const inf = inflationRate / 100;
+            const realSparbuch = Math.round(calculateFV(rates.sparbuch - inf, monthlyRate, years));
+            const realTagesgeld = Math.round(calculateFV(rates.tagesgeld - inf, monthlyRate, years));
+            const realImmo = Math.round(calculateFV(rates.immo - inf, monthlyRate, years));
+            const realMsci = Math.round(calculateFV(rates.msci - inf, monthlyRate, years));
+
+            const data = [
+                { 
+                    name: 'Sparbuch (0,1%)', 
+                    realValue: realSparbuch, 
+                    loss: Math.round(fvSparbuch) - realSparbuch, 
+                    nominal: Math.round(fvSparbuch),
+                    color: '#64748b' 
+                },
+                { 
+                    name: 'Tagesgeld (1,0%)', 
+                    realValue: realTagesgeld, 
+                    loss: Math.round(fvTagesgeld) - realTagesgeld, 
+                    nominal: Math.round(fvTagesgeld),
+                    color: '#94a3b8' 
+                },
+                { 
+                    name: 'Immofonds (4%)', 
+                    realValue: realImmo, 
+                    loss: Math.round(fvImmo) - realImmo, 
+                    nominal: Math.round(fvImmo),
+                    color: '#3b82f6' 
+                },
+                { 
+                    name: 'Aktienfonds (12%)', 
+                    realValue: realMsci, 
+                    loss: Math.round(fvMsci) - realMsci, 
+                    nominal: Math.round(fvMsci),
+                    color: '#10b981' 
+                }
+            ];
+
+            const formatEuro = (val) => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(val);
+
+            // Custom Tooltip
+            const renderTooltip = ({ active, payload, label }) => {
+                if (active && payload && payload.length) {
+                    const realData = payload.find(p => p.dataKey === 'realValue');
+                    const lossData = payload.find(p => p.dataKey === 'loss');
+                    const nominal = realData.value + lossData.value;
+                    
+                    return (
+                        <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+                            <div style={{ fontWeight: 'bold', marginBottom: '8px', color: '#1e293b' }}>{label}</div>
+                            <div style={{ color: '#475569', fontSize: '13px', marginBottom: '4px' }}>
+                                Eingezahlt: <strong>{formatEuro(totalInvested)}</strong>
+                            </div>
+                            <div style={{ color: '#475569', fontSize: '13px', marginBottom: '4px' }}>
+                                Nominalwert: <strong>{formatEuro(nominal)}</strong>
+                            </div>
+                            <div style={{ color: '#ef4444', fontSize: '13px', marginBottom: '4px' }}>
+                                Kaufkraftverlust: <strong>-{formatEuro(lossData.value)}</strong>
+                            </div>
+                            <div style={{ color: realData.payload.color, fontSize: '15px', fontWeight: 'bold', marginTop: '8px', borderTop: '1px solid #e2e8f0', paddingTop: '8px' }}>
+                                Echte Kaufkraft: {formatEuro(realData.value)}
+                            </div>
+                        </div>
+                    );
+                }
+                return null;
+            };
+
+            return (
+                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 16px rgba(0,0,0,0.06)' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', marginBottom: '32px' }}>
+                        <div style={{ flex: '1 1 180px' }}>
+                            <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', color: '#475569', marginBottom: '8px' }}>Monatlicher Sparbetrag</label>
+                            <input type="range" min="25" max="1000" step="25" value={monthlyRate} onChange={e => setMonthlyRate(Number(e.target.value))} style={{ width: '100%' }} />
+                            <div style={{ textAlign: 'center', fontWeight: 'bold', marginTop: '8px', color: '#023e84' }}>{monthlyRate} €</div>
+                        </div>
+                        <div style={{ flex: '1 1 180px' }}>
+                            <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', color: '#475569', marginBottom: '8px' }}>Anlagedauer</label>
+                            <input type="range" min="5" max="40" step="1" value={years} onChange={e => setYears(Number(e.target.value))} style={{ width: '100%' }} />
+                            <div style={{ textAlign: 'center', fontWeight: 'bold', marginTop: '8px', color: '#023e84' }}>{years} Jahre</div>
+                        </div>
+                        <div style={{ flex: '1 1 180px' }}>
+                            <label style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', color: '#ef4444', marginBottom: '8px' }}>Inflation (% p.a.)</label>
+                            <input type="range" min="0" max="10" step="0.5" value={inflationRate} onChange={e => setInflationRate(Number(e.target.value))} style={{ width: '100%' }} />
+                            <div style={{ textAlign: 'center', fontWeight: 'bold', marginTop: '8px', color: '#ef4444' }}>{inflationRate.toFixed(1)} %</div>
+                        </div>
+                    </div>
+
+                    <div style={{ textAlign: 'center', marginBottom: '16px', fontSize: '14px', color: '#475569' }}>
+                        Gesamt eingezahlt: <strong style={{color: '#1e293b'}}>{formatEuro(totalInvested)}</strong>
+                    </div>
+
+                    <div style={{ height: 350, width: '100%' }}>
+                        <ResponsiveContainer>
+                            <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+                                <XAxis dataKey="name" tick={{fill: '#475569', fontSize: 12}} axisLine={false} tickLine={false} />
+                                <YAxis tickFormatter={(val) => val.toLocaleString('de-DE') + ' €'} tick={{fill: '#475569', fontSize: 12}} axisLine={false} tickLine={false} width={80} />
+                                <Tooltip content={renderTooltip} cursor={{fill: '#f8fafc'}} />
+                                <Bar dataKey="realValue" stackId="a" name="Echte Kaufkraft nach Inflation">
+                                    {data.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.color} />
+                                    ))}
+                                </Bar>
+                                <Bar dataKey="loss" stackId="a" name="Kaufkraftverlust durch Inflation" fill="#cbd5e1" radius={[4, 4, 0, 0]} />
+                                <ReferenceLine y={totalInvested} stroke="#ef4444" strokeDasharray="3 3" label={{ position: 'insideBottomLeft', value: 'Gesamteinzahlung', fill: '#ef4444', fontSize: 13, fontWeight: 'bold' }} />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+
+                    <div style={{ marginTop: '32px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                        {data.map(item => {
+                            const realProfit = item.realValue - totalInvested;
+                            const isLoss = realProfit < 0;
+                            return (
+                                <div key={item.name} style={{ flex: '1 1 200px', background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                                    <div style={{ fontSize: '12px', color: '#64748b', fontWeight: 'bold', marginBottom: '4px' }}>{item.name}</div>
+                                    <div style={{ fontSize: '13px', color: '#94a3b8', textDecoration: 'line-through' }}>Nominal: {formatEuro(item.nominal)}</div>
+                                    
+                                    <div style={{ fontSize: '20px', fontWeight: 'bold', color: item.color, marginTop: '4px' }}>{formatEuro(item.realValue)}</div>
+                                    
+                                    <div style={{ fontSize: '12px', color: isLoss ? '#ef4444' : '#10b981', marginTop: '4px' }}>
+                                        {isLoss ? '' : '+'}{formatEuro(realProfit)} reale Veränderung
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            );
+        }
+
+        const rootNode = document.getElementById('sparen-calculator-root');
+        const root = ReactDOM.createRoot(rootNode);
+        root.render(<CalculatorApp />);
+    </script>
+</body>
+
+
+</html>
