@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapitalanlageimmobilie – Ihre Immobilie als private Altersvorsorge</title>
+    <meta name="description"
+        content="Eine Kapitalanlageimmobilie ist mehr als ein Investment – sie schließt Ihre Rentenlücke, nutzt die Inflation als Hebel und baut nachhaltiges Vermögen auf.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── VIP Badge ── */
+        .vip-banner {
+            background: linear-gradient(135deg, #023e84 0%, #0a5db5 100%);
+            color: white;
+            border-radius: 1rem;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 8px 32px rgba(2, 62, 132, 0.18);
+        }
+
+        .vip-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .vip-text h3 {
+            color: #ffd700;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .vip-text p {
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Highlight box ── */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0fe, #dce8fd);
+            border-left: 4px solid #023e84;
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 0.5rem;
+            color: #023e84;
+        }
+
+        /* ── Emotion quote ── */
+        .quote-block {
+            background: #f0f5ff;
+            border-radius: 1rem;
+            padding: 1.75rem 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-size: 5rem;
+            color: #023e84;
+            opacity: 0.12;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .quote-block p {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: #023e84;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* ── Chart container ── */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            border: 1px solid #e8eef8;
+        }
+
+        .chart-card h4 {
+            text-align: center;
+            color: #023e84;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .chart-card svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* ── Steuer-Tabelle ── */
+        .steuer-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            background: #fff;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        }
+
+        .steuer-table thead {
+            background: #023e84;
+            color: #fff;
+        }
+
+        .steuer-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .steuer-table td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #e8eef8;
+        }
+
+        .steuer-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .steuer-table tr:nth-child(even) {
+            background: #f4f7fc;
+        }
+
+        .steuer-table .check {
+            color: #27ae60;
+            font-weight: 700;
+        }
+
+        /* ── Sicher-Karte ── */
+        .sicher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .sicher-item {
+            background: white;
+            border-radius: 0.875rem;
+            padding: 1.25rem 1.5rem;
+            border-left: 4px solid #023e84;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .sicher-item .sicher-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #023e84;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .sicher-item p {
+            margin: 0;
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link disabled">Dashboard</span></li>
+                <li><span class="nav-link disabled">Daten</span></li>
+                <li><a href="index.html" class="nav-link active">Beratung</a></li>
+                <li><span class="nav-link disabled">Verträge</span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <!-- Icon for Arbeitgeberförderung -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Arbeitgeberförderung
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu">
+                        <li><a href="vl.html" class="sidebar-sub-link">Vermögenswirksame Leistungen</a></li>
+                        <li><a href="bav.html" class="sidebar-sub-link">Betriebliche Altersvorsorge</a></li>
+                        <li><a href="bkv.html" class="sidebar-sub-link">Betriebliche Krankenversicherung</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pkv.html" class="sidebar-link" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg> Private Krankenversicherung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="baufinanzierung.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a4 4 0 0 1 8 0v2" />
+                        </svg> Baufinanzierung
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="vermoegensanlage.html" class="sidebar-link"
+                        style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                                style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            Vermögensanlage
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon-arrow icon-blue"
+                            id="sidebarToggleArrow2" style="width: 1rem; height: 1rem; cursor: pointer;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
+                    <ul class="sidebar-sub-menu" id="sidebarSubMenu2">
+                        <li><a href="sparen-vs-investieren.html" class="sidebar-sub-link">Sparen vs. Investieren</a></li>
+                        <li><a href="zinseszinseffekt.html" class="sidebar-sub-link">Zinseszinseffekt</a></li>
+                        <li><a href="cost-average-effekt.html" class="sidebar-sub-link">Cost-Average-Effekt</a></li>
+                        <li><a href="diversifikation.html" class="sidebar-sub-link">Diversifikation</a></li>
+                        <li><a href="krisen-sind-chancen.html" class="sidebar-sub-link">Krisen sind Chancen</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="immobilie.html" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Immobilie
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="kapitalanlageimmobilie.html" class="sidebar-link active"
+                        style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue"
+                            style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Kapitalanlageimmobilie
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="badge">Unser Konzept</span>
+                        <h1>Ihre Immobilie als private Altersvorsorge</h1>
+                        <p class="hero-subtitle">
+                            Andere sparen – Sie bauen Vermögen. Mit einer Kapitalanlageimmobilie
+                            schließen Sie Ihre Rentenlücke, lassen die Inflation für sich arbeiten
+                            und sind dauerhaft auf der sicheren Seite.
+                        </p>
+                    </div>
+                    <div class="hero-illustration">
+                        <img src="images/immobilie_hero.png" alt="Kapitalanlageimmobilie als Altersvorsorge"
+                            style="width:100%; max-width:340px; object-fit:contain;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIP Status -->
+            <section class="section" style="padding-top: 2rem; padding-bottom: 0;">
+                <div class="container">
+                    <div class="vip-banner">
+                        <div class="vip-icon">🏆</div>
+                        <div class="vip-text">
+                            <h3>Sie zählen zu einer ausgewählten Gruppe</h3>
+                            <p>
+                                Nicht jeder hat die Möglichkeit, sich eine Kapitalanlageimmobilie zu leisten –
+                                Sie befinden sich in der privilegierten Position, diesen Schritt überhaupt in Betracht ziehen zu können.
+                                Gemeinsam erarbeiten wir, wie wir dieses Potenzial für Sie optimal nutzen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rentenlücke / Emotion -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Ihre Rentenlücke – unser gemeinsames Thema</h2>
+                        <p>Die gesetzliche Rente allein wird nicht ausreichen. Das ist eine bekannte Realität.</p>
+                    </div>
+
+                    <div class="quote-block">
+                        <p>Sie sind dauerhaft auf der sicheren Seite – denn eine abbezahlte Immobilie generiert ein Leben lang Mieteinnahmen, ganz unabhängig davon, wie sich die staatliche Rentenpolitik entwickelt.</p>
+                    </div>
+
+                    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+                        <div class="card" style="text-align:center;">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3>Rentenlücke schließen</h3>
+                            <p>Mieteinnahmen fließen auch im Rentenalter – zuverlässig, monatlich, unabhängig.</p>
+                        </div>
+                        <div class="card" style="text-align:center;">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23" />
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg>
+                            </div>
+                            <h3>Andere finanzieren Ihr Vermögen</h3>
+                            <p>Ihr Mieter tilgt den Kredit – Ihr Vermögen wächst, ohne dass Sie monatlich selbst Hand anlegen müssen.</p>
+                        </div>
+                        <div class="card" style="text-align:center;">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-blue" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                    <polyline points="17 6 23 6 23 12" />
+                                </svg>
+                            </div>
+                            <h3>Sachwert statt Papiergeld</h3>
+                            <p>Eine Immobilie kann nicht einfach entwertet werden – sie bleibt ein reales, greifbares Vermögen.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inflation als Verbündeter – mit Charts -->
+            <section class="section section--alt">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Inflation arbeitet für Sie – nicht gegen Sie</h2>
+                        <p>Dies ist ein entscheidender Vorteil, der häufig unterschätzt wird.</p>
+                    </div>
+
+                    <p>
+                        Bei einer Immobilienfinanzierung ist Ihr Darlehen in Euro fixiert – der Betrag, den Sie der Bank schulden, bleibt nominal gleich.
+                        Die Miete hingegen steigt mit der Inflation, der Immobilienwert steigt – nur Ihre Verbindlichkeit bleibt dieselbe.
+                        <strong>Die Inflation entwertet Ihre Schuld, während Ihr Vermögen wächst.</strong>
+                    </p>
+
+                    <div class="charts-grid">
+                        <!-- Chart 1: Geldwert & Preise -->
+                        <div class="chart-card">
+                            <h4>Geldwert &amp; Preise über die Zeit</h4>
+                            <svg viewBox="0 0 295 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Axes -->
+                                <line x1="40" y1="170" x2="260" y2="170" stroke="#ccc" stroke-width="1.5"/>
+                                <line x1="40" y1="20" x2="40" y2="170" stroke="#ccc" stroke-width="1.5"/>
+                                <!-- Arrow heads -->
+                                <polygon points="260,166 268,170 260,174" fill="#ccc"/>
+                                <polygon points="36,20 40,12 44,20" fill="#ccc"/>
+                                <!-- Axis labels -->
+                                <text x="271" y="174" font-size="11" fill="#888" font-family="Inter,sans-serif">Zeit</text>
+                                <text x="15" y="18" font-size="11" fill="#888" font-family="Inter,sans-serif">€</text>
+                                <!-- Geldwert curve (falling) - gray -->
+                                <path d="M 50,45 C 80,50 120,100 160,138 C 190,160 230,168 255,170"
+                                    fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"/>
+                                <!-- Preise curve (rising) - blue -->
+                                <path d="M 50,155 C 80,148 120,115 160,80 C 190,55 230,38 255,28"
+                                    fill="none" stroke="#023e84" stroke-width="2.5" stroke-linecap="round"/>
+                                <!-- Labels -->
+                                <text x="200" y="25" font-size="12" fill="#023e84" font-weight="bold" font-family="Inter,sans-serif">Preise</text>
+                                <text x="180" y="172" font-size="12" fill="#999" font-weight="bold" font-family="Inter,sans-serif">Geldwert</text>
+                            </svg>
+                            <p style="font-size:0.82rem; color:#666; text-align:center; margin:0.5rem 0 0;">
+                                Während das Geld an Kaufkraft verliert, steigen die Preise – und damit auch der Wert Ihrer Immobilie.
+                            </p>
+                        </div>
+
+                        <!-- Chart 2: Miete & Schuld -->
+                        <div class="chart-card">
+                            <h4>Miete &amp; Schuld über die Zeit</h4>
+                            <svg viewBox="0 0 295 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Center zero line -->
+                                <line x1="40" y1="100" x2="260" y2="100" stroke="#ccc" stroke-width="1.5"/>
+                                <!-- Y-axis -->
+                                <line x1="40" y1="20" x2="40" y2="185" stroke="#ccc" stroke-width="1.5"/>
+                                <!-- Arrow heads -->
+                                <polygon points="260,96 268,100 260,104" fill="#ccc"/>
+                                <polygon points="36,20 40,12 44,20" fill="#ccc"/>
+                                <!-- Axis labels -->
+                                <text x="271" y="104" font-size="11" fill="#888" font-family="Inter,sans-serif">Zeit</text>
+                                <text x="15" y="18" font-size="11" fill="#888" font-family="Inter,sans-serif">€</text>
+                                <!-- Miete curve (rising above zero) - blue -->
+                                <path d="M 50,98 C 90,94 140,75 185,55 C 215,42 240,32 258,26"
+                                    fill="none" stroke="#023e84" stroke-width="2.5" stroke-linecap="round"/>
+                                <!-- Schuld curve (falling below zero) - blue dashed -->
+                                <path d="M 50,102 C 90,108 140,128 185,152 C 215,168 240,176 258,180"
+                                    fill="none" stroke="#023e84" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5,3"/>
+                                <!-- Labels -->
+                                <text x="210" y="24" font-size="12" fill="#023e84" font-weight="bold" font-family="Inter,sans-serif">Miete</text>
+                                <text x="210" y="185" font-size="12" fill="#023e84" font-weight="bold" font-family="Inter,sans-serif">Schuld</text>
+                            </svg>
+                            <p style="font-size:0.82rem; color:#666; text-align:center; margin:0.5rem 0 0;">
+                                Ihre Mieteinnahmen steigen – Ihre reale Schuldenlast sinkt. Die Inflation arbeitet für Sie.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <h3>💡 Der entscheidende Unterschied</h3>
+                        <p>
+                            Die Zinsen, die Sie der Bank zahlen, sind <strong>nicht inflationsgebunden</strong>. Ihre Mieteinnahmen und Ihr Immobilienwert hingegen schon.
+                            Das bedeutet: Je länger Sie halten, desto stärker arbeitet die Inflation für Sie – ohne zusätzliche Kosten.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unser Konzept -->
+            <section class="section">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Unser Konzept: So setzen wir das gemeinsam um</h2>
+                        <p>Wir begleiten Sie von der ersten Idee bis zur vollständig abbezahlten Immobilie.</p>
+                    </div>
+
+                    <div class="sicher-grid">
+                        <div class="sicher-item">
+                            <div class="sicher-label">Schritt 1</div>
+                            <p><strong>Machbarkeitscheck</strong><br>Wir analysieren gemeinsam, welche Immobilie zu Ihrer persönlichen Situation passt – unter Berücksichtigung von Eigenkapital, Einkommen und Bonität.</p>
+                        </div>
+                        <div class="sicher-item">
+                            <div class="sicher-label">Schritt 2</div>
+                            <p><strong>Objektauswahl</strong><br>Wir unterstützen Sie bei der Auswahl der geeigneten Lage und des passenden Objekts – stets mit Blick auf Mietrendite und Wertsteigerungspotenzial.</p>
+                        </div>
+                        <div class="sicher-item">
+                            <div class="sicher-label">Schritt 3</div>
+                            <p><strong>Optimale Finanzierung</strong><br>Wir strukturieren die Finanzierung so, dass steuerliche Vorteile, Cashflow und Sicherheit optimal aufeinander abgestimmt sind.</p>
+                        </div>
+                        <div class="sicher-item">
+                            <div class="sicher-label">Schritt 4</div>
+                            <p><strong>Langfristige Begleitung</strong><br>Wir stehen Ihnen dauerhaft zur Seite – bei Anschlussfinanzierungen und der Erweiterung Ihres Portfolios.</p>
+                        </div>
+                    </div>
+
+                    <div class="quote-block" style="margin-top: 2rem;">
+                        <p>Sie sind dauerhaft auf der sicheren Seite – denn eine Immobilie ist ein greifbarer Sachwert, der seinen Wert langfristig erhält und nicht einfach entwertet werden kann.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Steuerliche Vorteile – kompakt -->
+            <section class="section section--alt">
+                <div class="container">
+                    <div class="text-center mb-xl">
+                        <h2>Der Staat beteiligt sich – steuerliche Vorteile</h2>
+                        <p>Als Vermieter können Sie zahlreiche Kosten steuerlich geltend machen. Das reduziert Ihre effektive Belastung erheblich.</p>
+                    </div>
+
+                    <table class="steuer-table">
+                        <thead>
+                            <tr>
+                                <th>Vorteil</th>
+                                <th>Was das für Sie bedeutet</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Abschreibung (AfA)</strong></td>
+                                <td>2–3 % des Gebäudewerts jährlich – steuermindernd, ohne Geldabfluss</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kreditzinsen</strong></td>
+                                <td>Vollständig absetzbar – der Staat beteiligt sich an Ihren Finanzierungskosten</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Werbungskosten</strong></td>
+                                <td>Hausgeld, Verwaltung, Reparaturen, Fahrten – alles abzugsfähig</td>
+                                <td class="check">✔</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Steuerfreier Verkauf</strong></td>
+                                <td>Nach 10 Jahren Haltedauer ist der gesamte Gewinn steuerfrei</td>
+                                <td class="check">✔</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <h3>📋 Die 10-Jahres-Regel</h3>
+                        <p>
+                            Veräußern Sie Ihre Immobilie erst nach einer Haltedauer von 10 Jahren, ist der gesamte Veräußerungsgewinn
+                            <strong>steuerfrei</strong>. Dies macht die Kombination aus Mieteinnahmen, Hebeleffekt
+                            und Wertsteigerung besonders attraktiv.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-xl">Häufige Fragen</h2>
+                    <div class="accordion">
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Wie viel Eigenkapital brauche ich?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Als Orientierungswert gilt: mindestens die <strong>Kaufnebenkosten</strong> (ca. 8–12 % des Kaufpreises)
+                                        sollten aus eigenen Mitteln bestritten werden. Viele Käufer bringen 20–30 % Eigenkapital mit, um günstigere
+                                        Konditionen zu erhalten – dies klären wir gemeinsam in Ihrem persönlichen Machbarkeitscheck.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Was passiert bei Mietausfall?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Wir empfehlen, einen <strong>monatlichen Puffer</strong> von 1–2 Nettomieten pro Jahr einzuplanen.
+                                        Darüber hinaus stehen Mietverlust-Zusatzversicherungen zur Verfügung, die Sie vor einem vollständigen Mietausfall absichern.
+                                        In nachgefragten Lagen ist Leerstand erfahrungsgemäß selten ein Problem.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Neubau oder Bestand – was empfiehlt Ihr?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p><strong>Neubau</strong> bietet eine höhere Abschreibung (3 % AfA) und geringen Renovierungsaufwand –
+                                        jedoch zu höheren Kaufpreisen.<br><br>
+                                        <strong>Bestand</strong> ist in der Anschaffung günstiger, erzielt häufig höhere Anfangsrenditen und
+                                        Modernisierungskosten können steuerlich geltend gemacht werden.
+                                        Gemeinsam erarbeiten wir, welche Option zu Ihrer Situation passt.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Ab wann lohnt sich eine Kapitalanlageimmobilie?</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Eine Kapitalanlageimmobilie ist besonders empfehlenswert, wenn Sie:</p>
+                                    <ul>
+                                        <li>Einen <strong>langfristigen Anlagehorizont</strong> von mindestens 10 Jahren mitbringen</li>
+                                        <li>Ihre <strong>Rentenlücke</strong> absichern möchten, ohne ausschließlich auf die staatliche Rente zu setzen</li>
+                                        <li>Vom <strong>Hebeleffekt</strong> profitieren wollen – also mit überschaubarem Eigenkapital substanzielles Vermögen aufbauen</li>
+                                        <li>Die <strong>Inflation als strategischen Vorteil</strong> nutzen wollen anstatt sie als Risiko zu betrachten</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Kapitalanlageimmobilie. Alle Informationen dienen nur zu Bildungszwecken.</p>
+            <p>Diese Seite bietet allgemeine Informationen zur Immobilie als Kapitalanlage. Für individuelle
+                Anlageberatung wenden Sie sich bitte an einen Finanzberater oder Steuerberater.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sidebar Toggle - Arbeitgeberförderung
+        const subMenu = document.getElementById('sidebarSubMenu');
+        const arrow = document.getElementById('sidebarToggleArrow');
+        if (arrow && subMenu) {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                subMenu.classList.toggle('open');
+                arrow.style.transform = subMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Sidebar Toggle - Vermögensanlage
+        const subMenu2 = document.getElementById('sidebarSubMenu2');
+        const arrow2 = document.getElementById('sidebarToggleArrow2');
+        if (arrow2 && subMenu2) {
+            arrow2.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                subMenu2.classList.toggle('open');
+                arrow2.style.transform = subMenu2.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // Accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+
+</html>
